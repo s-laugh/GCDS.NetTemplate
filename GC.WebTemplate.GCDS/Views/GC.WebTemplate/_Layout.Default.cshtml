@@ -1,0 +1,47 @@
+﻿@{
+	IWebTemplateModel webTemplateModel = (IWebTemplateModel)ViewData["WebTemplateModel"];
+}
+
+<!DOCTYPE html>
+<html lang="@webTemplateModel.TwoLetterCultureLanguage">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@webTemplateModel.PageTitle</title>
+
+    <!-- Icons Font Awesome (to access icons, import Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
+
+    <!-- GC Design System -->
+    <link rel="stylesheet" href="@webTemplateModel.GCDSPath/dist/gcds/gcds.css">
+    <script type="module" src="@webTemplateModel.GCDSPath/dist/gcds/gcds.esm.js"></script>
+    <script nomodule src="@webTemplateModel.GCDSPath/dist/gcds/gcds.js"></script>
+</head>
+<body>
+    <header>
+        <gcds-header 
+            lang="@webTemplateModel.TwoLetterCultureLanguage" 
+            skip-to-herf="main-content"
+            lang-href="#" @* TODO: Implement language toggle *@
+            signature-has-link="@webTemplateModel.Header.SignatureHasLink"
+            signature-variant="@webTemplateModel.Header.SignatureVariant">
+        </gcds-header>
+    </header>
+
+    <gcds-container size="xl" centered main-container>
+        <main id="main-content" role="main">
+            @RenderBody()
+        </main>
+    </gcds-container>
+
+    <gcds-footer
+        contextual-heading="@webTemplateModel.Footer.ContextualHeading"
+        contextual-links="@webTemplateModel.Footer.ContextualLinks"
+        display="@webTemplateModel.Footer.Display"
+        lang="@webTemplateModel.TwoLetterCultureLanguage"
+        sub-links="@webTemplateModel.Footer.SubLinks">
+    </gcds-footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
