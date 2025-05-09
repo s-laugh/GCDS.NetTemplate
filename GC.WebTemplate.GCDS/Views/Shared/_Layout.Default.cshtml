@@ -1,7 +1,6 @@
-﻿@using GC.WebTemplate.GCDS.Utils;
+﻿@using GCDS.NetTemplate.Utils;
 @{
-
-	IWebTemplateModel webTemplateModel = (IWebTemplateModel)ViewData["WebTemplateModel"];
+    ITemplateModel webTemplateModel = (ITemplateModel)ViewData[Constants.TEMPLATE_MODEL];
 }
 
 <!DOCTYPE html>

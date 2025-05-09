@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace GC.WebTemplate.GCDS.Components
+namespace GCDS.NetTemplate.Components
 {
     public class Link : Common, ILink
     {

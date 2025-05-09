@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.Text;
 
-namespace GC.WebTemplate.GCDS.Utils
+namespace GCDS.NetTemplate.Utils
 {
     public class CultureConfiguration
     {

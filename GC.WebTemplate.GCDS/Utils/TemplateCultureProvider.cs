@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 
-namespace GC.WebTemplate.GCDS.Utils
+namespace GCDS.NetTemplate.Utils
 {
-    public class WebTemplateCultureProvider : RequestCultureProvider
+    public class TemplateCultureProvider : RequestCultureProvider
     {
         public override Task<ProviderCultureResult?> DetermineProviderCultureResult(HttpContext httpContext)
         {

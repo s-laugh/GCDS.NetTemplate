@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace GC.WebTemplate.GCDS.Utils
+namespace GCDS.NetTemplate.Utils
 {
     public static class ServiceCollectionExtensions
     {
@@ -8,7 +8,7 @@ namespace GC.WebTemplate.GCDS.Utils
         {
             ArgumentNullException.ThrowIfNull(services);
 
-            services.TryAdd(ServiceDescriptor.Scoped<IWebTemplateModelAccessor, WebTemplateModelAccessor>());
+            services.TryAdd(ServiceDescriptor.Scoped<ITemplateModelAccessor, TemplateModelAccessor>());
         }
 
         public static void ConfigureWebTemplateCulture(this IServiceCollection services)
@@ -20,7 +20,7 @@ namespace GC.WebTemplate.GCDS.Utils
                 options.DefaultRequestCulture = CultureConfiguration.DefaultRequestCulture;
                 options.SupportedCultures = CultureConfiguration.SupportedCultures;
                 options.SupportedUICultures = CultureConfiguration.SupportedCultures;
-                options.RequestCultureProviders.Insert(0, new WebTemplateCultureProvider());
+                options.RequestCultureProviders.Insert(0, new TemplateCultureProvider());
             });
         }
     }

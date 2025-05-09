@@ -1,13 +1,13 @@
 using System.Diagnostics;
-using GC.WebTemplate.GCDS.Components;
-using GC.WebTemplate.GCDS.Models;
-using GC.WebTemplate.GCDS.Utils;
+using GCDS.NetTemplate.Components;
+using GCDS.NetTemplate.Models;
+using GCDS.NetTemplate.Utils;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GC.WebTemplate.GCDS.Controllers
+namespace GCDS.NetTemplate.Controllers
 {
 
-    [WebTemplateActionFilter]
+    [TemplateActionFilter]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -19,7 +19,7 @@ namespace GC.WebTemplate.GCDS.Controllers
 
         public IActionResult Index()
         {
-            var template = ViewData["WebTemplateModel"] as WebTemplateModel;
+            var template = ViewData[Constants.TEMPLATE_MODEL] as TemplateModel;
             template.Header.Breadcrumb = new Breadcrumbs { Items = [new Link { Text = "Home" }] };
             template.Header.Menu = new TopicMenu();
 

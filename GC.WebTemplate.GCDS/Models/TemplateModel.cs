@@ -1,9 +1,9 @@
-﻿using GC.WebTemplate.GCDS.Components;
-using GC.WebTemplate.GCDS.Utils;
+﻿using GCDS.NetTemplate.Components;
+using GCDS.NetTemplate.Utils;
 
-namespace GC.WebTemplate.GCDS.Models
+namespace GCDS.NetTemplate.Models
 {
-    public class WebTemplateModel : IWebTemplateModel
+    public class TemplateModel : ITemplateModel
     {
         public string LanguageToggleHref { get; set; }
 

@@ -1,4 +1,4 @@
-﻿namespace GC.WebTemplate.GCDS.Components
+﻿namespace GCDS.NetTemplate.Components
 {
     public class Search : Common
     {
