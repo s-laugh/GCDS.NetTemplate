@@ -1,9 +1,11 @@
-﻿@{
+﻿@using GC.WebTemplate.GCDS.Utils;
+@{
+
 	IWebTemplateModel webTemplateModel = (IWebTemplateModel)ViewData["WebTemplateModel"];
 }
 
 <!DOCTYPE html>
-<html lang="@webTemplateModel.TwoLetterCultureLanguage">
+<html lang="@webTemplateModel.Lang">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +21,9 @@
 </head>
 <body>
     <header>
+		@{
+            webTemplateModel.Header.LangHref = webTemplateModel.LanguageToggleHref;
+        }
 		@await Html.PartialAsync("Header", webTemplateModel.Header)
     </header>
 

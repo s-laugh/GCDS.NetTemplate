@@ -6,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // template
-builder.Services.AddModelAccessor();
+builder.Services.AddWebTemplateModelAccessor();
+builder.Services.ConfigureWebTemplateCulture();
 
 var app = builder.Build();
 
@@ -18,6 +19,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseRequestLocalization();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

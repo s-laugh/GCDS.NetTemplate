@@ -1,15 +1,12 @@
 ﻿using GC.WebTemplate.GCDS.Components;
+using GC.WebTemplate.GCDS.Utils;
 
 namespace GC.WebTemplate.GCDS.Models
 {
     public interface IWebTemplateModel
     {
-        /// <summary>
-        /// Retreive the first 2 letters of the current culture "en" or "fr"
-        /// Used by generate paths, determine language etc...
-        /// Set by Template
-        /// </summary>
-        string TwoLetterCultureLanguage { get; }
+        string LanguageToggleHref { get; set; }
+        string Lang { get; set; }
 
         /// <summary>
         /// title of page
