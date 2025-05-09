@@ -33,15 +33,30 @@ namespace GC.WebTemplate.GCDS.Controllers
                     new NavGroup { Label = "Group 1",
                         Links =
                         [
-                            new Link { Text = "Link 1.1", Href = "#" }, 
+                            new Link { Text = "Link 1.1", Href = "#" },
                             new Link { Text = "Link 1.2", Href = "#" }
-                        ] 
+                        ]
                     },
                     new Link { Text = "Link 2", Href = "#" }
                 ]
             };
 
             template.Header.Search = new Search();
+
+            template.Footer.Display = Footer.DisplayType.full;
+            template.Footer.ContextualHeading = "My Application Footer";
+            template.Footer.ContextualLinks = [
+                new Link { Text = "Link 1", Href = "#" },
+                new Link { Text = "Link 2", Href = "#" },
+                new Link { Text = "Link 3", Href = "#" },
+                new Link { Text = "Link 4", Href = "#" }
+                ];
+            template.Footer.SubLinks = [
+                new Link { Text = "Link 1", Href = "#" },
+                new Link { Text = "Link 2", Href = "#" },
+                new Link { Text = "Link 3", Href = "#" },
+                new Link { Text = "Link 4", Href = "#" }
+                ];
 
             return View();
         }

@@ -25,6 +25,6 @@ namespace GC.WebTemplate.GCDS.Models
         string GCDSVersion { get; set; }
 
         Header Header { get; }
-        GCDSFooterModel Footer { get; }
+        Footer Footer { get; }
     }
 }

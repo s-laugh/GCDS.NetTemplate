@@ -37,6 +37,6 @@ namespace GC.WebTemplate.GCDS.Models
         public string GCDSVersion { get; set; } = "latest";
 
         public Header Header { get; } = new Header();
-        public GCDSFooterModel Footer { get; } = new GCDSFooterModel(); 
+        public Footer Footer { get; } = new Footer(); 
     }
 }

@@ -28,13 +28,7 @@
         </main>
     </gcds-container>
 
-    <gcds-footer
-        contextual-heading="@webTemplateModel.Footer.ContextualHeading"
-        contextual-links="@webTemplateModel.Footer.ContextualLinks"
-        display="@webTemplateModel.Footer.Display"
-        lang="@webTemplateModel.TwoLetterCultureLanguage"
-        sub-links="@webTemplateModel.Footer.SubLinks">
-    </gcds-footer>
+    @await Html.PartialAsync("Footer", webTemplateModel.Footer)
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
