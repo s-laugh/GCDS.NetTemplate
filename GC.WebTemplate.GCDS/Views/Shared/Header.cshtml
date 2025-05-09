@@ -19,5 +19,11 @@ signature-variant="@Model.SignatureVariant">
         Model.Menu.Slot = "menu";
         @await Html.PartialAsync("Menu", Model.Menu)
     }
+
+    @if(Model.Search != null)
+    {
+		Model.Search.Slot = "search";
+		@await Html.PartialAsync("Search", Model.Search)
+    }
 </gcds-header>
 

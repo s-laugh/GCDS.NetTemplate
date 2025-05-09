@@ -41,6 +41,8 @@ namespace GC.WebTemplate.GCDS.Controllers
                 ]
             };
 
+            template.Header.Search = new Search();
+
             return View();
         }
 
