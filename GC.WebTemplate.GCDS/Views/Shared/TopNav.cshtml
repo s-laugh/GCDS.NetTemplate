@@ -1,0 +1,34 @@
+﻿@using GC.WebTemplate.GCDS.Components;
+@model TopNav
+
+<gcds-top-nav slot="@Model.Slot"
+			  label="@Model.Label"
+			  alignment="@Model.Alignment"
+			  lang="@Model.Lang">
+
+	@if (Model.Home != null)
+	{
+		Model.Home.Slot = "home";
+		@await Html.PartialAsync("NavLink", Model.Home)
+	}
+
+	@foreach (var item in Model.Links)
+	{
+		if (item is Link)
+		{
+			@await Html.PartialAsync("NavLink", item)
+		}
+		else if (item is NavGroup)
+		{
+			var navGroup = item as NavGroup;
+			<gcds-nav-group open-trigger="@navGroup.Label" menu-label="@navGroup.Label">
+				@foreach (var subItem in ((NavGroup)item).Links)
+				{
+					@await Html.PartialAsync("NavLink", subItem)
+				}
+			</gcds-nav-group>
+		}
+
+	}
+
+</gcds-top-nav>

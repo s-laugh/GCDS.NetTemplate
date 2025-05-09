@@ -1,6 +1,6 @@
 ﻿namespace GC.WebTemplate.GCDS.Components
 {
-    public class GCDSHeader : GCDSCommon
+    public class Header : Common
     {
         //TODO Implement language toggle
         public string LangHref { get; set; } = "#";
@@ -17,8 +17,8 @@
         /// </summary>
         public string? Banner { get; set; }
 
-        public GCDSBreadcrumbs? Breadcrumb { get; set; }
-        public string? Menu { get; set; }
+        public Breadcrumbs? Breadcrumb { get; set; }
+        public IMenu? Menu { get; set; }
         public string? Search { get; set; }
         public string? SkipToNav { get; set; }
         public string? LangToggle { get; set; }

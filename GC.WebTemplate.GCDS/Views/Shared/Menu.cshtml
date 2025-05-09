@@ -1,0 +1,12 @@
+﻿@using GC.WebTemplate.GCDS.Components;
+@model IMenu
+
+@if(Model is TopicMenu)
+{
+	@await Html.PartialAsync("TopicMenu", Model as TopicMenu)
+}
+else if(Model is TopNav)
+{
+	@await Html.PartialAsync("TopNav", Model as TopNav)
+}
+

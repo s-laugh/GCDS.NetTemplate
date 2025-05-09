@@ -1,5 +1,5 @@
 ﻿@using GC.WebTemplate.GCDS.Components;
-@model GCDSHeader
+@model Header
 
 <gcds-header 
 lang-href="@Model.LangHref"
@@ -11,7 +11,13 @@ signature-variant="@Model.SignatureVariant">
     @if (Model.Breadcrumb != null)
     {
         Model.Breadcrumb.Slot = "breadcrumb";
-		@await Html.PartialAsync("Breadcrumbs", Model.Breadcrumb)
+        @await Html.PartialAsync("Breadcrumbs", Model.Breadcrumb)
+    }
+
+    @if(Model.Menu != null)
+    {
+        Model.Menu.Slot = "menu";
+        @await Html.PartialAsync("Menu", Model.Menu)
     }
 </gcds-header>
 
