@@ -1,4 +1,6 @@
-﻿namespace GC.WebTemplate.GCDS.Models
+﻿using GC.WebTemplate.GCDS.Components;
+
+namespace GC.WebTemplate.GCDS.Models
 {
     public interface IWebTemplateModel
     {
@@ -22,7 +24,7 @@
         /// </summary>
         string GCDSVersion { get; set; }
 
-        GCDSHeaderModel Header { get; }
+        GCDSHeader Header { get; }
         GCDSFooterModel Footer { get; }
     }
 }

@@ -1,0 +1,17 @@
+﻿@using GC.WebTemplate.GCDS.Components;
+@model GCDSHeader
+
+<gcds-header 
+lang-href="@Model.LangHref"
+skip-to-herf="@Model.SkipToHref"
+lang="@Model.Lang"
+signature-has-link="@Model.SignatureHasLink"
+signature-variant="@Model.SignatureVariant">
+
+    @if (Model.Breadcrumb != null)
+    {
+        Model.Breadcrumb.Slot = "breadcrumb";
+		@await Html.PartialAsync("Breadcrumbs", Model.Breadcrumb)
+    }
+</gcds-header>
+

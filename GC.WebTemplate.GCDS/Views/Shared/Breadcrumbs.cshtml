@@ -1,0 +1,16 @@
+﻿@using GC.WebTemplate.GCDS.Components
+@model GCDSBreadcrumbs;
+
+<gcds-breadcrumbs hide-canada-link="@Model.HideCanadaLink"
+				  lang="@Model.Lang" slot="@Model.Slot">
+
+	@if (Model.Breadcrumbs != null)
+	{
+		foreach (var item in Model.Breadcrumbs)
+		{
+			<gcds-breadcrumbs-item href="@item.Href">
+				@item.Text
+			</gcds-breadcrumbs-item>
+		}
+	}
+</gcds-breadcrumbs>

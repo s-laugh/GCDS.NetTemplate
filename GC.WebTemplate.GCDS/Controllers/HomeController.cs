@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using GC.WebTemplate.GCDS.Components;
 using GC.WebTemplate.GCDS.Models;
 using GC.WebTemplate.GCDS.Utils;
 using Microsoft.AspNetCore.Mvc;
@@ -18,18 +19,11 @@ namespace GC.WebTemplate.GCDS.Controllers
 
         public IActionResult Index()
         {
+            var template = ViewData["WebTemplateModel"] as WebTemplateModel;
+            template.Header.Breadcrumb = new GCDSBreadcrumbs { Breadcrumbs = [new GCDSBreadcrumbsItem { Text = "Home"}] };
+
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

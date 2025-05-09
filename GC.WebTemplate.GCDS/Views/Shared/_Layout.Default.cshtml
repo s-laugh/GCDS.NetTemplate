@@ -19,13 +19,7 @@
 </head>
 <body>
     <header>
-        <gcds-header 
-            lang="@webTemplateModel.TwoLetterCultureLanguage" 
-            skip-to-herf="main-content"
-            lang-href="#" @* TODO: Implement language toggle *@
-            signature-has-link="@webTemplateModel.Header.SignatureHasLink"
-            signature-variant="@webTemplateModel.Header.SignatureVariant">
-        </gcds-header>
+		@await Html.PartialAsync("Header", webTemplateModel.Header)
     </header>
 
     <gcds-container size="xl" centered main-container>
