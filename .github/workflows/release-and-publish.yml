@@ -29,7 +29,7 @@ jobs:
       # Build and pack package
       - name: Pack
         shell: pwsh
-        run: dotnet pack .\GCDS.NetTemplate\GCDS.NetTemplate --configuration Release --output ${{ env.NuGetDirectory }}
+        run: dotnet pack ./GCDS.NetTemplate --configuration Release --output ${{ env.NuGetDirectory }}
 
       # Uploading an artifact to the repository for access from other jobs
       - uses: actions/upload-artifact@v4
@@ -51,7 +51,7 @@ jobs:
     # Save path to the NuGet directory in the environment variable
     env:
       NuGetDirectory: ${{ github.workspace }}/nuget
-      
+
     steps:
       # Download the contents of the repository
       - name: Download artifact
