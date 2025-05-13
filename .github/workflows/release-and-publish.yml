@@ -1,0 +1,69 @@
+name: Create release and publish NuGet
+
+on:
+  push:
+    tags:
+      - '*.*.*' # Matches version tags like 1.0.0, 2.1.3, etc.
+
+jobs:
+  create_nuget:
+    name: Create NuGet
+    runs-on: ubuntu-24.04
+
+    # Save path to the NuGet directory in the environment variable
+    env:
+      NuGetDirectory: ${{ github.workspace }}/nuget
+
+    steps:
+      # Checkout on a branch commit to access the source code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Install SDK
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+
+      # Build and pack package
+      - name: Pack
+        shell: pwsh
+        run: dotnet pack ./GCDS.NetTemplate -p:PackageVersion=${{ github.ref_name }} --configuration Release --output ${{ env.NuGetDirectory }}
+
+      # Uploading an artifact to the repository for access from other jobs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nuget
+          if-no-files-found: error
+          retention-days: 7
+          path: ${{ env.NuGetDirectory }}/*.nupkg
+
+  deploy:
+    name: Deploy NuGet
+    runs-on: ubuntu-24.04
+    # A ready artifact is required before publishing
+    # The job waits for the create_nuget job to complete
+    needs: create_nuget
+    # This jobs runs if create_nuget succeeds
+    if: success()
+
+    # Save path to the NuGet directory in the environment variable
+    env:
+      NuGetDirectory: ${{ github.workspace }}/nuget
+
+    steps:
+      # Download the contents of the repository
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget
+          path: ${{ env.NuGetDirectory }}
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4
+
+      # Publish the NuGet package using the dotnet utility
+      - name: Publish NuGet package
+        shell: pwsh
+        run: |
+          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
+              dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          }
