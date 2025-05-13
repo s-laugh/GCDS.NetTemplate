@@ -1,0 +1,36 @@
+﻿@using GCDS.NetTemplate.Utils;
+@{
+	ITemplateModel webTemplateModel = (ITemplateModel)ViewData[Constants.TEMPLATE_MODEL];
+}
+
+<!DOCTYPE html>
+<html lang="@webTemplateModel.Lang">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@webTemplateModel.PageTitle</title>
+
+	@await Html.PartialAsync("Head", webTemplateModel.TemplateSettings)
+</head>
+<body>
+	<gcds-container size="xl" centered main-container>
+		<gcds-grid columns="2fr 1fr" align-items="center" place-content="space-between">
+			<gcds-nav-link href="@webTemplateModel.SiteTitle.Href">@webTemplateModel.SiteTitle.Text</gcds-nav-link>
+
+			<gcds-lang-toggle href="@webTemplateModel.LanguageToggleHref" style="text-align:end"></gcds-lang-toggle>
+		</gcds-grid>
+	</gcds-container>
+
+	@await Html.PartialAsync("TopNav", webTemplateModel.Header.Menu)
+
+	<gcds-container size="xl" centered main-container>
+		<main id="main-content" role="main">
+			@RenderBody()
+		</main>
+	</gcds-container>
+
+	@await Html.PartialAsync("Footer", webTemplateModel.Footer)
+
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

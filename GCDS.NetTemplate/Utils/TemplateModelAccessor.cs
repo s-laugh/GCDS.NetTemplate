@@ -6,9 +6,11 @@ namespace GCDS.NetTemplate.Utils
     {
         public ITemplateModel Model { get; }
 
-        public TemplateModelAccessor()
+        public TemplateModelAccessor(IConfiguration configuration)
         {
-            Model = new TemplateModel();
+            var settings = configuration.GetSection("TemplateSettings").Get<TemplateSettings>();
+
+            Model = new TemplateModel(settings);
         }
     }
 }

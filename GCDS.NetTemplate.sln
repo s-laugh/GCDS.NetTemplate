@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCDS.NetTemplate", "GC.WebTemplate.GCDS\GCDS.NetTemplate.csproj", "{0E3E2358-755E-45E5-84E2-39A7E68901F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCDS.NetTemplate", "GCDS.NetTemplate\GCDS.NetTemplate.csproj", "{0E3E2358-755E-45E5-84E2-39A7E68901F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

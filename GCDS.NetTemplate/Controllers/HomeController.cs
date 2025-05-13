@@ -21,25 +21,7 @@ namespace GCDS.NetTemplate.Controllers
         {
             var template = ViewData[Constants.TEMPLATE_MODEL] as TemplateModel;
             template.Header.Breadcrumb = new Breadcrumbs { Items = [new Link { Text = "Home" }] };
-            template.Header.Menu = new TopicMenu();
-
-            template.Header.Menu = new TopNav
-            {
-                Label = "Top Nav",
-                Home = new Link { Text = "Home", Href = "/" },
-                Links =
-                [
-                    new Link { Text = "Link 1", Href = "#" },
-                    new NavGroup { Label = "Group 1",
-                        Links =
-                        [
-                            new Link { Text = "Link 1.1", Href = "#" },
-                            new Link { Text = "Link 1.2", Href = "#" }
-                        ]
-                    },
-                    new Link { Text = "Link 2", Href = "#" }
-                ]
-            };
+            template.Header.Menu = new TopicMenu();                 
 
             template.Header.Search = new Search();
 
@@ -57,6 +39,33 @@ namespace GCDS.NetTemplate.Controllers
                 new Link { Text = "Link 3", Href = "#" },
                 new Link { Text = "Link 4", Href = "#" }
                 ];
+
+            return View();
+        }
+
+        public IActionResult Internal()
+        {
+            var template = ViewData[Constants.TEMPLATE_MODEL] as TemplateModel;
+            template.TemplateSettings.LoadBootstrapCdn = true;
+            template.Header.Breadcrumb = new Breadcrumbs { Items = [new Link { Text = "Home" }] };
+            template.SiteTitle = new Link { Text = "My Application", Href = Url.Action("Index") };
+            template.Header.Menu = new TopNav
+            {
+                Label = "Top Nav",
+                Alignment = TopNav.AlignmentType.left,
+                Links =
+               [
+                   new Link { Text = "Link 1", Href = "#" },
+                    new NavGroup { Label = "Group 1",
+                        Links =
+                        [
+                            new Link { Text = "Link 1.1", Href = "#" },
+                            new Link { Text = "Link 1.2", Href = "#" }
+                        ]
+                    },
+                    new Link { Text = "Link 2", Href = "#" }
+               ]
+            };
 
             return View();
         }

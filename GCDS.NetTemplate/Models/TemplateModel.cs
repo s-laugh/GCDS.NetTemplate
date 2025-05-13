@@ -3,36 +3,23 @@ using GCDS.NetTemplate.Utils;
 
 namespace GCDS.NetTemplate.Models
 {
-    public class TemplateModel : ITemplateModel
+    public class TemplateModel(TemplateSettings settings) : ITemplateModel
     {
+        public ITemplateSettings TemplateSettings { get; set; } = settings;
+
         public string LanguageToggleHref { get; set; }
 
         public string Lang { get; set; } = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
 
         /// <summary>
         /// title of page
-        /// Set by application programmatically
         /// </summary>
         public string PageTitle { get; set; } = string.Empty;
 
-        private string _gcdsPath = "https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@";
-        public string GCDSPath
-        {
-            get
-            {
-                return _gcdsPath + GCDSVersion;
-            }
-            set
-            {
-                _gcdsPath = value;
-            }
-        }
-
         /// <summary>
-        /// version of GC Design System that should be targeted
-        /// will target 'latest' if not set
+        /// Used in the custom internal layout to set the title of the site (or application)
         /// </summary>
-        public string GCDSVersion { get; set; } = "latest";
+        public Link? SiteTitle { get; set; }
 
         public Header Header { get; } = new Header();
         public Footer Footer { get; } = new Footer(); 
