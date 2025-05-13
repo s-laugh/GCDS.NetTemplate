@@ -5,10 +5,7 @@
     <!-- Nuget package unique identifier and version -->
     <PackageId>GCDS.NetTemplate</PackageId>
     <Version>0.1.0</Version>
-
-    <!-- License information -->
-    <PackageLicenseExpression>Unlicenced</PackageLicenseExpression>
-
+   
     <!--  Author, description, icon, documentation -->
     <Authors>Shaun Laughland</Authors>
     <Title>.NET wrapper for the GC Design System</Title>
