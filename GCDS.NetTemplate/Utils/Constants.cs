@@ -9,5 +9,7 @@
         public const string FRENCH_CULTURE_TWO_LETTER = "fr";
 
         public const string TEMPLATE_MODEL = "TemplateModel";
+
+        public const string SKIP_TO_CONTENT_ID = "main-content";
     }
 }

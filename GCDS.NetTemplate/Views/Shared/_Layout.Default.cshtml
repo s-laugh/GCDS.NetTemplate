@@ -1,4 +1,5 @@
-﻿@using GCDS.NetTemplate.Utils;
+﻿@using GCDS.NetTemplate.Models
+@using GCDS.NetTemplate.Utils
 @{
     ITemplateModel webTemplateModel = (ITemplateModel)ViewData[Constants.TEMPLATE_MODEL];
 }
@@ -16,12 +17,13 @@
     <header>
 		@{
             webTemplateModel.Header.LangHref = webTemplateModel.LanguageToggleHref;
+			webTemplateModel.Header.SkipToHref = Constants.SKIP_TO_CONTENT_ID;
         }
 		@await Html.PartialAsync("Header", webTemplateModel.Header)
     </header>
 
     <gcds-container size="xl" centered main-container>
-        <main id="main-content" role="main">
+        <main id="@Constants.SKIP_TO_CONTENT_ID" role="main">
             @RenderBody()
         </main>
     </gcds-container>
