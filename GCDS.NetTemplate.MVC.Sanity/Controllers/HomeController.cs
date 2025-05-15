@@ -1,12 +1,12 @@
-using System.Diagnostics;
 using GCDS.NetTemplate.Components;
 using GCDS.NetTemplate.Models;
+using GCDS.NetTemplate.MVC.Sanity.Models;
 using GCDS.NetTemplate.Utils;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
-namespace GCDS.NetTemplate.Controllers
+namespace GCDS.NetTemplate.MVC.Sanity.Controllers
 {
-
     [TemplateActionFilter]
     public class HomeController : Controller
     {
@@ -21,7 +21,7 @@ namespace GCDS.NetTemplate.Controllers
         {
             var template = ViewData[Constants.TEMPLATE_MODEL] as TemplateModel;
             template.Header.Breadcrumb = new Breadcrumbs { Items = [new Link { Text = "Home" }] };
-            template.Header.Menu = new TopicMenu();                 
+            template.Header.Menu = new TopicMenu();
 
             template.Header.Search = new Search();
 
@@ -70,5 +70,10 @@ namespace GCDS.NetTemplate.Controllers
             return View();
         }
 
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }

@@ -23,11 +23,4 @@
     <IsPackable>true</IsPackable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- Exclude files in nuget package that are just for running this solution -->
-    <None Remove="Views\**\*" Pack="false" />
-    <None Include="Views\Shared\**\*" Pack="true" />
-    <None Remove="Controllers\**\*" Pack="false" />
-  </ItemGroup>
-
 </Project>
