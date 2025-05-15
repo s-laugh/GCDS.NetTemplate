@@ -7,7 +7,7 @@ NOTE: namespaces and general naming will likely still change as the organziation
 
 ## Using / Implementing / Installing
 
-1. Download the GCDS.NetTemplate from Nuget.org into an .NET 8 or later MVC project
+1. Download the `GCDS.NetTemplate` from Nuget.org into an .NET 8 or later MVC project
 
 2. Add at least one configuration values to your `appsettings.json` and any that you want to override from the defaults (defaults are shown bellow)
     ```json
@@ -42,10 +42,12 @@ NOTE: namespaces and general naming will likely still change as the organziation
     ```
 
 6. Ensure your view points one of the templates provided Layouts, or create your own using the components and partial views provided.
-    Povided Layouts:
+
+   Povided Layouts:
     - `_Layout.Default`
     - `_Layout.Internal`
-    Provided Partials:
+    
+   Provided Partials:
     - `Breadcrumbs`
     - `Footer`
     - `Head`
