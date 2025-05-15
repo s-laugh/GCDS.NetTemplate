@@ -4,6 +4,5 @@
     {
         string Lang { get; set; }
         string? Slot { get; set; }
-        string SkipToHref => "#main-content";
     }
 }

@@ -2,8 +2,17 @@
 {
     public class Header : Common
     {
-        //TODO Implement language toggle
-        public string LangHref { get; set; } = "#";
+        /// <summary>
+        /// Language toogle link
+        /// Will be set inside the layout from the Template Model
+        /// </summary>
+        public string? LangHref { get; set; }
+
+        /// <summary>
+        /// Skip to main content href
+        /// Will be set inside the layout based on a pre-defined const.
+        /// </summary>
+        public string? SkipToHref { get; set; }
 
         /// <summary>
         /// Remove the link to Canada.ca on the brand logo
