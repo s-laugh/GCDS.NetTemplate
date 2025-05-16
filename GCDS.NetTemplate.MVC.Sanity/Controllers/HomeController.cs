@@ -48,7 +48,14 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             var template = ViewData[Constants.TEMPLATE_MODEL] as TemplateModel;
             template.TemplateSettings.LoadBootstrapCdn = true;
             template.Header.Breadcrumb = new Breadcrumbs { Items = [new Link { Text = "Home" }] };
-            template.SiteTitle = new Link { Text = "My Application", Href = Url.Action("Index") };
+            template.InternalAppHeader = new InternalAppHeader
+            {
+                SiteTitle = new Link
+                {
+                    Text = "My Application",
+                    Href = Url.Action("Index")
+                }
+            };
             template.Header.Menu = new TopNav
             {
                 Label = "Top Nav",

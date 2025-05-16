@@ -12,7 +12,7 @@
         }
         public AlignmentType Alignment { get; set; } = AlignmentType.right;
         public Link? Home { get; set; }
-        public List<ILink> Links { get; set; } = new List<ILink>(); 
+        public List<INavLink> Links { get; set; } = new List<INavLink>(); 
 
     }
 }

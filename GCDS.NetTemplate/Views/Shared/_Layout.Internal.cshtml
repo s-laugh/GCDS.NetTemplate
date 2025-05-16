@@ -1,31 +1,71 @@
-﻿@using GCDS.NetTemplate.Models;
+﻿@using GCDS.NetTemplate.Models
 @using GCDS.NetTemplate.Utils
+@using GCDS.NetTemplate.Components
 @{
 	ITemplateModel webTemplateModel = (ITemplateModel)ViewData[Constants.TEMPLATE_MODEL];
+	if (webTemplateModel?.InternalAppHeader == null)
+		throw new ArgumentNullException("Must set InternalAppHeader in WebTemplateModel to use this layout.");
 }
 
 <!DOCTYPE html>
 <html lang="@webTemplateModel.Lang">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0" />
+
 	<title>@webTemplateModel.PageTitle</title>
 
 	@await Html.PartialAsync("Head", webTemplateModel.TemplateSettings)
 </head>
 <body>
-	<gcds-container size="xl" centered main-container>
-		<gcds-grid columns="2fr 1fr" align-items="center" place-content="space-between">
-			<gcds-nav-link href="@webTemplateModel.SiteTitle.Href">@webTemplateModel.SiteTitle.Text</gcds-nav-link>
+	<header>
+		<nav airia-label="@webTemplateModel.InternalAppHeader.SkipTo.AiriaLabel"
+			 style="top: var(--gcds-header-skiptonav-top);
+					display: block;
+					text-align:center;
+					height:0;
+					width:0;
+					overflow:hidden;">
+			@{
+				var link = new Link
+			{
+				Href = "#" + Constants.SKIP_TO_CONTENT_ID,
+				Text = @webTemplateModel.InternalAppHeader.SkipTo.Text
+			};
+			}
+			@await Html.PartialAsync("Link", link)
+		</nav>
 
-			<gcds-lang-toggle href="@webTemplateModel.LanguageToggleHref" style="text-align:end"></gcds-lang-toggle>
-		</gcds-grid>
-	</gcds-container>
+		<gcds-container size="xl"
+						centered
+						main-container>
+			<gcds-grid columns="2fr 1fr"
+					   align-items="center"
+					   place-content="space-between">
 
-	@await Html.PartialAsync("TopNav", webTemplateModel.Header.Menu)
+				<gcds-nav-link href="@webTemplateModel.InternalAppHeader.SiteTitle.Href">
+					@webTemplateModel.InternalAppHeader.SiteTitle.Text
+				</gcds-nav-link>
 
-	<gcds-container size="xl" centered main-container>
-		<main id="main-content" role="main">
+				<gcds-lang-toggle href="@webTemplateModel.LanguageToggleHref"
+								  style="text-align:end">
+				</gcds-lang-toggle>
+
+			</gcds-grid>
+		</gcds-container>
+
+		@if (webTemplateModel.Header?.Menu != null)
+		{
+			@await Html.PartialAsync("TopNav", webTemplateModel.Header.Menu)
+		}
+	</header>
+
+	<gcds-container size="xl"
+					centered
+					main-container>
+		<main id="@Constants.SKIP_TO_CONTENT_ID"
+			  role="main">
 			@RenderBody()
 		</main>
 	</gcds-container>
