@@ -46,7 +46,8 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         public IActionResult Internal()
         {
             var template = ViewData[Constants.TEMPLATE_MODEL] as TemplateModel;
-            template.TemplateSettings.LoadBootstrapCdn = true;
+
+           // template.TemplateSettings.LoadBootstrapCdn = true;
             template.Header.Breadcrumb = new Breadcrumbs { Items = [new Link { Text = "Home" }] };
             template.InternalAppHeader = new InternalAppHeader
             {
@@ -54,7 +55,8 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                 {
                     Text = "My Application",
                     Href = Url.Action("Index")
-                }
+                },
+                StyleOverride = "border-bottom: 4px solid #243851"
             };
             template.Header.Menu = new TopNav
             {
@@ -71,8 +73,10 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                         ]
                     },
                     new Link { Text = "Link 2", Href = "#" }
-               ]
+               ],
+                StyleOverride = "background-color: #e1e4e7;"
             };
+            template.Footer.StyleOverride = "border-top: 4px solid #243851; background: #f8f8f8;";
 
             return View();
         }

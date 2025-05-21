@@ -12,16 +12,17 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport"
-		  content="width=device-width, initial-scale=1.0" />
+	content="width=device-width, initial-scale=1.0" />
 
 	<title>@webTemplateModel.PageTitle</title>
 
 	@await Html.PartialAsync("Head", webTemplateModel.TemplateSettings)
 </head>
 <body>
-	<header>
+	<header
+		style="margin: var(--gcds-header-margin) !important">
 		<nav airia-label="@webTemplateModel.InternalAppHeader.SkipTo.AiriaLabel"
-			 style="top: var(--gcds-header-skiptonav-top);
+		style="top: var(--gcds-header-skiptonav-top);
 					display: block;
 					text-align:center;
 					height:0;
@@ -38,18 +39,19 @@
 		</nav>
 
 		<gcds-container size="xl"
-						centered
-						main-container>
+		centered
+		main-container
+		style="@webTemplateModel.InternalAppHeader.StyleOverride">
 			<gcds-grid columns="2fr 1fr"
-					   align-items="center"
-					   place-content="space-between">
+			align-items="center"
+			place-content="space-between">
 
 				<gcds-nav-link href="@webTemplateModel.InternalAppHeader.SiteTitle.Href">
 					@webTemplateModel.InternalAppHeader.SiteTitle.Text
 				</gcds-nav-link>
 
 				<gcds-lang-toggle href="@webTemplateModel.LanguageToggleHref"
-								  style="text-align:end">
+				style="text-align:end">
 				</gcds-lang-toggle>
 
 			</gcds-grid>

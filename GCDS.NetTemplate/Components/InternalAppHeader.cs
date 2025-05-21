@@ -12,6 +12,11 @@ namespace GCDS.NetTemplate.Components
 
         public SkipTo SkipTo { get; set; } = new SkipTo();
 
+        /// <summary>
+        /// Enables the user to provide limited custom styling for the header
+        /// </summary>
+        public string? StyleOverride { get; set; }
+
     }
 
     public class SkipTo

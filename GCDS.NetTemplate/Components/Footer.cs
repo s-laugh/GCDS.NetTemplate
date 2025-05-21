@@ -29,5 +29,10 @@
         /// NOTE: Terms & Privacy are still manadory and must be manually replaced
         /// </summary>
         public List<Link>? SubLinks { get; set; }
+
+        /// <summary>
+        /// Enables the user to provide limited custom styling for the footer
+        /// </summary>
+        public string? StyleOverride { get; set; }
     }
 }
