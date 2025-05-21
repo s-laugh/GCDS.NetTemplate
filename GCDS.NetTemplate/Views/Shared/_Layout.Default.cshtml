@@ -17,7 +17,7 @@
     <header>
 		@{
             webTemplateModel.Header.LangHref = webTemplateModel.LanguageToggleHref;
-			webTemplateModel.Header.SkipToHref = Constants.SKIP_TO_CONTENT_ID;
+			webTemplateModel.Header.SkipToHref = "#" + Constants.SKIP_TO_CONTENT_ID;
         }
 		@await Html.PartialAsync("Header", webTemplateModel.Header)
     </header>

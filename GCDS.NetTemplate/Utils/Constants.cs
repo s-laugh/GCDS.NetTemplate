@@ -11,5 +11,9 @@
         public const string TEMPLATE_MODEL = "TemplateModel";
 
         public const string SKIP_TO_CONTENT_ID = "main-content";
+        public const string SKIP_TO_AIRIA_LABEL_EN = "Skip To";
+        public const string SKIP_TO_AIRIA_LABEL_FR = "Passer au";
+        public const string SKIP_TO_TEXT_EN = "Skip to main content";
+        public const string SKIP_TO_TEXT_FR = "Passer au contenu principal";
     }
 }

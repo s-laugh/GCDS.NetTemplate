@@ -28,14 +28,14 @@ namespace GCDS.NetTemplate.Models
         public string PageTitle { get; set; } = string.Empty;
 
         /// <summary>
-        /// Used in the custom internal layout to set the title of the site (or application)
-        /// </summary>
-        public Link? SiteTitle { get; set; }
-
-        /// <summary>
         /// Loading all the configurations for the header component
         /// </summary>
         public Header Header { get; } = new Header();
+
+        /// <summary>
+        /// Custom Header for Internal Applications
+        /// </summary>
+        public InternalAppHeader? InternalAppHeader { get; set; }
 
         /// <summary>
         /// Loading all the configurations for the footer component

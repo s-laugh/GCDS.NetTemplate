@@ -15,9 +15,7 @@ namespace GCDS.NetTemplate.Models
         /// </summary>
         string PageTitle { get; set; }
         
-        Link? SiteTitle { get; set; }
-
-
+        InternalAppHeader? InternalAppHeader { get; set; }
         Header Header { get; }
         Footer Footer { get; }
     }

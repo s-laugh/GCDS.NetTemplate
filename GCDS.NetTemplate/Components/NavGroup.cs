@@ -1,8 +1,8 @@
 ﻿namespace GCDS.NetTemplate.Components
 {
-    public class NavGroup : ILink
+    public class NavGroup : INavLink
     {
         public required string Label { get; set; }
-        public required List<Link> Links { get; set; }
+        public required List<ILink> Links { get; set; }
     }
 }
