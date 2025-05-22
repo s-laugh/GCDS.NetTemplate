@@ -4,7 +4,7 @@
     /// Class holder for the link properties as defined in the GCDS template
     /// https://design-system.alpha.canada.ca/en/components/link/
     /// </summary>
-    public class Link : Common, ILink, INavLink
+    public class Link : Common, INavLink
     {
         public enum DisplayType
         {

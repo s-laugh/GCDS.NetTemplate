@@ -13,6 +13,6 @@
         /// <summary>
         /// links that will be shown under the header
         /// </summary>
-        public required IEnumerable<ILink> Links { get; set; }
+        public required IEnumerable<Link> Links { get; set; }
     }
 }
