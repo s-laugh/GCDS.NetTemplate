@@ -1,0 +1,37 @@
+﻿@using GCDS.NetTemplate.Templates.Gcds
+@using GCDS.NetTemplate.Utils
+@{
+    BasicTemplate? template = ViewData[Constants.TEMPLATE_DATA] as BasicTemplate;
+	if (template == null)
+		throw new ArgumentNullException("Must set WebTemplateModel in ViewData to use this layout.");
+}
+
+<!DOCTYPE html>
+<html lang="@template.Lang">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@template.PageTitle</title>
+
+	@await Html.PartialAsync("Head", template.Settings)
+</head>
+<body>
+    <header>
+		@{
+     template.Header.LangHref = template.LanguageToggleHref;
+			template.Header.SkipToHref = "#" + Constants.SKIP_TO_CONTENT_ID;
+        }
+		@await Html.PartialAsync("Gcds/Header", template.Header)
+    </header>
+
+    <gcds-container size="xl" centered main-container>
+        <main id="@Constants.SKIP_TO_CONTENT_ID" role="main">
+            @RenderBody()
+        </main>
+    </gcds-container>
+
+    @await Html.PartialAsync("Gcds/Footer", template.Footer)
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

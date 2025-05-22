@@ -14,7 +14,7 @@
 
         /// <summary>
         /// Language toogle link
-        /// Will be set inside the layout from the Template Model
+        /// Will be set inside the layout from the Template
         /// </summary>
         public string? LangHref { get; set; }
 

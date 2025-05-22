@@ -1,9 +1,15 @@
-﻿using GCDS.NetTemplate.Utils;
+﻿using GCDS.NetTemplate.Components.Gcds;
+using GCDS.NetTemplate.Utils;
 
 namespace GCDS.NetTemplate.Components.Custom
 {
     public class InternalAppHeader
     {
+        /// <summary>
+        /// Language toogle link
+        /// Will be set inside the layout from the Template
+        /// </summary>
+        public string? LanguageToggleHref { get; set; }
 
         /// <summary>
         /// Sets the title of the site (or application)
@@ -14,54 +20,27 @@ namespace GCDS.NetTemplate.Components.Custom
         /// Provides information for the skip to content link
         /// Automatically set for the current language
         /// </summary>
-        public SkipTo SkipTo { get; set; } = new SkipTo();
+        public SkipTo SkipToMainContent { get; set; } = new SkipTo()
+        {
+            Link = new Link
+            {
+                Text = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "en"
+                    ? Constants.SKIP_TO_TEXT_EN
+                    : Constants.SKIP_TO_TEXT_FR,
+                Href = $"#{Constants.SKIP_TO_CONTENT_ID}",
+            }
+        };
 
         /// <summary>
-        /// Enables the user to provide limited custom styling for the header
+        /// Enables implementing a Menu with the TopNav component
+        /// </summary>
+        public TopNav? Menu { get; set; }
+
+        /// <summary>
+        /// Enables limited custom styling for the header
         /// </summary>
         public string? StyleOverride { get; set; }
 
-    }
-
-    public class SkipTo
-    {
-
-        private string? _airiaLabel;
-        /// <summary>
-        /// Accessibility label for the skip to content link
-        /// </summary>
-        public string AiriaLabel
-        {
-            get
-            {
-                return _airiaLabel ?? (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "en"
-                    ? Constants.SKIP_TO_AIRIA_LABEL_EN
-                    : Constants.SKIP_TO_AIRIA_LABEL_FR);
-            }
-            set
-            {
-                _airiaLabel = value;
-            }
-        }
-
-        private string? _text;
-        /// <summary>
-        /// Text for the skip to content link
-        /// </summary>
-        public string Text
-        {
-            get
-            {
-                return _text ??
-                    (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "en"
-                        ? Constants.SKIP_TO_TEXT_EN
-                        : Constants.SKIP_TO_TEXT_FR);
-            }
-            set
-            {
-                _text = value;
-            }
-        }
 
     }
 }

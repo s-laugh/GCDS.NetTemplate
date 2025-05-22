@@ -2,10 +2,10 @@
 @model TopNav
 
 <gcds-top-nav slot="@Model.Slot"
-			  label="@Model.Label"
-			  alignment="@Model.Alignment"
-			  lang="@Model.Lang"
-				style="@Model.StyleOverride">
+label="@Model.Label"
+alignment="@Model.Alignment"
+lang="@Model.Lang"
+style="@Model.StyleOverride">
 
 	@if (Model.Home != null)
 	{
@@ -15,21 +15,20 @@
 
 	@foreach (var item in Model.Links)
 	{
-		if (item is Link)
+		switch (item)
 		{
-			@await Html.PartialAsync("Gcds/NavLink", item)
+			case Link link:
+				@await Html.PartialAsync("Gcds/NavLink", link)
+				break;
+			case NavGroup group:
+				<gcds-nav-group open-trigger="@group.Label" menu-label="@group.Label">
+					@foreach (var subItem in ((NavGroup)item).Links)
+					{
+						@await Html.PartialAsync("Gcds/NavLink", subItem)
+					}
+				</gcds-nav-group>
+				break;
 		}
-		else if (item is NavGroup)
-		{
-			var navGroup = item as NavGroup;
-			<gcds-nav-group open-trigger="@navGroup.Label" menu-label="@navGroup.Label">
-				@foreach (var subItem in ((NavGroup)item).Links)
-				{
-					@await Html.PartialAsync("Gcds/NavLink", subItem)
-				}
-			</gcds-nav-group>
-		}
-
 	}
 
 </gcds-top-nav>
