@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using GCDS.NetTemplate.Templates;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace GCDS.NetTemplate.Utils
 {
@@ -8,7 +9,7 @@ namespace GCDS.NetTemplate.Utils
         {
             ArgumentNullException.ThrowIfNull(services);
 
-            services.TryAdd(ServiceDescriptor.Scoped<ITemplateModelAccessor, TemplateModelAccessor>());
+            services.TryAdd(ServiceDescriptor.Scoped<ITemplateAccessor, TemplateAccessor>());
         }
 
         public static void ConfigureWebTemplateCulture(this IServiceCollection services)

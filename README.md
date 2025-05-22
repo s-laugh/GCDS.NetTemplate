@@ -1,9 +1,9 @@
 # DotNetTemplates-GCDS
 An attempt at simulating the [DotNetTemplates](https://github.com/wet-boew/cdts-DotNetTemplates) for the [CDTS](https://github.com/wet-boew/cdts-sgdc) and [WET](https://github.com/wet-boew/wet-boew), but instead for [GC Design System (GCDS)](https://github.com/cds-snc/gcds-components)
 
-Currently only designed for MVC, although would like to include Blazor and Razor.
+Currently only designed for MVC, although Razore might work and would like to include Blazor.
 
-NOTE: namespaces and general naming will likely still change as the organziation is finalized to be more adaptable.
+_NOTE: namespaces and general naming will likely still change as the organziation is finalized to be more adaptable._
 
 ## Using / Implementing / Installing
 
@@ -40,23 +40,34 @@ NOTE: namespaces and general naming will likely still change as the organziation
     [TemplateActionFilter]
     public class HomeController : Controller
     ```
+    Add the `TemplateType` attribute on the contoler or method to change the template type, will default to the `BasicTemplate`
+    ```csharp
+    [TemplateType(typeof(InternalAppTemplate))]
+    public IActionResult Internal()
+    ```
 
-6. Ensure your view points one of the templates provided Layouts, or create your own using the components and partial views provided.
+6. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte), or create your own using the components and partial views provided.
 
-   Povided Layouts:
-    - `_Layout.Default` Will loosly match the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
-    - `_Layout.Internal` Custom template to build an internal application
+   Povided Layouts/Templates:
+    - `_Layout.Basic` Will loosly match the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
+    - `_Layout.InternalApp` Custom template to build an internal application
     
    Provided Partials & matching Component class: (linked to GCDS matching component if avaliable)
-    - Breadcrumbs: [Breadcrumbs](https://design-system.alpha.canada.ca/en/components/breadcrumbs/)
-    - Footer: [Footer](https://design-system.alpha.canada.ca/en/components/footer/)
-    - **Head**: Implements `TemplateSettings`
-    - Header: [Header](https://design-system.alpha.canada.ca/en/components/header/)
-    - **Menu**: Implements either the `TopicMenu` or the `TopNav`
-    - __NavLink__: A sub-component for the `TopNav` using the `Link` class
-    - Search: [Search](https://design-system.alpha.canada.ca/en/components/search/)
-    - TopicMenu: [Theme and topic menu](https://design-system.alpha.canada.ca/en/components/theme-and-topic-menu/)
-    - TopNav: [Top navigation](https://design-system.alpha.canada.ca/en/components/top-navigation/)
+    - GCDS components
+      - [Breadcrumbs](https://design-system.alpha.canada.ca/en/components/breadcrumbs/)
+      - [Footer](https://design-system.alpha.canada.ca/en/components/footer/)
+      - [Header](https://design-system.alpha.canada.ca/en/components/header/)
+      - [Link](https://design-system.alpha.canada.ca/en/components/link/)
+      - _NavGroup_: A sub-component used in the `TopNav`
+      - [Search](https://design-system.alpha.canada.ca/en/components/search/)
+      - [Theme and topic menu (`TopicMenu`)](https://design-system.alpha.canada.ca/en/components/theme-and-topic-menu/)
+      - [Top navigation (`TopNav`)](https://design-system.alpha.canada.ca/en/components/top-navigation/)
+    - Custom components
+      - InternalAppHeader: Custom Header for the `InternalAppTemplate`
+      - SkipTo: Custom hidden link to skip to a section, used in the `InternalAppTemplate`
+    - Other Partials
+      - Head: Implements `TemplateSettings` for a `<head>` section
+      - Menu: Helper to swap the `TopicMenu` or the `TopNav` for the `Header`
 
 ## Developing / Contributing
 

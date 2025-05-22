@@ -1,0 +1,30 @@
+﻿@using GCDS.NetTemplate.Components.Custom
+@model InternalAppHeader
+
+<header style="margin: var(--gcds-header-margin) !important">
+	@await Html.PartialAsync("Custom/SkipTo", Model.SkipToMainContent)
+
+	<gcds-container size="xl"
+					centered
+					main-container
+					style="@Model.StyleOverride">
+		<gcds-grid columns="2fr 1fr"
+				   align-items="center"
+				   place-content="space-between">
+
+			<gcds-nav-link href="@Model.SiteTitle.Href">
+				@Model.SiteTitle.Text
+			</gcds-nav-link>
+
+			<gcds-lang-toggle href="@Model.LanguageToggleHref"
+							  style="text-align:end">
+			</gcds-lang-toggle>
+
+		</gcds-grid>
+	</gcds-container>
+
+	@if (Model.Menu != null)
+	{
+		@await Html.PartialAsync("Gcds/TopNav", Model.Menu)
+	}
+</header>

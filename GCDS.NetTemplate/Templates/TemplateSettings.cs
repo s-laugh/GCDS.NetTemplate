@@ -1,6 +1,6 @@
-﻿namespace GCDS.NetTemplate.Utils
+﻿namespace GCDS.NetTemplate.Templates
 {
-    public class TemplateSettings : ITemplateSettings
+    public class TemplateSettings //: ITemplateSettings
     {
         // Set up consts here for easy editing to set as default values
         private const string _gcdsRootPathDefault = "https://cdn.design-system.alpha.canada.ca/@cdssnc";
@@ -39,7 +39,7 @@
         {
             get
             {
-                return GCDSRootPath + String.Format(GCDSCssDirectory, GCDSComponentsVersion);
+                return GCDSRootPath + string.Format(GCDSCssDirectory, GCDSComponentsVersion);
             }
         }
 
@@ -57,7 +57,7 @@
         {
             get
             {
-                return GCDSRootPath + String.Format(GCDSJsDirectory, GCDSComponentsVersion);
+                return GCDSRootPath + string.Format(GCDSJsDirectory, GCDSComponentsVersion);
             }
         }
 
@@ -75,7 +75,7 @@
         {
             get
             {
-                return GCDSRootPath + String.Format(GCDSModuleDirectory, GCDSComponentsVersion);
+                return GCDSRootPath + string.Format(GCDSModuleDirectory, GCDSComponentsVersion);
             }
         }
 

@@ -8,7 +8,7 @@
         public const string ENGLISH_CULTURE_TWO_LETTER = "en";
         public const string FRENCH_CULTURE_TWO_LETTER = "fr";
 
-        public const string TEMPLATE_MODEL = "TemplateModel";
+        public const string TEMPLATE_DATA = "Template";
 
         public const string SKIP_TO_CONTENT_ID = "main-content";
         public const string SKIP_TO_AIRIA_LABEL_EN = "Skip To";

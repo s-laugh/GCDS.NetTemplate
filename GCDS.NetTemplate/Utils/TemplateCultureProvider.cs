@@ -19,7 +19,7 @@ namespace GCDS.NetTemplate.Utils
                 var requestedCultureName = cultureQuery.ToString();
 
                 // Check if the request culture is part of the authorized one.
-                var requestedCulture = locOptions.Value.SupportedCultures.FirstOrDefault(x => x.Name.ToUpper() == requestedCultureName.ToUpper());
+                var requestedCulture = locOptions.Value.SupportedCultures?.FirstOrDefault(x => x.Name.ToUpper() == requestedCultureName.ToUpper());
 
                 if (requestedCulture == null)
                 {

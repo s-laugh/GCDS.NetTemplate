@@ -1,0 +1,42 @@
+﻿@using GCDS.NetTemplate.Components.Gcds
+@using GCDS.NetTemplate.Templates
+@using GCDS.NetTemplate.Templates.Custom
+@using GCDS.NetTemplate.Utils
+@{
+	InternalAppTemplate? webTemplateModel = ViewData[Constants.TEMPLATE_DATA] as InternalAppTemplate;
+	if (webTemplateModel == null)
+		throw new ArgumentNullException("Must set Template to use this layout.");
+}
+
+<!DOCTYPE html>
+<html lang="@webTemplateModel.Lang">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+	content="width=device-width, initial-scale=1.0" />
+
+	<title>@webTemplateModel.PageTitle</title>
+
+	@await Html.PartialAsync("Head", webTemplateModel.Settings)
+
+</head>
+<body>
+	@{
+		webTemplateModel.Header.LanguageToggleHref = webTemplateModel.LanguageToggleHref;
+	}
+	@await Html.PartialAsync("Custom/InternalAppHeader", webTemplateModel.Header)
+
+	<gcds-container size="xl"
+					centered
+					main-container>
+		<main id="@Constants.SKIP_TO_CONTENT_ID"
+			  role="main">
+			@RenderBody()
+		</main>
+	</gcds-container>
+
+	@await Html.PartialAsync("Gcds/Footer", webTemplateModel.Footer)
+
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
