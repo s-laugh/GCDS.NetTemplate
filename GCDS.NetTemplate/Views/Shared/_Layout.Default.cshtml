@@ -19,7 +19,7 @@
             webTemplateModel.Header.LangHref = webTemplateModel.LanguageToggleHref;
 			webTemplateModel.Header.SkipToHref = "#" + Constants.SKIP_TO_CONTENT_ID;
         }
-		@await Html.PartialAsync("Header", webTemplateModel.Header)
+		@await Html.PartialAsync("Gcds/Header", webTemplateModel.Header)
     </header>
 
     <gcds-container size="xl" centered main-container>
@@ -28,7 +28,7 @@
         </main>
     </gcds-container>
 
-    @await Html.PartialAsync("Footer", webTemplateModel.Footer)
+    @await Html.PartialAsync("Gcds/Footer", webTemplateModel.Footer)
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

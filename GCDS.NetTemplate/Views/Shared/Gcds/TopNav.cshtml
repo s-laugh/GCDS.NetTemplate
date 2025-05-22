@@ -1,4 +1,4 @@
-﻿@using GCDS.NetTemplate.Components
+﻿@using GCDS.NetTemplate.Components.Gcds
 @model TopNav
 
 <gcds-top-nav slot="@Model.Slot"
@@ -10,14 +10,14 @@
 	@if (Model.Home != null)
 	{
 		Model.Home.Slot = "home";
-		@await Html.PartialAsync("NavLink", Model.Home)
+		@await Html.PartialAsync("Gcds/NavLink", Model.Home)
 	}
 
 	@foreach (var item in Model.Links)
 	{
 		if (item is Link)
 		{
-			@await Html.PartialAsync("NavLink", item)
+			@await Html.PartialAsync("Gcds/NavLink", item)
 		}
 		else if (item is NavGroup)
 		{
@@ -25,7 +25,7 @@
 			<gcds-nav-group open-trigger="@navGroup.Label" menu-label="@navGroup.Label">
 				@foreach (var subItem in ((NavGroup)item).Links)
 				{
-					@await Html.PartialAsync("NavLink", subItem)
+					@await Html.PartialAsync("Gcds/NavLink", subItem)
 				}
 			</gcds-nav-group>
 		}

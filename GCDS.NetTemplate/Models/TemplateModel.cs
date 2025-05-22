@@ -1,4 +1,5 @@
-﻿using GCDS.NetTemplate.Components;
+﻿using GCDS.NetTemplate.Components.Custom;
+using GCDS.NetTemplate.Components.Gcds;
 using GCDS.NetTemplate.Utils;
 
 namespace GCDS.NetTemplate.Models

@@ -1,12 +1,13 @@
 ﻿@using GCDS.NetTemplate.Components
+@using GCDS.NetTemplate.Components.Gcds
 @model IMenu
 
-@if(Model is TopicMenu)
+@switch(Model)
 {
-	@await Html.PartialAsync("TopicMenu", Model as TopicMenu)
+	case TopicMenu topicMenu:
+		@await Html.PartialAsync("Gcds/TopicMenu", topicMenu)
+		break;
+	case TopNav topNav:
+		@await Html.PartialAsync("Gcds/TopNav", topNav)
+		break;
 }
-else if(Model is TopNav)
-{
-	@await Html.PartialAsync("TopNav", Model as TopNav)
-}
-
