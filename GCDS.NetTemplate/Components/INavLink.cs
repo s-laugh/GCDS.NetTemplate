@@ -1,6 +1,7 @@
 ﻿namespace GCDS.NetTemplate.Components
 {
-    public interface INavLink
-    {
-    }
+    /// <summary>
+    /// Enables interchanging object types for the NavLink slot in the Header
+    /// </summary>
+    public interface INavLink { }
 }

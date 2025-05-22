@@ -14,6 +14,6 @@
         /// <summary>
         /// List of links to be displayed in the breadcrumbs
         /// </summary>
-        public IEnumerable<ILink>? Items { get; set; }
+        public IEnumerable<Link>? Items { get; set; }
     }
 }

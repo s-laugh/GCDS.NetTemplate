@@ -21,7 +21,7 @@
         /// A list of contextual links to be displayed in the footer
         /// GCDS will only display the first 3 links
         /// </summary>
-        public IEnumerable<ILink>? ContextualLinks { get; set; }
+        public IEnumerable<Link>? ContextualLinks { get; set; }
 
         /// <summary>
         /// Toggles the Government of Canada pre-set links
@@ -32,7 +32,7 @@
         /// Overrides the bottom links if any are provied
         /// Terms and conditions and Privacy links should be re-added manually.
         /// </summary>
-        public IEnumerable<ILink>? SubLinks { get; set; }
+        public IEnumerable<Link>? SubLinks { get; set; }
 
         /// <summary>
         /// Enables the user to provide limited custom styling for overriding the footer defaults

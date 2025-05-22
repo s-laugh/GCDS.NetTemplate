@@ -14,7 +14,7 @@ namespace GCDS.NetTemplate.Components.Custom
         /// <summary>
         /// Sets the title of the site (or application)
         /// </summary>
-        public required ILink SiteTitle { get; set; }
+        public required Link SiteTitle { get; set; }
 
         /// <summary>
         /// Provides information for the skip to content link

@@ -1,5 +1,14 @@
 ﻿namespace GCDS.NetTemplate.Components
 {
+    /// <summary>
+    /// Enables other interfaces to require the use of Common properties
+    /// </summary>
+    public interface ICommon
+    {
+        string Lang { get; set; }
+        string? Slot { get; set; }
+    }
+
     public class Common : ICommon
     {
         /// <summary>
