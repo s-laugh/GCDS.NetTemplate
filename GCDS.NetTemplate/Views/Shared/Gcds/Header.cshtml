@@ -1,4 +1,4 @@
-﻿@using GCDS.NetTemplate.Components
+﻿@using GCDS.NetTemplate.Components.Gcds
 @model Header
 
 <gcds-header 
@@ -11,7 +11,7 @@ signature-variant="@Model.SignatureVariant">
     @if (Model.Breadcrumb != null)
     {
         Model.Breadcrumb.Slot = "breadcrumb";
-        @await Html.PartialAsync("Breadcrumbs", Model.Breadcrumb)
+        @await Html.PartialAsync("Gcds/Breadcrumbs", Model.Breadcrumb)
     }
 
     @if(Model.Menu != null)
@@ -23,7 +23,7 @@ signature-variant="@Model.SignatureVariant">
     @if(Model.Search != null)
     {
 		Model.Search.Slot = "search";
-		@await Html.PartialAsync("Search", Model.Search)
+		@await Html.PartialAsync("Gcds/Search", Model.Search)
     }
 </gcds-header>
 

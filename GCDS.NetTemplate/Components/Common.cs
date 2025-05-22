@@ -4,7 +4,7 @@
     {
         /// <summary>
         /// A language indicator to toogle the 
-        /// Always set by the CurrentUICulture
+        /// Always set by the CurrentUICulture by default
         /// </summary>
         public string Lang { get; set; } = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
 

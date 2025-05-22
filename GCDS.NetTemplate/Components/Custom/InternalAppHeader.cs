@@ -1,15 +1,19 @@
 ﻿using GCDS.NetTemplate.Utils;
 
-namespace GCDS.NetTemplate.Components
+namespace GCDS.NetTemplate.Components.Custom
 {
     public class InternalAppHeader
     {
 
         /// <summary>
-        /// Used in the custom internal layout to set the title of the site (or application)
+        /// Sets the title of the site (or application)
         /// </summary>
-        public required Link SiteTitle { get; set; }
+        public required ILink SiteTitle { get; set; }
 
+        /// <summary>
+        /// Provides information for the skip to content link
+        /// Automatically set for the current language
+        /// </summary>
         public SkipTo SkipTo { get; set; } = new SkipTo();
 
         /// <summary>
@@ -23,6 +27,9 @@ namespace GCDS.NetTemplate.Components
     {
 
         private string? _airiaLabel;
+        /// <summary>
+        /// Accessibility label for the skip to content link
+        /// </summary>
         public string AiriaLabel
         {
             get
@@ -38,6 +45,9 @@ namespace GCDS.NetTemplate.Components
         }
 
         private string? _text;
+        /// <summary>
+        /// Text for the skip to content link
+        /// </summary>
         public string Text
         {
             get

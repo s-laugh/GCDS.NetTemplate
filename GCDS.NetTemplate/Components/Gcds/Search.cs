@@ -1,5 +1,9 @@
-﻿namespace GCDS.NetTemplate.Components
+﻿namespace GCDS.NetTemplate.Components.Gcds
 {
+    /// <summary>
+    /// Class holder for the search properties as defined in the GCDS template
+    /// https://design-system.alpha.canada.ca/en/components/search/
+    /// </summary>
     public class Search : Common
     {
         public string Action { get; set; } = "/sr/srb.html";
