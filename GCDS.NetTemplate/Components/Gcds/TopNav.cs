@@ -29,7 +29,7 @@
         public Link? Home { get; set; }
 
         /// <summary>
-        /// Links to be displayed in the TopNav
+        /// Links or NavGroups (dropdown of links) to be displayed in the TopNav
         /// </summary>
         public IEnumerable<INavLink> Links { get; set; } = new List<INavLink>();
 
