@@ -45,14 +45,14 @@ builder.Services.AddMvcTemplateServices(typeof(InternalAppTemplate)) // for MVC 
 builder.Services.AddRazorTemplateServices(typeof(InternalAppTemplate)) // for Razor projects
 ```
 
-Option 2. Use a different template for a contoller/page or action by applying a `TemplateType` attribute. This Will take precidence over other defaults if set.
+Option 2. Use a different template for a contoller/page or action by applying a `TemplateType` attribute. This Will take precidence over other defaults.
 
 ```csharp
 [TemplateType(typeof(InternalAppTemplate))]
 public IActionResult Index() / public class IndexModel : PageModel
 ```
 
-Option 3. Use the template on only some contollers (**MVC only**) by not registering the service globally in the `Program.cs` and adding a ServiceFilter to the controler that should use it.
+Option 3. (**MVC only**) Use the template on only some contollers by not registering the service globally in the `Program.cs` and adding a ServiceFilter to the controler that should use it.
 
 ```csharp
 // Program.cs
@@ -73,8 +73,6 @@ This is how you can edit the breadcrumbs, menu, footer links, or override featur
 ```csharp
 var template = ViewData.GetTemplate<InternalAppTemplate>();
 ```
-
-_Note: Some configuration is required for the `InternalAppTemplate`; see bellow_
 
 #### Using `InternalAppTemplate`
 
