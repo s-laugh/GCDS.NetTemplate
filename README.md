@@ -22,6 +22,14 @@ _NOTE: namespaces and general naming will likely still change as the organziatio
 
 ### Optional Configurations
 
+#### Additional Features
+
+Use the built-in Translation by adding additionall configurations to your `Program.cs`
+```csharp
+builder.Services.ConfigureTemplateCulture();
+app.UseRequestLocalization();
+```
+
 #### Override Settings
 
 Add configuration values to your `appsettings.json` to override from the defaults (shown in comments)
@@ -38,13 +46,7 @@ Add configuration values to your `appsettings.json` to override from the default
 }
 ```
 
-#### Set Your own defaults
-
-Use the built-in Translation by adding additionall configurations to your `Program.cs`
-```csharp
-builder.Services.ConfigureTemplateCulture();
-app.UseRequestLocalization();
-```
+#### Set defaults
 
 Set a default template type in the `Program.cs`, _overriding the default `BasicTemplate`_.
 ```csharp
@@ -52,7 +54,7 @@ builder.Services.AddMvcTemplateServices(typeof(InternalAppTemplate)) // for MVC 
 builder.Services.AddRazorTemplateServices(typeof(InternalAppTemplate)) // for Razor projects
 ```
 
-Use a different template for a contoller/page or action by applying a Template type attribute
+Use a different template for a contoller/page or action by applying a Template type attribute. Will take precidence over other defaults if set.
 ```csharp
 // MVC
 [TemplateType(typeof(InternalAppTemplate))]
@@ -64,7 +66,7 @@ public class IndexModel : PageModel
 ```
 
 
-Use the template on only some contollers **MVC only** by not registering the service globally in the `Program.cs` and adding a ServiceFilter to the controler that should use it.
+Use the template on only some contollers (**MVC only**) by not registering the service globally in the `Program.cs` and adding a ServiceFilter to the controler that should use it.
 ```csharp
 // Program.cs
 builder.Services.AddMvcTemplateServices(global: false)
@@ -76,8 +78,8 @@ public class HomeController : Controller
 
 #### Leverage the components
 
-Leverage the component partials to build your own templates and features within your page
-Provided Partials & matching Component class: (linked to GCDS matching component if avaliable)
+Leverage the component partials to build your own templates and features within your page.
+Provided partials & matching component classes: (linked to GCDS matching component if avaliable)
 
 _Note: Most GCDS compontes can be used natively within the view so are not buit as a partial_
 
