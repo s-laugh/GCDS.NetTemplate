@@ -17,7 +17,7 @@ _NOTE: namespaces and general naming will likely still change as the organziatio
 
 3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, _see bellow for changing the template_)
    Povided Layouts/Templates:
-    - `_Layout.Basic` Will resembel the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
+    - `_Layout.Basic` Will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
     - `_Layout.InternalApp` Custom template to build an internal application
 
 ### Additional Features
@@ -31,7 +31,7 @@ app.UseRequestLocalization();
 ```
 ### Picking your template
 
-By default, the `BasicTemplate` will be loaded, and it will resembel the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS.
+By default, the `BasicTemplate` will be loaded, and it will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS.
 
 <details>
   <summary>Change the default template</summary>
