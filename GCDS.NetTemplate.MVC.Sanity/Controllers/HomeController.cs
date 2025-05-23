@@ -9,7 +9,7 @@ using GCDS.NetTemplate.Templates;
 
 namespace GCDS.NetTemplate.MVC.Sanity.Controllers
 {
-    [TemplateActionFilter]
+    // [ServiceFilter(typeof(TemplateActionFilter))] // Uncomment to use the TemplateActionFilter when not enabled globably
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
