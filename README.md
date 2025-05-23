@@ -15,22 +15,81 @@ _NOTE: namespaces and general naming will likely still change as the organziatio
     builder.Services.AddRazorTemplateServices(); // for Razor projects
     ```
 
-3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte)
+3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, _see bellow for changing the template_)
    Povided Layouts/Templates:
-    - `_Layout.Basic` Will loosly match the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
+    - `_Layout.Basic` Will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
     - `_Layout.InternalApp` Custom template to build an internal application
 
-### Optional Configurations
+### Additional Features
 
-#### Additional Features
+#### Translation
 
 Use the built-in Translation by adding additionall configurations to your `Program.cs`
 ```csharp
 builder.Services.ConfigureTemplateCulture();
 app.UseRequestLocalization();
 ```
+### Picking your template
 
-#### Override Settings
+By default, the `BasicTemplate` will be loaded, and it will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS.
+
+<details>
+  <summary>Change the default template</summary>
+
+  **Note: Be sure to use the corrisponding `_Layout` for the chosen template.**
+
+Option 1. Set a default template type globally in the `Program.cs`.
+
+```csharp
+builder.Services.AddMvcTemplateServices(typeof(InternalAppTemplate)) // for MVC projects
+builder.Services.AddRazorTemplateServices(typeof(InternalAppTemplate)) // for Razor projects
+```
+
+Option 2. Use a different template for a contoller/page or action by applying a `TemplateType` attribute. This Will take precidence over other defaults.
+
+```csharp
+[TemplateType(typeof(InternalAppTemplate))]
+public IActionResult Index() / public class IndexModel : PageModel
+```
+
+Option 3. (**MVC only**) Use the template on only some contollers by not registering the service globally in the `Program.cs` and adding a ServiceFilter to the controler that should use it.
+
+```csharp
+// Program.cs
+builder.Services.AddMvcTemplateServices(global: false)
+
+// Controller
+[ServiceFilter(typeof(TemplateActionFilter))] 
+public class HomeController : Controller
+```
+
+</details>
+
+### Leveraging the templates
+
+In your page or controller, access the template to manipulate it to your needs.
+This is how you can edit the breadcrumbs, menu, footer links, or override features like the language toggle.
+
+```csharp
+var template = ViewData.GetTemplate<InternalAppTemplate>();
+```
+
+#### Using `InternalAppTemplate`
+
+This template will require you to manually create the `Header` with the required `SiteTitle` link
+
+```csharp
+template.Header = new InternalAppHeader()
+    {
+        SiteTitle = new Link()
+        {
+            Text = "My Application",
+            Href = Url.Page("Index")
+        },
+    };
+```
+
+### Override Settings
 
 Add configuration values to your `appsettings.json` to override from the defaults (shown in comments)
 ```json
@@ -46,37 +105,7 @@ Add configuration values to your `appsettings.json` to override from the default
 }
 ```
 
-#### Set defaults
-
-Set a default template type in the `Program.cs`, _overriding the default `BasicTemplate`_.
-```csharp
-builder.Services.AddMvcTemplateServices(typeof(InternalAppTemplate)) // for MVC projects
-builder.Services.AddRazorTemplateServices(typeof(InternalAppTemplate)) // for Razor projects
-```
-
-Use a different template for a contoller/page or action by applying a Template type attribute. Will take precidence over other defaults if set.
-```csharp
-// MVC
-[TemplateType(typeof(InternalAppTemplate))]
-public IActionResult Index()
-
-// Razor
-[TemplateType(typeof(InternalAppTemplate))]
-public class IndexModel : PageModel
-```
-
-
-Use the template on only some contollers (**MVC only**) by not registering the service globally in the `Program.cs` and adding a ServiceFilter to the controler that should use it.
-```csharp
-// Program.cs
-builder.Services.AddMvcTemplateServices(global: false)
-
-// Controller
-[ServiceFilter(typeof(TemplateActionFilter))] 
-public class HomeController : Controller
-```
-
-#### Leverage the components
+### Leverage the components
 
 Leverage the component partials to build your own templates and features within your page.
 Provided partials & matching component classes: (linked to GCDS matching component if avaliable)
