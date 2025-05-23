@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace GCDS.NetTemplate.Templates
 {
-    public class TemplateActionFilter(ITemplateAccessor accessor) : ActionFilterAttribute
+    public class TemplateActionFilter(ITemplateRegister register) : ActionFilterAttribute
     {     
         // This is used to load the template for the MVC controller
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -15,7 +15,7 @@ namespace GCDS.NetTemplate.Templates
                 var cad = context.ActionDescriptor as ControllerActionDescriptor;
                 var templateAtt = cad?.MethodInfo.GetCustomAttributes<TemplateTypeAttribute>()
                 .Concat(cad.ControllerTypeInfo.GetCustomAttributes<TemplateTypeAttribute>());
-                accessor.SetTemplate(controller.ViewData, controller.HttpContext,templateAtt);
+                register.RegisterTemplate(controller.ViewData, controller.HttpContext,templateAtt);
             }
 
             base.OnActionExecuting(context);

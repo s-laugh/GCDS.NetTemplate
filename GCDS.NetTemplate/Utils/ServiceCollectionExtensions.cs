@@ -22,8 +22,8 @@ namespace GCDS.NetTemplate.Utils
         {
             ArgumentNullException.ThrowIfNull(services);
 
-            services.TryAddScoped<ITemplateAccessor, TemplateAccessor>();
-            TemplateAccessor.DefaultTemplateType = defaultTemplateType;
+            services.TryAddScoped<ITemplateRegister, TemplateRegister>();
+            TemplateRegister.DefaultTemplateType = defaultTemplateType;
             services.TryAddScoped(filter);
 
             if (global)

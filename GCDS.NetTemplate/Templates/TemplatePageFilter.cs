@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace GCDS.NetTemplate.Templates
 {
-    public class TemplatePageFilter(ITemplateAccessor accessor) : IAsyncPageFilter
+    public class TemplatePageFilter(ITemplateRegister register) : IAsyncPageFilter
     {
         // This is here to fufill the IAsyncPageFilter interface contract
         public Task OnPageHandlerSelectionAsync(PageHandlerSelectedContext context) => Task.CompletedTask;
@@ -15,7 +15,7 @@ namespace GCDS.NetTemplate.Templates
             if (context.HandlerInstance is PageModel pageModel)
             {
                 var templateAttr = pageModel.GetType().GetCustomAttributes<TemplateTypeAttribute>();
-                accessor.SetTemplate(pageModel.ViewData, pageModel.HttpContext, templateAttr);
+                register.RegisterTemplate(pageModel.ViewData, pageModel.HttpContext, templateAttr);
             }
 
             await next();

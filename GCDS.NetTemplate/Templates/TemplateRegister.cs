@@ -5,7 +5,7 @@ using System.Web;
 
 namespace GCDS.NetTemplate.Templates
 {
-    public class TemplateAccessor(IConfiguration configuration) : ITemplateAccessor
+    public class TemplateRegister(IConfiguration configuration) : ITemplateRegister
     {
         // Load template settings from appsettings.json, or set to defaults
         private readonly TemplateSettings _settings = configuration.GetSection("TemplateSettings").Get<TemplateSettings>() 
@@ -23,7 +23,7 @@ namespace GCDS.NetTemplate.Templates
         /// <param name="context">Context of the request used for configuring language toggle</param>
         /// <param name="templateAttr">Enable override of default template type</param>
         /// <exception cref="InvalidOperationException">Failed to create template of specified type</exception>
-        public void SetTemplate(ViewDataDictionary viewData, HttpContext context, IEnumerable<TemplateTypeAttribute>? templateAttr)
+        public void RegisterTemplate(ViewDataDictionary viewData, HttpContext context, IEnumerable<TemplateTypeAttribute>? templateAttr)
         {
             var templateType = templateAttr?.FirstOrDefault()?.TemplateType 
                 ?? DefaultTemplateType 
