@@ -27,10 +27,8 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         [TemplateType(typeof(InternalAppTemplate))]
         public IActionResult Internal()
         {
-            var template = ViewData[Constants.TEMPLATE_DATA] as InternalAppTemplate;
-
-            // template.TemplateSettings.LoadBootstrapCdn = true;
-            //emplate.Header.Breadcrumb = new Breadcrumbs { Items = [new Link { Text = "Home" }] };
+            var template = ViewData.GetTemplate<InternalAppTemplate>();
+                        
             template.Header = new InternalAppHeader
             {
                 SiteTitle = new Link

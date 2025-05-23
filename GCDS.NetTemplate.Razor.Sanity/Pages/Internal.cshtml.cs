@@ -21,7 +21,7 @@ namespace GCDS.NetTemplate.Razor.Sanity.Pages
 
         public void OnGet()
         {
-            var template = ViewData[Constants.TEMPLATE_DATA] as InternalAppTemplate;
+            var template = ViewData.GetTemplate<InternalAppTemplate>();
             template.Header = new InternalAppHeader()
             {
                 SiteTitle = new Link()
