@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using GCDS.NetTemplate.Templates.Custom;
 using GCDS.NetTemplate.Templates;
+using GCDS.NetTemplate.Templates.Gcds;
 
 namespace GCDS.NetTemplate.MVC.Sanity.Controllers
 {
@@ -21,6 +22,10 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
 
         public IActionResult Index()
         {
+            var template = ViewData.GetTemplate<BasicTemplate>();
+            template.Header.Banner = new CustomPartial() { ViewName = "Banner", Model = new Banner() { Text = "Jokes on You!" } };
+            template.Header.SkipToNav = new SkipTo() { Link = new Link { Text = "Skip to nav content", Href = "#nav" } };
+
             return View();
         }
 

@@ -3,7 +3,7 @@ using GCDS.NetTemplate.Utils;
 
 namespace GCDS.NetTemplate.Components.Custom
 {
-    public class SkipTo
+    public class SkipTo : IHeaderSkipSlot
     {
 
         private string? _airiaLabel;

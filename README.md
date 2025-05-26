@@ -1,9 +1,7 @@
 # DotNetTemplates-GCDS
-An attempt at simulating the [DotNetTemplates](https://github.com/wet-boew/cdts-DotNetTemplates) for the [CDTS](https://github.com/wet-boew/cdts-sgdc) and [WET](https://github.com/wet-boew/wet-boew), but instead for [GC Design System (GCDS)](https://github.com/cds-snc/gcds-components)
+A quick install template solution to develop and deploy .NET application using [GC Design System (GCDS)](https://github.com/cds-snc/gcds-components). Currently designed for MVC & Razor projects. 
 
-Currently designed for MVC & Razor. Would like to include Blazor.
-
-_NOTE: namespaces and general naming will likely still change as the organziation is finalized to be more adaptable._
+_Open to adapting to Blazor, see #2 for more details._
 
 ## Using / Implementing / Installing
 
