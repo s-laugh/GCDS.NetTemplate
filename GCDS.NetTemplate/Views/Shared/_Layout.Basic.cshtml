@@ -1,9 +1,8 @@
 ﻿@using GCDS.NetTemplate.Templates.Gcds
 @using GCDS.NetTemplate.Utils
 @{
-    BasicTemplate? template = ViewData[Constants.TEMPLATE_DATA] as BasicTemplate;
-	if (template == null)
-		throw new ArgumentNullException("Must set WebTemplateModel in ViewData to use this layout.");
+    BasicTemplate? template = ViewData.GetTemplate<BasicTemplate>();
+	ArgumentNullException.ThrowIfNull(template, "Must call AddTemplateServices in Program, and load the BasicTemplate (Default) to use this layout.");
 }
 
 <!DOCTYPE html>
@@ -18,7 +17,7 @@
 <body>
     <header>
 		@{
-     template.Header.LangHref = template.LanguageToggleHref;
+            template.Header.LangHref = template.LanguageToggleHref;
 			template.Header.SkipToHref = "#" + Constants.SKIP_TO_CONTENT_ID;
         }
 		@await Html.PartialAsync("Gcds/Header", template.Header)

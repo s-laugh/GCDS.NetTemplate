@@ -3,8 +3,8 @@
 @using GCDS.NetTemplate.Templates.Custom
 @using GCDS.NetTemplate.Utils
 @{
-	InternalAppTemplate? template = ViewData[Constants.TEMPLATE_DATA] as InternalAppTemplate;
-	ArgumentNullException.ThrowIfNull(template, "Must AddTemplateServices in Program, and apply coorispondign [TemplateType(typeof(InternalAppTemplate))] to page using this layout");
+	InternalAppTemplate? template = ViewData.GetTemplate<InternalAppTemplate>();
+	ArgumentNullException.ThrowIfNull(template, "Must call AddTemplateServices() in Program, and load the InternalAppTemplate to use this layout");
 }
 
 <!DOCTYPE html>

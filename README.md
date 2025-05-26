@@ -15,10 +15,10 @@ _NOTE: namespaces and general naming will likely still change as the organziatio
     builder.Services.AddRazorTemplateServices(); // for Razor projects
     ```
 
-3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, _see bellow for changing the template_)
+3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, [_see bellow for changing the template_](#picking-your-template))
    Povided Layouts/Templates:
     - `_Layout.Basic` Will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
-    - `_Layout.InternalApp` Custom template to build an internal application
+    - `_Layout.InternalApp` Custom template to build an internal application [_see bellow for template requirements_](#using-internalapptemplate)
 
 ### Additional Features
 
@@ -36,7 +36,7 @@ By default, the `BasicTemplate` will be loaded, and it will resemble the [Basic]
 <details>
   <summary>Change the default template</summary>
 
-  **Note: Be sure to use the corrisponding `_Layout` for the chosen template.**
+  **Note: Be sure to use the corrisponding `_Layout.XXX` for the chosen template.**
 
 Option 1. Set a default template type globally in the `Program.cs`.
 
@@ -76,7 +76,7 @@ var template = ViewData.GetTemplate<InternalAppTemplate>();
 
 #### Using `InternalAppTemplate`
 
-This template will require you to manually create the `Header` with the required `SiteTitle` link
+This template will require you to manually create the `Header` with the required `SiteTitle` link.
 
 ```csharp
 template.Header = new InternalAppHeader()
@@ -88,6 +88,8 @@ template.Header = new InternalAppHeader()
         },
     };
 ```
+
+_Reminder: Be sure to use the `_Layout.InternalApp` when using this template._
 
 ### Override Settings
 
