@@ -11,5 +11,10 @@
         /// Link to tigger the language switch
         /// </summary>
         public required string Href { get; set; }
+
+        /// <summary>
+        /// Override default styles of the componet
+        /// </summary>
+        public string? StyleOverride { get; set; }
     }
 }

@@ -22,7 +22,7 @@
 <body>
 	@{
 		ArgumentNullException.ThrowIfNull(template.Header, "Header must be set when using this template.");
-		template.Header.LanguageToggleHref = template.LanguageToggleHref;
+		template.Header.LanguageToggle.Href = template.LanguageToggleHref;
 	}
 	@await Html.PartialAsync("Custom/InternalAppHeader", template.Header)
 
