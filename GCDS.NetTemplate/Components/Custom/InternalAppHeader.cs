@@ -9,7 +9,7 @@ namespace GCDS.NetTemplate.Components.Custom
         /// Language toogle link
         /// Will be set inside the layout from the Template
         /// </summary>
-        public string? LanguageToggleHref { get; set; }
+        public LangToggle LanguageToggle { get; set; } = new LangToggle() { Href = string.Empty };
 
         /// <summary>
         /// Sets the title of the site (or application)

@@ -1,4 +1,5 @@
 ﻿using GCDS.NetTemplate.Components.Gcds;
+using System.Reflection;
 
 namespace GCDS.NetTemplate.Templates.Gcds
 {
@@ -20,5 +21,12 @@ namespace GCDS.NetTemplate.Templates.Gcds
         {
             Display = Footer.DisplayType.full
         };
-    }
+
+        public DateModified DateModified { get; set; } = new DateModified()
+        {
+
+            // get the date changed of the project that started (impemented this package)
+            Text = File.GetLastWriteTime(Assembly.GetEntryAssembly()?.Location ?? string.Empty).ToString("MMMM dd, yyyy")
+        };
+    };
 }

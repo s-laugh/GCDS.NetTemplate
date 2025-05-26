@@ -114,11 +114,14 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
 
   - GCDS components
     - [Breadcrumbs](https://design-system.alpha.canada.ca/en/components/breadcrumbs/)
+    - [DateModified](https://design-system.alpha.canada.ca/en/components/date-modified/)
     - [Footer](https://design-system.alpha.canada.ca/en/components/footer/)
     - [Header](https://design-system.alpha.canada.ca/en/components/header/)
+    - [Language Toogle (`LangToggle`)](https://design-system.alpha.canada.ca/en/components/language-toggle/)
     - [Link](https://design-system.alpha.canada.ca/en/components/link/)
     - _NavGroup_: A sub-component used in the `TopNav`
     - [Search](https://design-system.alpha.canada.ca/en/components/search/)
+    - [Signature](https://design-system.alpha.canada.ca/en/components/signature/)
     - [Theme and topic menu (`TopicMenu`)](https://design-system.alpha.canada.ca/en/components/theme-and-topic-menu/)
     - [Top navigation (`TopNav`)](https://design-system.alpha.canada.ca/en/components/top-navigation/)
   - Custom components
