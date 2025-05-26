@@ -1,4 +1,6 @@
-﻿namespace GCDS.NetTemplate.Components.Gcds
+﻿using GCDS.NetTemplate.Components.Custom;
+
+namespace GCDS.NetTemplate.Components.Gcds
 {
     /// <summary>
     /// Class holder for the header properties as defined in the GCDS template
@@ -35,10 +37,9 @@
         public SignatureVariantType SignatureVariant { get; set; } = SignatureVariantType.colour;
 
         /// <summary>
-        /// NOT IMPLEMENTED
+        /// Add a custom partial that points to a banner to display above the header
         /// </summary>
-        [Obsolete("This slot is not implemented yet.")]
-        public string? Banner { get; set; }
+        public CustomPartial? Banner { get; set; }
 
         /// <summary>
         /// Slot for the breadcrumbs
@@ -59,15 +60,13 @@
         public Search? Search { get; set; }
 
         /// <summary>
-        /// NOT IMPLEMENTED
+        /// Override the skip-to main-content with either the custom SkipTo to quickly generate a skip link, or implement your own with CustomPartail
         /// </summary>
-        [Obsolete("This slot is not implemented yet.")]
-        public string? SkipToNav { get; set; }
+        public IHeaderSkipSlot? SkipToNav { get; set; }
 
         /// <summary>
-        /// NOT IMPLEMENTED
+        /// Override the default language toggle with a fully custom partial component
         /// </summary>
-        [Obsolete("This slot is not implemented yet.")]
-        public string? LangToggle { get; set; }
+        public CustomPartial? Toggle { get; set; }
     }
 }
