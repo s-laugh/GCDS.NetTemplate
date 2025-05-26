@@ -1,7 +1,7 @@
 # DotNetTemplates-GCDS
 A quick install template solution to develop and deploy .NET application using [GC Design System (GCDS)](https://github.com/cds-snc/gcds-components). Currently designed for MVC & Razor projects. 
 
-_Open to adapting to Blazor, see #2 for more details._
+_Open to adapting to Blazor, see [Issue: Include other .NET project types to the templates #2](../../issues/#2) for more details._
 
 ## Using / Implementing / Installing
 
