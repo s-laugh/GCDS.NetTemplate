@@ -1,0 +1,38 @@
+﻿@using GCDS.NetTemplate.Components.Custom
+@model SiteTitle
+
+<style>
+	.site-title {
+		font: 700 1.5rem/133% "Noto Sans",sans-serif;
+		padding: var(--gcds-nav-link-top-nav-home-padding);
+	}
+
+	a.site-title:not(:hover) {
+		text-decoration-color: transparent;
+	}
+
+	a.site-title:hover, a.site-title:focus {
+		color: var(--gcds-nav-link-hover-text) !important;
+	}
+
+	a.site-title:visited:not(:focus) {
+		color: var(--gcds-nav-link-top-nav-text);
+	}
+</style>
+
+@if (Model.Href == null || Model.Href == "")
+{
+	<span class="site-title"
+		  style="@Model.StyleOverride">
+		@Model.Text
+	</span>
+}
+else
+{
+	<a class="site-title"
+	   href="@Model.Href"
+	   style="@Model.StyleOverride"
+	   tabindex="0">
+		@Model.Text
+	</a>
+}

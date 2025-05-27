@@ -5,19 +5,18 @@
 	@await Html.PartialAsync("Custom/SkipTo", Model.SkipToMainContent)
 
 	<gcds-container size="xl"
-	centered
-	main-container
-	style="@Model.StyleOverride">
+					centered
+					main-container
+					style="@Model.StyleOverride">
 		<gcds-grid columns="2fr 1fr"
-		align-items="center"
-		place-content="space-between">
+				   align-items="center"
+				   place-content="space-between">
 
-			<gcds-nav-link href="@Model.SiteTitle.Href">
-				@Model.SiteTitle.Text
-			</gcds-nav-link>
+			@await Html.PartialAsync("Custom/SiteTitle", Model.SiteTitle)
 
 			@{
-				Model.LanguageToggle.StyleOverride = "text-align:end";
+				// force some styling to make the layout work
+				Model.LanguageToggle.StyleOverride += "text-align:end;";
 			}
 			@await Html.PartialAsync("Gcds/LangToggle", Model.LanguageToggle)
 

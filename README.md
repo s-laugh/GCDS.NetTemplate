@@ -74,15 +74,14 @@ var template = ViewData.GetTemplate<InternalAppTemplate>();
 
 #### Using `InternalAppTemplate`
 
-This template will require you to manually create the `Header` with the required `SiteTitle` link.
+This template will require you to manually create the `Header` with the required `SiteTitle` property.
 
 ```csharp
 template.Header = new InternalAppHeader()
     {
-        SiteTitle = new Link()
+        SiteTitle = new SiteTitle()
         {
-            Text = "My Application",
-            Href = Url.Page("Index")
+            Text = "My Application"
         },
     };
 ```
@@ -126,6 +125,7 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - [Top navigation (`TopNav`)](https://design-system.alpha.canada.ca/en/components/top-navigation/)
   - Custom components
     - InternalAppHeader: Custom Header for the `InternalAppTemplate`
+    - SiteTitle: Custom title for the `InternalAppTemplate`
     - SkipTo: Custom hidden link to skip to a section, used in the `InternalAppTemplate`
   - Other Partials
     - Head: Implements `TemplateSettings` for a `<head>` section
