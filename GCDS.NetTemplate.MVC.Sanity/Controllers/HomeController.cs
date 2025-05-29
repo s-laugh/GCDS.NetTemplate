@@ -33,15 +33,15 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         public IActionResult Internal()
         {
             var template = ViewData.GetTemplate<InternalAppTemplate>();
-                        
+
             template.Header = new InternalAppHeader
             {
-                SiteTitle = new Link
+                SiteTitle = new SiteTitle
                 {
                     Text = "My Application",
                     Href = Url.Action("Index")
                 },
-                StyleOverride = "border-bottom: 4px solid #243851",
+                //StyleOverride = "border-bottom: 4px solid #243851",
                 Menu = new TopNav
                 {
                     Label = "Top Nav",
@@ -58,10 +58,10 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                     },
                     new Link { Text = "Link 2", Href = "#" }
                ],
-                    StyleOverride = "background-color: #e1e4e7;"
+                    //StyleOverride = "background-color: #e1e4e7;"
                 }
             };
-            template.Footer.StyleOverride = "border-top: 4px solid #243851; background: #f8f8f8;";
+            //template.Footer.StyleOverride = "border-top: 4px solid #243851; background: #f8f8f8;";
 
             return View();
         }
