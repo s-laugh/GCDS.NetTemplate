@@ -26,6 +26,35 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             template.Header.Banner = new CustomPartial() { ViewName = "Banner", Model = new Banner() { Text = "Jokes on You!" } };
             template.Header.SkipToNav = new SkipTo() { Link = new Link { Text = "Skip to nav content", Href = "#nav" } };
 
+            template.Header.Menu = new TopNav
+            {
+                Label = "Top Nav",
+                Alignment = TopNav.AlignmentType.left,
+                Links =
+               [
+                   new Link { Text = "Link 1", Href = "#" },
+                    new NavGroup { Label = "Group 1",
+                        Links =
+                        [
+                            new Link { Text = "Link 1.1", Href = "#" },
+                            new Link { Text = "Link 1.2", Href = "#" }
+                        ]
+                    },
+                    new Link { Text = "Link 2", Href = "#" }
+               ],
+                //StyleOverride = "background-color: #e1e4e7;"
+            };
+
+            template.Header.Breadcrumb = new Breadcrumbs
+            {
+                Items = [
+                        new Link
+                        {
+                            Text = "Home"
+                        }
+                        ]
+            };
+
             return View();
         }
 
@@ -33,15 +62,21 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         public IActionResult Internal()
         {
             var template = ViewData.GetTemplate<InternalAppTemplate>();
-                        
+
+            template.Header = new InternalAppHeader("My Application");
+            template.Header = new InternalAppHeader(new Link { Text = "Home", Href = "#" });
+            // OR
             template.Header = new InternalAppHeader
             {
-                SiteTitle = new Link
+                AppHeaderTop = new AppHeaderTop
                 {
-                    Text = "My Application",
-                    Href = Url.Action("Index")
+                    SiteTitle = new Link
+                    {
+                        Text = "My Application",
+                        Href = Url.Action("Index")
+                    },
+                    StyleOverride = "border-bottom: 4px solid #243851"
                 },
-                StyleOverride = "border-bottom: 4px solid #243851",
                 Menu = new TopNav
                 {
                     Label = "Top Nav",
@@ -58,7 +93,17 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                     },
                     new Link { Text = "Link 2", Href = "#" }
                ],
-                    StyleOverride = "background-color: #e1e4e7;"
+                    //StyleOverride = "background-color: #e1e4e7;"
+                },
+                Breadcrumbs = new Breadcrumbs
+                {
+                    Items = [
+                        new Link
+                        {
+                            Text = "Home",
+                            Href = Url.Action("Index")
+                        },
+                        ]
                 }
             };
             template.Footer.StyleOverride = "border-top: 4px solid #243851; background: #f8f8f8;";

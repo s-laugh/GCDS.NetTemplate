@@ -1,0 +1,24 @@
+﻿@using GCDS.NetTemplate.Components.Custom
+@model AppHeaderTop
+
+
+<gcds-container size="xl"
+				centered
+				main-container
+				style="@Model.StyleOverride">
+	<gcds-grid columns="2fr 1fr"
+			   align-items="center"
+			   place-content="space-between">
+
+		<gcds-nav-link href="@Model.SiteTitle.Href">
+			@Model.SiteTitle.Text
+		</gcds-nav-link>
+
+		@{
+			Model.LanguageToggle.StyleOverride += "text-align:end";
+		}
+		@await Html.PartialAsync("Gcds/LangToggle", Model.LanguageToggle)
+
+	</gcds-grid>
+
+</gcds-container>

@@ -72,19 +72,33 @@ This is how you can edit the breadcrumbs, menu, footer links, or override featur
 var template = ViewData.GetTemplate<InternalAppTemplate>();
 ```
 
-#### Using `InternalAppTemplate`
-
-This template will require you to manually create the `Header` with the required `SiteTitle` link.
+It's a good idea to set some basic properties specific to your useage, such as:
 
 ```csharp
-template.Header = new InternalAppHeader()
+template.PageTitle = "Text for the browser tab";
+```
+
+
+#### Using `InternalAppTemplate`
+
+This template will require you to manually create the `Header` as it requires you to set `SiteTitle` link text. The object initializer can be used or use the convient constructors.
+
+```csharp
+template.Header = new InternalAppHeader("My Application");
+// OR
+template.Header = new InternalAppHeader(new Link { Text = "Home", Href = "#" });
+// OR
+template.Header = new InternalAppHeader
+{
+    AppHeaderTop = new AppHeaderTop
     {
-        SiteTitle = new Link()
+        SiteTitle = new Link
         {
             Text = "My Application",
-            Href = Url.Page("Index")
-        },
-    };
+            Href = Url.Action("Index")
+        }
+    }
+}
 ```
 
 _Reminder: Be sure to use the `_Layout.InternalApp` when using this template._
