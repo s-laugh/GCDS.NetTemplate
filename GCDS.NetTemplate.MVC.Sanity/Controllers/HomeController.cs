@@ -106,7 +106,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                         ]
                 }
             };
-            template.Footer.StyleOverride = "border-top: 4px solid #243851; background: #f8f8f8;";
+            //template.Footer.StyleOverride = "border-top: 4px solid #243851; background: #f8f8f8;";
 
             return View();
         }
