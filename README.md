@@ -139,8 +139,9 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - [Theme and topic menu (`TopicMenu`)](https://design-system.alpha.canada.ca/en/components/theme-and-topic-menu/)
     - [Top navigation (`TopNav`)](https://design-system.alpha.canada.ca/en/components/top-navigation/)
   - Custom components
-    - InternalAppHeader: Custom Header for the `InternalAppTemplate`
-    - SiteTitle: Custom title for the `InternalAppTemplate`
+    - AppHeaderTop: A top section for the `InternalAppHeader` 
+    - InternalAppHeader: Header for the `InternalAppTemplate`
+    - SiteTitle: Title (link) for the `AppHeaderTop`
     - SkipTo: Custom hidden link to skip to a section, used in the `InternalAppTemplate`
   - Other Partials
     - Head: Implements `TemplateSettings` for a `<head>` section
