@@ -7,10 +7,20 @@ namespace GCDS.NetTemplate.Templates.Custom
 {
     public class InternalAppTemplate(TemplateSettings settings) : Template(settings), ITemplate
     {
+        /// <summary>
+        /// Loading all the configurations for the header component
+        /// </summary>
         public required InternalAppHeader Header { get; set; }
 
+        /// <summary>
+        /// Loading all the configurations for the footer component
+        /// </summary>
         public Footer Footer { get; set; } = new Footer();
 
+        /// <summary>
+        /// Apply a last modified date or version number
+        /// Will atomatically grab the version from your dll.
+        /// </summary>
         public DateModified DateModified { get; set; } = new DateModified()
         {
             // get the version number of the project that started (impemented this package) and trim any trailing zeros from the version

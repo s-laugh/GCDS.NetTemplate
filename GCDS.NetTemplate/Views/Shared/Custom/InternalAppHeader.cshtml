@@ -1,30 +1,24 @@
 ﻿@using GCDS.NetTemplate.Components.Custom
 @model InternalAppHeader
 
-<header style="margin: var(--gcds-header-margin) !important">
+<header style="margin: var(--gcds-header-margin) !important;">
+
 	@await Html.PartialAsync("Custom/SkipTo", Model.SkipToMainContent)
 
-	<gcds-container size="xl"
-					centered
-					main-container
-					style="@Model.StyleOverride">
-		<gcds-grid columns="2fr 1fr"
-				   align-items="center"
-				   place-content="space-between">
-
-			@await Html.PartialAsync("Custom/SiteTitle", Model.SiteTitle)
-
-			@{
-				// force some styling to make the layout work
-				Model.LanguageToggle.StyleOverride += "text-align:end;";
-			}
-			@await Html.PartialAsync("Gcds/LangToggle", Model.LanguageToggle)
-
-		</gcds-grid>
-	</gcds-container>
+	@await Html.PartialAsync("Custom/AppHeaderTop", Model.AppHeaderTop)
 
 	@if (Model.Menu != null)
 	{
 		@await Html.PartialAsync("Gcds/TopNav", Model.Menu)
 	}
+
+	@if (Model.Breadcrumbs != null)
+	{
+		<gcds-container size="xl"
+						centered
+						main-container>
+			@await Html.PartialAsync("Gcds/Breadcrumbs", Model.Breadcrumbs)
+		</gcds-container>
+	}
+
 </header>

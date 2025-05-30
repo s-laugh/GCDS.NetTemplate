@@ -1,20 +1,30 @@
 ﻿using GCDS.NetTemplate.Components.Gcds;
 using GCDS.NetTemplate.Utils;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GCDS.NetTemplate.Components.Custom
 {
     public class InternalAppHeader
     {
-        /// <summary>
-        /// Language toogle link
-        /// Will be set inside the layout from the Template
-        /// </summary>
-        public LangToggle LanguageToggle { get; set; } = new LangToggle() { Href = string.Empty };
+        public InternalAppHeader() { }
 
-        /// <summary>
-        /// Sets the title of the site (or application)
-        /// </summary>
-        public required SiteTitle SiteTitle { get; set; }
+        [SetsRequiredMembers]
+        public InternalAppHeader(string siteTitleText)
+        {
+            AppHeaderTop = new AppHeaderTop
+            {
+                SiteTitle = new Link
+                {
+                    Text = siteTitleText
+                }
+            };
+        }
+
+        [SetsRequiredMembers]
+        public InternalAppHeader(Link siteTitle)
+        {
+            AppHeaderTop = new AppHeaderTop { SiteTitle = siteTitle };
+        }
 
         /// <summary>
         /// Provides information for the skip to content link
@@ -32,15 +42,18 @@ namespace GCDS.NetTemplate.Components.Custom
         };
 
         /// <summary>
+        /// Provides information for the top section of the header
+        /// </summary>
+        public required AppHeaderTop AppHeaderTop { get; set; }
+
+        /// <summary>
         /// Enables implementing a Menu with the TopNav component
         /// </summary>
         public TopNav? Menu { get; set; }
 
         /// <summary>
-        /// Enables limited custom styling for the header
+        /// Enables implementing a Breadcrumbs component
         /// </summary>
-        public string? StyleOverride { get; set; }
-
-
+        public Breadcrumbs? Breadcrumbs { get; set; }
     }
 }

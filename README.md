@@ -72,18 +72,33 @@ This is how you can edit the breadcrumbs, menu, footer links, or override featur
 var template = ViewData.GetTemplate<InternalAppTemplate>();
 ```
 
-#### Using `InternalAppTemplate`
-
-This template will require you to manually create the `Header` with the required `SiteTitle` property.
+It's a good idea to set some basic properties specific to your useage, such as:
 
 ```csharp
-template.Header = new InternalAppHeader()
+template.PageTitle = "Text for the browser tab";
+```
+
+
+#### Using `InternalAppTemplate`
+
+This template will require you to manually create the `Header` as it requires you to set `SiteTitle` link text. The object initializer can be used or use the convient constructors.
+
+```csharp
+template.Header = new InternalAppHeader("My Application");
+// OR
+template.Header = new InternalAppHeader(new Link { Text = "Home", Href = "#" });
+// OR
+template.Header = new InternalAppHeader
+{
+    AppHeaderTop = new AppHeaderTop
     {
-        SiteTitle = new SiteTitle()
+        SiteTitle = new Link
         {
-            Text = "My Application"
-        },
-    };
+            Text = "My Application",
+            Href = Url.Action("Index")
+        }
+    }
+}
 ```
 
 _Reminder: Be sure to use the `_Layout.InternalApp` when using this template._
@@ -124,8 +139,9 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - [Theme and topic menu (`TopicMenu`)](https://design-system.alpha.canada.ca/en/components/theme-and-topic-menu/)
     - [Top navigation (`TopNav`)](https://design-system.alpha.canada.ca/en/components/top-navigation/)
   - Custom components
-    - InternalAppHeader: Custom Header for the `InternalAppTemplate`
-    - SiteTitle: Custom title for the `InternalAppTemplate`
+    - AppHeaderTop: A top section for the `InternalAppHeader` 
+    - InternalAppHeader: Header for the `InternalAppTemplate`
+    - SiteTitle: Title (link) for the `AppHeaderTop`
     - SkipTo: Custom hidden link to skip to a section, used in the `InternalAppTemplate`
   - Other Partials
     - Head: Implements `TemplateSettings` for a `<head>` section

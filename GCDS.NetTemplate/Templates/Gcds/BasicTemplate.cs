@@ -22,9 +22,12 @@ namespace GCDS.NetTemplate.Templates.Gcds
             Display = Footer.DisplayType.full
         };
 
+        /// <summary>
+        /// Apply a last modified date or version number
+        /// Will atomatically grab the last date your dll was compiled.
+        /// </summary>
         public DateModified DateModified { get; set; } = new DateModified()
         {
-
             // get the date changed of the project that started (impemented this package)
             Text = File.GetLastWriteTime(Assembly.GetEntryAssembly()?.Location ?? string.Empty).ToString("MMMM dd, yyyy")
         };
