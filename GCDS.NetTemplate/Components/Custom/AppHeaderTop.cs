@@ -13,7 +13,7 @@ namespace GCDS.NetTemplate.Components.Custom
         /// <summary>
         /// Sets the title of the site (or application)
         /// </summary>
-        public required Link SiteTitle { get; set; }
+        public required SiteTitle SiteTitle { get; set; }
 
         /// <summary>
         /// Enables limited custom styling for the header

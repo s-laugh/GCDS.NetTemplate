@@ -86,13 +86,13 @@ This template will require you to manually create the `Header` as it requires yo
 ```csharp
 template.Header = new InternalAppHeader("My Application");
 // OR
-template.Header = new InternalAppHeader(new Link { Text = "Home", Href = "#" });
+template.Header = new InternalAppHeader(new SiteTitle { Text = "Home", Href = "#" });
 // OR
 template.Header = new InternalAppHeader
 {
     AppHeaderTop = new AppHeaderTop
     {
-        SiteTitle = new Link
+        SiteTitle = new SiteTitle
         {
             Text = "My Application",
             Href = Url.Action("Index")

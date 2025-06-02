@@ -64,15 +64,15 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             var template = ViewData.GetTemplate<InternalAppTemplate>();
 
             template.Header = new InternalAppHeader("My Application");
-            template.Header = new InternalAppHeader(new Link { Text = "Home", Href = "#" });
+            template.Header = new InternalAppHeader(new SiteTitle { Text = "Home", Href = "#" });
             // OR
             template.Header = new InternalAppHeader
             {
                 AppHeaderTop = new AppHeaderTop
                 {
-                    SiteTitle = new Link
+                    SiteTitle = new SiteTitle
                     {
-                        Text = "My Application",
+                        Text = "My Very Long Application Title That fills the whole header",
                         Href = Url.Action("Index")
                     },
                     StyleOverride = "border-bottom: 4px solid #243851"

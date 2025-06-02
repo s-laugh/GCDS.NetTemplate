@@ -10,9 +10,7 @@
 			   align-items="center"
 			   place-content="space-between">
 
-		<gcds-nav-link href="@Model.SiteTitle.Href">
-			@Model.SiteTitle.Text
-		</gcds-nav-link>
+		@await Html.PartialAsync("Custom/SiteTitle", Model.SiteTitle)
 
 		@{
 			Model.LanguageToggle.StyleOverride += "text-align:end";
