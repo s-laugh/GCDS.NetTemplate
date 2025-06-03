@@ -13,7 +13,7 @@ namespace GCDS.NetTemplate.Components.Custom
         {
             AppHeaderTop = new AppHeaderTop
             {
-                SiteTitle = new Link
+                SiteTitle = new SiteTitle
                 {
                     Text = siteTitleText
                 }
@@ -21,7 +21,7 @@ namespace GCDS.NetTemplate.Components.Custom
         }
 
         [SetsRequiredMembers]
-        public InternalAppHeader(Link siteTitle)
+        public InternalAppHeader(SiteTitle siteTitle)
         {
             AppHeaderTop = new AppHeaderTop { SiteTitle = siteTitle };
         }
