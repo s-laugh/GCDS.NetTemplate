@@ -2,7 +2,7 @@
 @using GCDS.NetTemplate.Utils
 @{
 	BasicTemplate? template = ViewData.GetTemplate<BasicTemplate>();
-	ArgumentNullException.ThrowIfNull(template, "Must call AddTemplateServices in Program, and load the BasicTemplate (Default) to use this layout.");
+	ArgumentNullException.ThrowIfNull(template, "Must call Add[Mvc]TemplateServices in Program,cs, and verify the BasicTemplate (Default) is loaded to the ViewData to use this layout.");
 }
 
 <!DOCTYPE html>

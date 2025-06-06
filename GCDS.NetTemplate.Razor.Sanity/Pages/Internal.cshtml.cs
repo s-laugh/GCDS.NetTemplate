@@ -22,14 +22,12 @@ namespace GCDS.NetTemplate.Razor.Sanity.Pages
         public void OnGet()
         {
             var template = ViewData.GetTemplate<InternalAppTemplate>();
-            template.Header = new InternalAppHeader()
-            {
-                SiteTitle = new Link()
-                {
+            template.Header = new InternalAppHeader(
+                new SiteTitle { 
                     Text = "My Application",
                     Href = Url.Page("Index")
-                },
-            };
+                }
+            );
         }
     }
 

@@ -13,10 +13,11 @@ _Open to adapting to Blazor, see [Issue: Include other .NET project types to the
     builder.Services.AddRazorTemplateServices(); // for Razor projects
     ```
 
-3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, [_see bellow for changing the template_](#picking-your-template))
+3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, ex. `_Layout.XXX`, [_see bellow for changing the template_](#picking-your-template))
    Povided Layouts/Templates:
-    - `_Layout.Basic` Will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
-    - `_Layout.InternalApp` Custom template to build an internal application [_see bellow for template requirements_](#using-internalapptemplate)
+    - **Basic** template will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
+    - **InternalApp** is a custom template to build an internal application [_see bellow for template requirements_](#using-internalapptemplate)
+    - **Splash** is a custom template to build an generic splash page [_see bellow for template requirements_](#using-splashtemplate)
 
 ### Additional Features
 
@@ -30,6 +31,8 @@ app.UseRequestLocalization();
 ### Picking your template
 
 By default, the `BasicTemplate` will be loaded, and it will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS.
+
+_Note: Even if a template is loaded, you don't have to use it. It only gets used if your `_Layout.XXX` matches._
 
 <details>
   <summary>Change the default template</summary>
@@ -103,6 +106,22 @@ template.Header = new InternalAppHeader
 
 _Reminder: Be sure to use the `_Layout.InternalApp` when using this template._
 
+#### Using `SplashTemplate`
+
+This template will require you to manually create the `LanguageSelector`.
+
+```csharp
+template.LanguageSelector = new LanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));
+```
+
+By default, the splash page will load in either, english or french first depending on the current culture.
+This could be nice if you want it to respond to the last language that was used for the site.
+However if you need it to stick to one language, ensure to force the culture when loading the page.
+
+```csharp
+HttpContext.SetTemplateCulture(Constants.ENGLISH_CULTURE);
+```
+
 ### Override Settings
 
 Add configuration values to your `appsettings.json` to override from the defaults (shown in comments)
@@ -140,12 +159,14 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - [Top navigation (`TopNav`)](https://design-system.alpha.canada.ca/en/components/top-navigation/)
   - Custom components
     - AppHeaderTop: A top section for the `InternalAppHeader` 
+    - LanguageSelector: A grid that has english and french links with titles for both, used in the `SplashTemplate`
     - InternalAppHeader: Header for the `InternalAppTemplate`
     - SiteTitle: Title (link) for the `AppHeaderTop`
     - SkipTo: Custom hidden link to skip to a section, used in the `InternalAppTemplate`
   - Other Partials
     - Head: Implements `TemplateSettings` for a `<head>` section
     - Menu: Helper to swap the `TopicMenu` or the `TopNav` for the `Header`
+    - RandomBackground: Will randomize a full screen background image base on a set of image paths, used in the `SplashTemplate`
 
 ## Developing / Contributing
 

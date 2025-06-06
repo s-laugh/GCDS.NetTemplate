@@ -26,11 +26,7 @@ namespace GCDS.NetTemplate.Utils
                     requestedCultureName = locOptions.Value.DefaultRequestCulture.Culture.Name.ToString();
                 }
 
-                httpContext.Response.Cookies.Append(
-                    CookieRequestCultureProvider.DefaultCookieName,
-                    CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(requestedCultureName)),
-                    new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
-                );
+                httpContext.SetTemplateCulture(requestedCultureName);
 
                 return Task.FromResult(new ProviderCultureResult(requestedCultureName));
             }

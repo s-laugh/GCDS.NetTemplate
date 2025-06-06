@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GCDS.NetTemplate.Utils
 {
-    public class CultureConfiguration
+    public static class CultureConfiguration
     {
         public static List<CultureInfo> SupportedCultures { get; set; } =
         [
@@ -39,6 +39,16 @@ namespace GCDS.NetTemplate.Utils
             }
 
             return buff.ToString();
+        }
+
+        public static void SetTemplateCulture(this HttpContext httpContext, string cultureName)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureName);
+            httpContext.Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(cultureName)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
         }
     }
 }
