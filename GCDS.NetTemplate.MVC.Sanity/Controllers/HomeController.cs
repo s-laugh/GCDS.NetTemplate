@@ -20,7 +20,17 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             _logger = logger;
         }
 
+        [TemplateType(typeof(SplashTemplate))]
         public IActionResult Index()
+        {
+            HttpContext.SetTemplateCulture(Constants.ENGLISH_CULTURE);
+
+            var template = ViewData.GetTemplate<SplashTemplate>();
+            template.LanguageSelector = new LanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));
+            return View(); 
+        }
+
+        public IActionResult Home()
         {
             var template = ViewData.GetTemplate<BasicTemplate>();
             template.Header.Banner = new CustomPartial() { ViewName = "Banner", Model = new Banner() { Text = "Jokes on You!" } };
