@@ -27,6 +27,12 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
 
             var template = ViewData.GetTemplate<SplashTemplate>();
             template.LanguageSelector = new LanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));
+            template.PageTitle = "Custom Title / Titre personnalisé";
+            template.HeadElements.AddMeta("description", "This is a custom splash page for testing purposes.");
+            template.HeadElements.AddStyle("p { font-size: 20px; }");
+            template.HeadElements.AddLink("https://www.google.ca/css/style.css");
+            template.HeadElements.AddScript("www.google.ca");
+            template.HeadElements.AddCustom("tag", new Dictionary<string, string> { { "tagAttribute", "value" } }, "innerHtml");
             return View(); 
         }
 

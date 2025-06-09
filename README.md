@@ -81,6 +81,17 @@ It's a good idea to set some basic properties specific to your useage, such as:
 template.PageTitle = "Text for the browser tab";
 ```
 
+Also most sties work better with meta data, so be sure to add some through the `HeadElements`. You can also add links to scripts and style pages, or any kind of head element you wish.
+
+```csharp
+template.HeadElements.AddMeta("description", "This is a custom splash page for testing purposes.");
+template.HeadElements.AddStyle("p { font-size: 20px; }");
+template.HeadElements.AddLink("https://www.google.ca/css/style.css");
+template.HeadElements.AddScript("www.google.ca");
+template.HeadElements.AddCustom("tag", new Dictionary<string, string> { { "tagAttribute", "value" } }, "innerHtml");
+```
+
+_Note: `Head` and `Script` sections are also avaliable on all templates._
 
 #### Using `InternalAppTemplate`
 
