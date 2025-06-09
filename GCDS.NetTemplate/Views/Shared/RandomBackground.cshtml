@@ -1,0 +1,22 @@
+﻿@model IEnumerable<string>
+
+@{
+	var jsonImages = System.Text.Json.JsonSerializer.Serialize(Model);
+}
+
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+		background-size: cover;
+		background-position: center;
+		height: 100vh;
+	}
+</style>
+
+<script>
+	const images = @Html.Raw(jsonImages);
+
+	const randomImage = images[Math.floor(Math.random() * images.length)];
+	document.body.style.backgroundImage = `url('${randomImage}')`;
+</script>

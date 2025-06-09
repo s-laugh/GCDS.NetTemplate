@@ -4,7 +4,7 @@
 @using GCDS.NetTemplate.Utils
 @{
 	InternalAppTemplate? template = ViewData.GetTemplate<InternalAppTemplate>();
-	ArgumentNullException.ThrowIfNull(template, "Must call AddTemplateServices() in Program, and load the InternalAppTemplate to use this layout");
+	ArgumentNullException.ThrowIfNull(template, "Must call Add[Mvc]TemplateServices in Program,cs, and verify the InternalAppTemplate is loaded to the ViewData to use this layout.");
 }
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport"
-	content="width=device-width, initial-scale=1.0" />
+		  content="width=device-width, initial-scale=1.0" />
 
 	<title>@template.PageTitle</title>
 
@@ -33,7 +33,7 @@
 			  role="main">
 			@RenderBody()
 		</main>
-		
+
 		@await Html.PartialAsync("Gcds/DateModified", template.DateModified)
 	</gcds-container>
 
