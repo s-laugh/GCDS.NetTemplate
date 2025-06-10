@@ -1,4 +1,6 @@
-﻿namespace GCDS.NetTemplate.Templates
+﻿using GCDS.NetTemplate.Utils;
+
+namespace GCDS.NetTemplate.Templates
 {
     public class Template(TemplateSettings settings)
     {
@@ -23,5 +25,11 @@
         /// title of page
         /// </summary>
         public string PageTitle { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Creates a list of HeadElements that will be added to the head of the page.
+        /// Used for adding meta tags, linking to styles or scripts.
+        /// </summary>
+        public List<HeadElement> HeadElements { get; set; } = [];
     }
 }

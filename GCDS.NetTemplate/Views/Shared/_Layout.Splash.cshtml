@@ -19,6 +19,9 @@
 
 	@await Html.PartialAsync("Head", template.Settings)
 
+	@Html.Raw(template.HeadElements.Render())
+	@await RenderSectionAsync("Head", required: false)
+
 	<style>
 		#splash-window-top {
 			padding: 1rem 2.5rem 3rem;
@@ -111,6 +114,8 @@
 		</gcds-container>
 		@RenderBody()
 	</main>
+	
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>

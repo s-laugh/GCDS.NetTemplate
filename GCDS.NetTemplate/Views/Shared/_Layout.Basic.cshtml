@@ -13,6 +13,9 @@
 	<title>@template.PageTitle</title>
 
 	@await Html.PartialAsync("Head", template.Settings)
+
+	@Html.Raw(template.HeadElements.Render())
+	@await RenderSectionAsync("Head", required: false)
 </head>
 <body>
 	<header>

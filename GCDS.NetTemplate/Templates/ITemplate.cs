@@ -1,4 +1,6 @@
-﻿namespace GCDS.NetTemplate.Templates
+﻿using GCDS.NetTemplate.Utils;
+
+namespace GCDS.NetTemplate.Templates
 {
     public interface ITemplate
     {
@@ -9,5 +11,7 @@
         string Lang { get; set; }
 
         string PageTitle { get; set; }
+
+        List<HeadElement> HeadElements { get; set; }
     }
 }
