@@ -1,0 +1,22 @@
+﻿@using GCDS.NetTemplate.Components
+
+@model ExtAppHeaderTop
+
+<gcds-container size="xl"
+				centered
+				main-container
+				style="@Model.StyleOverride">
+	<gcds-grid columns="2fr 1fr"
+			   align-items="center"
+			   place-content="space-between">
+
+		@await Html.PartialAsync("ExtSiteTitle.cshtml", Model.SiteTitle)
+
+		@{
+			Model.LanguageToggle.StyleOverride += "text-align:end";
+		}
+		@await Html.PartialAsync("GcdsLangToggle.cshtml", Model.LanguageToggle)
+
+	</gcds-grid>
+
+</gcds-container>

@@ -1,5 +1,4 @@
-﻿using GCDS.NetTemplate.Components.Custom;
-using GCDS.NetTemplate.Components.Gcds;
+﻿using GCDS.NetTemplate.Components;
 
 namespace GCDS.NetTemplate.Templates.Custom
 {

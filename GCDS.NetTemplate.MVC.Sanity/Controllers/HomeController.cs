@@ -1,5 +1,3 @@
-using GCDS.NetTemplate.Components.Gcds;
-using GCDS.NetTemplate.Components.Custom;
 using GCDS.NetTemplate.MVC.Sanity.Models;
 using GCDS.NetTemplate.Utils;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +5,7 @@ using System.Diagnostics;
 using GCDS.NetTemplate.Templates.Custom;
 using GCDS.NetTemplate.Templates;
 using GCDS.NetTemplate.Templates.Gcds;
+using GCDS.NetTemplate.Components;
 
 namespace GCDS.NetTemplate.MVC.Sanity.Controllers
 {

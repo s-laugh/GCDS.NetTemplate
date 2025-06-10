@@ -2,9 +2,8 @@
 using GCDS.NetTemplate.Templates;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using GCDS.NetTemplate.Utils;
-using GCDS.NetTemplate.Components.Custom;
 using Microsoft.AspNetCore.Mvc;
-using GCDS.NetTemplate.Components.Gcds;
+using GCDS.NetTemplate.Components;
 
 namespace GCDS.NetTemplate.Razor.Sanity.Pages
 {

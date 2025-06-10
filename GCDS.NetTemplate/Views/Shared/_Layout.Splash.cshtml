@@ -1,5 +1,4 @@
-﻿@using GCDS.NetTemplate.Components.Gcds
-@using GCDS.NetTemplate.Templates.Custom
+﻿@using GCDS.NetTemplate.Templates.Custom
 @using GCDS.NetTemplate.Utils
 @using Microsoft.AspNetCore.Html
 
@@ -17,7 +16,7 @@
 
 	<title>@template.PageTitle</title>
 
-	@await Html.PartialAsync("HeadSettings", template.Settings)
+	@await Html.PartialAsync("GCDS.NetTemplate/ExtHeadSettings", template.Settings)
 
 	@Html.Raw(template.HeadElements.Render())
 	@await RenderSectionAsync("Head", required: false)
@@ -78,18 +77,18 @@
 
 <body>
 
-	@await Html.PartialAsync("ExtRandomBackground", template.SplashImages)
+	@await Html.PartialAsync("GCDS.NetTemplate/ExtRandomBackground", template.SplashImages)
 
 	<main>
 		<gcds-container size="sm" margin="1000" centered main-container>
 			<div id="splash-window-top">
 				<h1>@template.PageTitle</h1>
-				@await Html.PartialAsync("Gcds/GcdsSignature", template.TopSignature)
+				@await Html.PartialAsync("GCDS.NetTemplate/GcdsSignature", template.TopSignature)
 
 				@{
 					ArgumentNullException.ThrowIfNull(template.LanguageSelector, "LanguageSelector must be set when using this template.");
 				}
-				@await Html.PartialAsync("Custom/ExtLanguageSelector", template.LanguageSelector)
+				@await Html.PartialAsync("GCDS.NetTemplate/ExtLanguageSelector", template.LanguageSelector)
 			</div>
 			<div id="splash-window-bttm">
 				<gcds-grid columns="3fr 2fr">
@@ -109,7 +108,7 @@
 							@enTerms
 						}
 					</ul>
-					@await Html.PartialAsync("Gcds/GcdsSignature", template.BottomSignature)
+					@await Html.PartialAsync("GCDS.NetTemplate/GcdsSignature", template.BottomSignature)
 			</div>
 		</gcds-container>
 		@RenderBody()

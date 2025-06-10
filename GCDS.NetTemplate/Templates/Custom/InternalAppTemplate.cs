@@ -1,5 +1,4 @@
-﻿using GCDS.NetTemplate.Components.Custom;
-using GCDS.NetTemplate.Components.Gcds;
+﻿using GCDS.NetTemplate.Components;
 using System.Diagnostics;
 using System.Reflection;
 

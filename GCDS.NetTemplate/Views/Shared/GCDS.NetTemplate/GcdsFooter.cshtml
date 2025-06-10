@@ -1,0 +1,11 @@
+﻿@using GCDS.NetTemplate.Components
+
+@model GcdsFooter
+
+<gcds-footer lang="@Model.Lang"
+			 contextual-heading="@Model.ContextualHeading"
+			 contextual-links="@Model.ContextualLinks?.ToJson()"
+			 display="@Model.Display"
+			 sub-links="@Model.SubLinks?.ToJson()"
+			style="@Model.StyleOverride">
+</gcds-footer>

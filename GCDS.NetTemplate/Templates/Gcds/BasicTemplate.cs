@@ -1,4 +1,4 @@
-﻿using GCDS.NetTemplate.Components.Gcds;
+﻿using GCDS.NetTemplate.Components;
 using System.Reflection;
 
 namespace GCDS.NetTemplate.Templates.Gcds

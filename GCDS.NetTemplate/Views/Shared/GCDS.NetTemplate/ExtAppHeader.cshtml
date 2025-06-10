@@ -1,0 +1,25 @@
+﻿@using GCDS.NetTemplate.Components
+
+@model ExtAppHeader
+
+<header style="margin: var(--gcds-header-margin) !important;">
+
+	@await Html.PartialAsync("ExtSkipTo.cshtml", Model.SkipToMainContent)
+
+	@await Html.PartialAsync("ExtAppHeaderTop.cshtml", Model.AppHeaderTop)
+
+	@if (Model.Menu != null)
+	{
+		@await Html.PartialAsync("GcdsTopNav.cshtml", Model.Menu)
+	}
+
+	@if (Model.Breadcrumbs != null)
+	{
+		<gcds-container size="xl"
+						centered
+						main-container>
+			@await Html.PartialAsync("GcdsBreadcrumbs.cshtml", Model.Breadcrumbs)
+		</gcds-container>
+	}
+
+</header>

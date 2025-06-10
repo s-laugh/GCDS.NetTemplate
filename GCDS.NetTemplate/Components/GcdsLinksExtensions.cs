@@ -1,5 +1,4 @@
-﻿using GCDS.NetTemplate.Components.Gcds;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace GCDS.NetTemplate.Components
 {
