@@ -33,12 +33,12 @@ app.UseRequestLocalization(); // part of .NET
 
 By default, the **Basic** template will be loaded, and it will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS.
 
-_Note: Even if a template is loaded, you don't have to use it. It only gets used if your `GCDS.NetTemplate/_Layout.XXX` matches._
+_Note: Even if a template is loaded, you don't have to use it. It only gets used if your `GCDS.NetTemplate/_Layout.{XXX}` matches._
 
 <details>
   <summary>Change the default template</summary>
 
-  **Note: Be sure to use the corrisponding `GCDS.NetTemplate/_Layout.XXX` for the chosen template.**
+  **Note: Be sure to use the corrisponding `GCDS.NetTemplate/_Layout.{XXX}` for the chosen template.**
 
 Option 1. Set a default template type globally in the `Program.cs`.
 
