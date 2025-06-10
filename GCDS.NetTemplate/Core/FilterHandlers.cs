@@ -7,7 +7,7 @@ using System.Reflection;
 namespace GCDS.NetTemplate.Core
 {
     // for MVC
-    public class FilterHandler(IInitializer initializer) : ActionFilterAttribute
+    public class TemplateActionFilter(IInitializer initializer) : ActionFilterAttribute
     {     
         // This is used to load the template for the MVC controller
         public override void OnActionExecuting(ActionExecutingContext context)
