@@ -81,7 +81,7 @@ It's a good idea to set some basic properties specific to your useage, such as:
 template.PageTitle = "Text for the browser tab";
 ```
 
-Also most sties work better with meta data, so be sure to add some through the `HeadElements`. You can also add links to scripts and style pages, or any kind of head element you wish.
+Since most sties work better with meta data, be sure to add some through the `HeadElements`. You can also add links to scripts and style pages, or any kind of head element you wish.
 
 ```csharp
 template.HeadElements.AddMeta("description", "This is a custom splash page for testing purposes.");
