@@ -37,6 +37,7 @@
                 InnerHtml = cssContent
             });
         }
+
         public static void AddMeta(this List<HeadElement> headElements, string name, string content, string? title = null)
         {
             var attributes = new Dictionary<string, string>
