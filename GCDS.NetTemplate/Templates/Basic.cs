@@ -1,9 +1,9 @@
 ﻿using GCDS.NetTemplate.Components;
 using System.Reflection;
 
-namespace GCDS.NetTemplate.Templates.Gcds
+namespace GCDS.NetTemplate.Templates
 {
-    public class BasicTemplate(TemplateSettings settings) : Template(settings), ITemplate
+    public class Basic(TemplateSettings settings) : TemplateBase(settings), ITemplateBase
     {
         /// <summary>
         /// Loading all the configurations for the header component

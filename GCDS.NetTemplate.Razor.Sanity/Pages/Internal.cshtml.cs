@@ -1,5 +1,4 @@
-﻿using GCDS.NetTemplate.Templates.Custom;
-using GCDS.NetTemplate.Templates;
+﻿using GCDS.NetTemplate.Templates;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using GCDS.NetTemplate.Utils;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +7,7 @@ using GCDS.NetTemplate.Components;
 namespace GCDS.NetTemplate.Razor.Sanity.Pages
 {
 
-    [TemplateType(typeof(InternalAppTemplate))]
+    [TemplateType(typeof(InternalApp))]
     public class InternalModel : PageModel
     {
         private readonly ILogger<InternalModel> _logger;
@@ -20,7 +19,7 @@ namespace GCDS.NetTemplate.Razor.Sanity.Pages
 
         public void OnGet()
         {
-            var template = ViewData.GetTemplate<InternalAppTemplate>();
+            var template = ViewData.GetTemplate<InternalApp>();
             template.Header = new ExtAppHeader(
                 new ExtSiteTitle { 
                     Text = "My Application",

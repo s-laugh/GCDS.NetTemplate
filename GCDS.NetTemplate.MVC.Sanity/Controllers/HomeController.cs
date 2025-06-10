@@ -2,9 +2,7 @@ using GCDS.NetTemplate.MVC.Sanity.Models;
 using GCDS.NetTemplate.Utils;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using GCDS.NetTemplate.Templates.Custom;
 using GCDS.NetTemplate.Templates;
-using GCDS.NetTemplate.Templates.Gcds;
 using GCDS.NetTemplate.Components;
 
 namespace GCDS.NetTemplate.MVC.Sanity.Controllers
@@ -19,12 +17,12 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             _logger = logger;
         }
 
-        [TemplateType(typeof(SplashTemplate))]
+        [TemplateType(typeof(Splash))]
         public IActionResult Index()
         {
             HttpContext.SetTemplateCulture(Constants.ENGLISH_CULTURE);
 
-            var template = ViewData.GetTemplate<SplashTemplate>();
+            var template = ViewData.GetTemplate<Splash>();
             template.LanguageSelector = new ExtLanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));
             template.PageTitle = "Custom Title / Titre personnalisé";
             template.HeadElements.AddMeta("description", "This is a custom splash page for testing purposes.");
@@ -33,7 +31,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
 
         public IActionResult Home()
         {
-            var template = ViewData.GetTemplate<BasicTemplate>();
+            var template = ViewData.GetTemplate<Basic>();
             template.Header.Banner = new CustomPartial() { ViewName = "Banner", Model = new Banner() { Text = "Jokes on You!" } };
             template.Header.SkipToNav = new ExtSkipTo() { Link = new GcdsLink { Text = "Skip to nav content", Href = "#nav" } };
 
@@ -69,10 +67,10 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             return View();
         }
 
-        [TemplateType(typeof(InternalAppTemplate))]
+        [TemplateType(typeof(InternalApp))]
         public IActionResult Internal()
         {
-            var template = ViewData.GetTemplate<InternalAppTemplate>();
+            var template = ViewData.GetTemplate<InternalApp>();
 
             template.Header = new ExtAppHeader("My Application");
             template.Header = new ExtAppHeader(new ExtSiteTitle { Text = "Home", Href = "#" });

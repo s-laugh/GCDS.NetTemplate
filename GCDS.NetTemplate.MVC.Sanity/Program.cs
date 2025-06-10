@@ -1,4 +1,3 @@
-using GCDS.NetTemplate.Templates.Custom;
 using GCDS.NetTemplate.Utils;
 
 var builder = WebApplication.CreateBuilder(args);

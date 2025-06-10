@@ -2,7 +2,7 @@
 
 namespace GCDS.NetTemplate.Templates
 {
-    public interface ITemplate
+    public interface ITemplateBase
     {
         TemplateSettings Settings { get; set; }
 

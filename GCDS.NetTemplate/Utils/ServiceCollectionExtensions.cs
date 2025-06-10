@@ -1,5 +1,4 @@
 ﻿using GCDS.NetTemplate.Templates;
-using GCDS.NetTemplate.Templates.Gcds;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

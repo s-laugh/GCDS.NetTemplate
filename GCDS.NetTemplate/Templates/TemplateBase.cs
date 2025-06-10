@@ -2,7 +2,7 @@
 
 namespace GCDS.NetTemplate.Templates
 {
-    public class Template(TemplateSettings settings)
+    public class TemplateBase(TemplateSettings settings)
     {
         /// <summary>
         /// Template settings, loaded from the appsettings.json file

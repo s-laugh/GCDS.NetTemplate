@@ -1,5 +1,4 @@
-﻿using GCDS.NetTemplate.Templates.Gcds;
-using GCDS.NetTemplate.Utils;
+﻿using GCDS.NetTemplate.Utils;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Web;
 
@@ -27,9 +26,9 @@ namespace GCDS.NetTemplate.Templates
         {
             var templateType = templateAttr?.FirstOrDefault()?.TemplateType 
                 ?? DefaultTemplateType 
-                ?? typeof(BasicTemplate);
+                ?? typeof(Basic);
 
-            var template = Activator.CreateInstance(templateType, _settings) as ITemplate 
+            var template = Activator.CreateInstance(templateType, _settings) as ITemplateBase 
                 ?? throw new InvalidOperationException($"Cannot create instance of {templateType}");
 
             template.LanguageToggleHref = CultureConfiguration.BuildLanguageToggleHref(

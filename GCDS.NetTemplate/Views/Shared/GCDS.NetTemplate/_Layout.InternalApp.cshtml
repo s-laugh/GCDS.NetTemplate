@@ -1,9 +1,8 @@
 ﻿@using GCDS.NetTemplate.Templates
-@using GCDS.NetTemplate.Templates.Custom
 @using GCDS.NetTemplate.Utils
 
 @{
-	InternalAppTemplate? template = ViewData.GetTemplate<InternalAppTemplate>();
+	InternalApp? template = ViewData.GetTemplate<InternalApp>();
 	ArgumentNullException.ThrowIfNull(template, "Must call Add[Mvc]TemplateServices in Program,cs, and verify the InternalAppTemplate is loaded to the ViewData to use this layout.");
 }
 
@@ -16,7 +15,7 @@
 
 	<title>@template.PageTitle</title>
 
-	@await Html.PartialAsync("GCDS.NetTemplate/ExtHeadSettings", template.Settings)
+	@await Html.PartialAsync("ExtHeadSettings.cshtml", template.Settings)
 
 	@Html.Raw(template.HeadElements.Render())
 	@await RenderSectionAsync("Head", required: false)
@@ -26,7 +25,7 @@
 		ArgumentNullException.ThrowIfNull(template.Header, "Header must be set when using this template.");
 		template.Header.AppHeaderTop.LanguageToggle.Href = template.LanguageToggleHref;
 	}
-	@await Html.PartialAsync("GCDS.NetTemplate/ExtAppHeader", template.Header)
+	@await Html.PartialAsync("ExtAppHeader.cshtml", template.Header)
 
 	<gcds-container size="xl"
 					centered
@@ -36,10 +35,10 @@
 			@RenderBody()
 		</main>
 
-		@await Html.PartialAsync("GCDS.NetTemplate/GcdsDateModified", template.DateModified)
+		@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
 	</gcds-container>
 
-	@await Html.PartialAsync("GCDS.NetTemplate/GcdsFooter", template.Footer)
+	@await Html.PartialAsync("GcdsFooter.cshtml", template.Footer)
 
 	@await RenderSectionAsync("Scripts", required: false)
 </body>

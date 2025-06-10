@@ -7,7 +7,7 @@
 
         public TemplateTypeAttribute(Type templateType)
         {
-            if (!typeof(ITemplate).IsAssignableFrom(templateType))
+            if (!typeof(ITemplateBase).IsAssignableFrom(templateType))
             {
                 throw new ArgumentException("Type must implement ITemplate", nameof(templateType));
             }

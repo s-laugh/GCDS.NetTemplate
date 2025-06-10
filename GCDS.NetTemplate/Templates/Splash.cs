@@ -1,8 +1,8 @@
 ﻿using GCDS.NetTemplate.Components;
 
-namespace GCDS.NetTemplate.Templates.Custom
+namespace GCDS.NetTemplate.Templates
 {
-    public class SplashTemplate(TemplateSettings settings) : Template(settings), ITemplate
+    public class Splash(TemplateSettings settings) : TemplateBase(settings), ITemplateBase
     {
         /// <summary>
         /// Set links to the splash images that will be randomly selcted to be used in the splash screen.

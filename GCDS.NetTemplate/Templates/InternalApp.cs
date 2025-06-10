@@ -2,9 +2,9 @@
 using System.Diagnostics;
 using System.Reflection;
 
-namespace GCDS.NetTemplate.Templates.Custom
+namespace GCDS.NetTemplate.Templates
 {
-    public class InternalAppTemplate(TemplateSettings settings) : Template(settings), ITemplate
+    public class InternalApp(TemplateSettings settings) : TemplateBase(settings), ITemplateBase
     {
         /// <summary>
         /// Loading all the configurations for the header component

@@ -5,8 +5,8 @@ namespace GCDS.NetTemplate.Utils
 {
     public static class ViewDataDictionaryExtensions
     {
-        public static ITemplate? GetITemplate(this ViewDataDictionary viewData, string key = Constants.TEMPLATE_DATA) => viewData[key] as ITemplate;
+        public static ITemplateBase? GetITemplate(this ViewDataDictionary viewData, string key = Constants.TEMPLATE_DATA) => viewData[key] as ITemplateBase;
 
-        public static T? GetTemplate<T>(this ViewDataDictionary viewData, string key = Constants.TEMPLATE_DATA) where T : class, ITemplate => viewData[key] as T;        
+        public static T? GetTemplate<T>(this ViewDataDictionary viewData, string key = Constants.TEMPLATE_DATA) where T : class, ITemplateBase => viewData[key] as T;        
     }
 }
