@@ -4,7 +4,12 @@ using System.Web;
 
 namespace GCDS.NetTemplate.Core
 {
-    public class TemplateRegister(IConfiguration configuration) : ITemplateRegister
+    public interface IInitializer
+    {
+        void InitializeTemplate(ViewDataDictionary viewData, HttpContext context, IEnumerable<TemplateTypeAttribute>? templateAttr);
+    }
+
+    public class Initializer(IConfiguration configuration) : IInitializer
     {
         // Load template settings from appsettings.json, or set to defaults
         private readonly TemplateSettings _settings = configuration.GetSection("TemplateSettings").Get<TemplateSettings>() 
@@ -22,7 +27,7 @@ namespace GCDS.NetTemplate.Core
         /// <param name="context">Context of the request used for configuring language toggle</param>
         /// <param name="templateAttr">Enable override of default template type</param>
         /// <exception cref="InvalidOperationException">Failed to create template of specified type</exception>
-        public void RegisterTemplate(ViewDataDictionary viewData, HttpContext context, IEnumerable<TemplateTypeAttribute>? templateAttr)
+        public void InitializeTemplate(ViewDataDictionary viewData, HttpContext context, IEnumerable<TemplateTypeAttribute>? templateAttr)
         {
             var templateType = templateAttr?.FirstOrDefault()?.TemplateType 
                 ?? DefaultTemplateType 
@@ -34,7 +39,7 @@ namespace GCDS.NetTemplate.Core
             template.LanguageToggleHref = CultureManager.BuildLanguageToggleHref(
                 HttpUtility.ParseQueryString(context.Request.QueryString.ToString()));
 
-            viewData[Constants.TEMPLATE_DATA] = template;
+            viewData[CommonConstants.TEMPLATE_DATA] = template;
         }
     }
 }

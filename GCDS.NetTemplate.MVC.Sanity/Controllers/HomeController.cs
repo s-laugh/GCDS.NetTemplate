@@ -20,7 +20,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         [TemplateType(typeof(Splash))]
         public IActionResult Index()
         {
-            HttpContext.SetTemplateCulture(Constants.ENGLISH_CULTURE);
+            HttpContext.SetTemplateCulture(CommonConstants.ENGLISH_CULTURE);
 
             var template = ViewData.GetTemplate<Splash>();
             template.LanguageSelector = new ExtLanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));

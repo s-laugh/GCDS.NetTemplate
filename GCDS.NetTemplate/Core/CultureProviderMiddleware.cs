@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 
 namespace GCDS.NetTemplate.Core
 {
-    public class TemplateCultureProvider : RequestCultureProvider
+    public class CultureProviderMiddleware : RequestCultureProvider
     {
         public override Task<ProviderCultureResult?> DetermineProviderCultureResult(HttpContext httpContext)
         {
@@ -12,7 +12,7 @@ namespace GCDS.NetTemplate.Core
             var locOptions = httpContext.RequestServices.GetService<IOptions<RequestLocalizationOptions>>();
             if (locOptions == null) throw new ArgumentNullException(nameof(locOptions));
 
-            var cultureQuery = httpContext.Request.Query[Constants.QUERYSTRING_CULTURE_KEY];
+            var cultureQuery = httpContext.Request.Query[CommonConstants.QUERYSTRING_CULTURE_KEY];
 
             if (!string.IsNullOrEmpty(cultureQuery))
             {

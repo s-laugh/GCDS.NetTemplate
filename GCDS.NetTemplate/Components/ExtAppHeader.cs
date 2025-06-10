@@ -34,9 +34,9 @@ namespace GCDS.NetTemplate.Components
             Link = new GcdsLink
             {
                 Text = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "en"
-                    ? Constants.SKIP_TO_TEXT_EN
-                    : Constants.SKIP_TO_TEXT_FR,
-                Href = $"#{Constants.SKIP_TO_CONTENT_ID}",
+                    ? CommonConstants.SKIP_TO_TEXT_EN
+                    : CommonConstants.SKIP_TO_TEXT_FR,
+                Href = $"#{CommonConstants.SKIP_TO_CONTENT_ID}",
             }
         };
 

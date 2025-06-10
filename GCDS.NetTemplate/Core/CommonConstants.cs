@@ -1,6 +1,6 @@
 ﻿namespace GCDS.NetTemplate.Core
 {
-    public static class Constants
+    public static class CommonConstants
     {
         public const string QUERYSTRING_CULTURE_KEY = "TemplateCulture";
         public const string ENGLISH_CULTURE = "en-CA";

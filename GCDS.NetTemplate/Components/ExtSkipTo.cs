@@ -14,8 +14,8 @@ namespace GCDS.NetTemplate.Components
             get
             {
                 return _airiaLabel ?? (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "en"
-                    ? Constants.SKIP_TO_AIRIA_LABEL_EN
-                    : Constants.SKIP_TO_AIRIA_LABEL_FR);
+                    ? CommonConstants.SKIP_TO_AIRIA_LABEL_EN
+                    : CommonConstants.SKIP_TO_AIRIA_LABEL_FR);
             }
             set
             {

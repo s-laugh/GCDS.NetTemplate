@@ -9,8 +9,8 @@ namespace GCDS.NetTemplate.Core
     {
         public static List<CultureInfo> SupportedCultures { get; set; } =
         [
-            new CultureInfo(Constants.ENGLISH_CULTURE),
-            new CultureInfo(Constants.FRENCH_CULTURE)
+            new CultureInfo(CommonConstants.ENGLISH_CULTURE),
+            new CultureInfo(CommonConstants.FRENCH_CULTURE)
         ];
 
         public static RequestCulture DefaultRequestCulture { get; set; } =
@@ -20,11 +20,11 @@ namespace GCDS.NetTemplate.Core
         {
             if (nameValues == null) throw new ArgumentNullException(nameof(nameValues));
 
-            nameValues.Set(Constants.QUERYSTRING_CULTURE_KEY,
-                Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.StartsWith(Constants.ENGLISH_CULTURE_TWO_LETTER,
+            nameValues.Set(CommonConstants.QUERYSTRING_CULTURE_KEY,
+                Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.StartsWith(CommonConstants.ENGLISH_CULTURE_TWO_LETTER,
                     StringComparison.OrdinalIgnoreCase)
-                    ? Constants.FRENCH_CULTURE
-                    : Constants.ENGLISH_CULTURE);
+                    ? CommonConstants.FRENCH_CULTURE
+                    : CommonConstants.ENGLISH_CULTURE);
 
             StringBuilder buff = new(256);
             char seperator = '?';

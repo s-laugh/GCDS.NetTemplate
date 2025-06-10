@@ -14,7 +14,7 @@ namespace GCDS.NetTemplate.Razor.Sanity.Pages
 
         public void OnGet()
         {
-            HttpContext.SetTemplateCulture(Constants.ENGLISH_CULTURE);
+            HttpContext.SetTemplateCulture(CommonConstants.ENGLISH_CULTURE);
         }
     }
 }

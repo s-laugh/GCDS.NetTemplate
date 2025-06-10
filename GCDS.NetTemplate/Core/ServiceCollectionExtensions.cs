@@ -20,8 +20,8 @@ namespace GCDS.NetTemplate.Core
         {
             ArgumentNullException.ThrowIfNull(services);
 
-            services.TryAddScoped<ITemplateRegister, TemplateRegister>();
-            TemplateRegister.DefaultTemplateType = defaultTemplateType;
+            services.TryAddScoped<IInitializer, Initializer>();
+            Initializer.DefaultTemplateType = defaultTemplateType;
             services.TryAddScoped(filter);
 
             if (global)
@@ -45,7 +45,7 @@ namespace GCDS.NetTemplate.Core
             Type? defaultTemplateType = null,
             bool global = true)
         {
-            return services.AddTemplateServices(typeof(TemplateActionFilter), defaultTemplateType, global);
+            return services.AddTemplateServices(typeof(FilterHandler), defaultTemplateType, global);
         }
         /// <summary>
         /// Add the TemplateAccessor and TemplatePageFilter to the DI container, and will register the filter globally
@@ -74,7 +74,7 @@ namespace GCDS.NetTemplate.Core
                 options.DefaultRequestCulture = CultureManager.DefaultRequestCulture;
                 options.SupportedCultures = CultureManager.SupportedCultures;
                 options.SupportedUICultures = CultureManager.SupportedCultures;
-                options.RequestCultureProviders.Insert(0, new TemplateCultureProvider());
+                options.RequestCultureProviders.Insert(0, new CultureProviderMiddleware());
             });
 
             return services;
