@@ -16,7 +16,7 @@
 
 	<title>@template.PageTitle</title>
 
-	@await Html.PartialAsync("Head", template.Settings)
+	@await Html.PartialAsync("HeadSettings", template.Settings)
 
 	@Html.Raw(template.HeadElements.Render())
 	@await RenderSectionAsync("Head", required: false)
@@ -26,7 +26,7 @@
 		ArgumentNullException.ThrowIfNull(template.Header, "Header must be set when using this template.");
 		template.Header.AppHeaderTop.LanguageToggle.Href = template.LanguageToggleHref;
 	}
-	@await Html.PartialAsync("Custom/InternalAppHeader", template.Header)
+	@await Html.PartialAsync("Custom/ExtAppHeader", template.Header)
 
 	<gcds-container size="xl"
 					centered
@@ -36,10 +36,10 @@
 			@RenderBody()
 		</main>
 
-		@await Html.PartialAsync("Gcds/DateModified", template.DateModified)
+		@await Html.PartialAsync("Gcds/GcdsDateModified", template.DateModified)
 	</gcds-container>
 
-	@await Html.PartialAsync("Gcds/Footer", template.Footer)
+	@await Html.PartialAsync("Gcds/GcdsFooter", template.Footer)
 
 	@await RenderSectionAsync("Scripts", required: false)
 </body>

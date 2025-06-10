@@ -26,7 +26,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             HttpContext.SetTemplateCulture(Constants.ENGLISH_CULTURE);
 
             var template = ViewData.GetTemplate<SplashTemplate>();
-            template.LanguageSelector = new LanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));
+            template.LanguageSelector = new ExtLanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));
             template.PageTitle = "Custom Title / Titre personnalisé";
             template.HeadElements.AddMeta("description", "This is a custom splash page for testing purposes.");
             return View(); 
@@ -36,31 +36,31 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         {
             var template = ViewData.GetTemplate<BasicTemplate>();
             template.Header.Banner = new CustomPartial() { ViewName = "Banner", Model = new Banner() { Text = "Jokes on You!" } };
-            template.Header.SkipToNav = new SkipTo() { Link = new Link { Text = "Skip to nav content", Href = "#nav" } };
+            template.Header.SkipToNav = new ExtSkipTo() { Link = new GcdsLink { Text = "Skip to nav content", Href = "#nav" } };
 
-            template.Header.Menu = new TopNav
+            template.Header.Menu = new GcdsTopNav
             {
                 Label = "Top Nav",
-                Alignment = TopNav.AlignmentType.left,
+                Alignment = GcdsTopNav.AlignmentType.left,
                 Links =
                [
-                   new Link { Text = "Link 1", Href = "#" },
-                    new NavGroup { Label = "Group 1",
+                   new GcdsLink { Text = "Link 1", Href = "#" },
+                    new GcdsNavGroup { Label = "Group 1",
                         Links =
                         [
-                            new Link { Text = "Link 1.1", Href = "#" },
-                            new Link { Text = "Link 1.2", Href = "#" }
+                            new GcdsLink { Text = "Link 1.1", Href = "#" },
+                            new GcdsLink { Text = "Link 1.2", Href = "#" }
                         ]
                     },
-                    new Link { Text = "Link 2", Href = "#" }
+                    new GcdsLink { Text = "Link 2", Href = "#" }
                ],
                 //StyleOverride = "background-color: #e1e4e7;"
             };
 
-            template.Header.Breadcrumb = new Breadcrumbs
+            template.Header.Breadcrumb = new GcdsBreadcrumbs
             {
                 Items = [
-                        new Link
+                        new GcdsLink
                         {
                             Text = "Home"
                         }
@@ -75,42 +75,42 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         {
             var template = ViewData.GetTemplate<InternalAppTemplate>();
 
-            template.Header = new InternalAppHeader("My Application");
-            template.Header = new InternalAppHeader(new SiteTitle { Text = "Home", Href = "#" });
+            template.Header = new ExtAppHeader("My Application");
+            template.Header = new ExtAppHeader(new ExtSiteTitle { Text = "Home", Href = "#" });
             // OR
-            template.Header = new InternalAppHeader
+            template.Header = new ExtAppHeader
             {
-                AppHeaderTop = new AppHeaderTop
+                AppHeaderTop = new ExtAppHeaderTop
                 {
-                    SiteTitle = new SiteTitle
+                    SiteTitle = new ExtSiteTitle
                     {
                         Text = "My Very Long Application Title That fills the whole header",
                         Href = Url.Action("Index")
                     },
                     StyleOverride = "border-bottom: 4px solid #243851"
                 },
-                Menu = new TopNav
+                Menu = new GcdsTopNav
                 {
                     Label = "Top Nav",
-                    Alignment = TopNav.AlignmentType.left,
+                    Alignment = GcdsTopNav.AlignmentType.left,
                     Links =
                [
-                   new Link { Text = "Link 1", Href = "#" },
-                    new NavGroup { Label = "Group 1",
+                   new GcdsLink { Text = "Link 1", Href = "#" },
+                    new GcdsNavGroup { Label = "Group 1",
                         Links =
                         [
-                            new Link { Text = "Link 1.1", Href = "#" },
-                            new Link { Text = "Link 1.2", Href = "#" }
+                            new GcdsLink { Text = "Link 1.1", Href = "#" },
+                            new GcdsLink { Text = "Link 1.2", Href = "#" }
                         ]
                     },
-                    new Link { Text = "Link 2", Href = "#" }
+                    new GcdsLink { Text = "Link 2", Href = "#" }
                ],
                     //StyleOverride = "background-color: #e1e4e7;"
                 },
-                Breadcrumbs = new Breadcrumbs
+                Breadcrumbs = new GcdsBreadcrumbs
                 {
                     Items = [
-                        new Link
+                        new GcdsLink
                         {
                             Text = "Home",
                             Href = Url.Action("Index")

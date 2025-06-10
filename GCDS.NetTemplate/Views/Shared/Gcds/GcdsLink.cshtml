@@ -1,0 +1,14 @@
+@using GCDS.NetTemplate.Components.Gcds
+
+@model GcdsLink
+
+<gcds-link href="@Model.Href"
+			display="@Model.Display"
+			external="@Model.External"
+			rel="@Model.Rel"
+			size="@Model.Size"
+			target="@Model.Target"
+			type="@Model.Type"
+			variant="@Model.Variant">
+		@Model.Text
+</gcds-link>

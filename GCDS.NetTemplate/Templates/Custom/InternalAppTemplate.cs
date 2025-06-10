@@ -10,24 +10,24 @@ namespace GCDS.NetTemplate.Templates.Custom
         /// <summary>
         /// Loading all the configurations for the header component
         /// </summary>
-        public required InternalAppHeader Header { get; set; }
+        public required ExtAppHeader Header { get; set; }
 
         /// <summary>
         /// Loading all the configurations for the footer component
         /// </summary>
-        public Footer Footer { get; set; } = new Footer();
+        public GcdsFooter Footer { get; set; } = new GcdsFooter();
 
         /// <summary>
         /// Apply a last modified date or version number
         /// Will atomatically grab the version from your dll.
         /// </summary>
-        public DateModified DateModified { get; set; } = new DateModified()
+        public GcdsDateModified DateModified { get; set; } = new GcdsDateModified()
         {
             // get the version number of the project that started (impemented this package) and trim any trailing zeros from the version
             Text = string.Join(".", 
                 (FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly()?.Location ?? string.Empty).FileVersion ?? string.Empty)
                 .Split('.').Reverse().SkipWhile(s => s == "0").Reverse()),
-            Type = DateModified.DateModifiedType.version
+            Type = GcdsDateModified.DateModifiedType.version
         };
     }
 }

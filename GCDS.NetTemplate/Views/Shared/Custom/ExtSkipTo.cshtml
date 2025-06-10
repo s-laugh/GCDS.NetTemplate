@@ -1,0 +1,32 @@
+﻿@using GCDS.NetTemplate.Components.Custom
+
+@model ExtSkipTo
+
+<style>
+	.hidden-link {
+		position: absolute;
+		top: var(--gcds-header-skiptonav-top);
+		width: 100%;
+		text-align: center;
+	}
+
+		.hidden-link gcds-link {
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: inherit;
+			z-index: 3;
+		}
+
+			.hidden-link gcds-link:not(:focus) {
+				height: 0;
+				width: 0;
+				overflow: hidden;
+				clip: rect(0,0,0,0);
+			}
+</style>
+
+<nav airia-label="@Model.AiriaLabel"
+	 class="hidden-link">
+	@await Html.PartialAsync("Gcds/GcdsLink", @Model.Link)
+</nav>

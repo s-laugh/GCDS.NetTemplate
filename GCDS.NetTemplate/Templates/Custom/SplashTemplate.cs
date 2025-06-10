@@ -20,13 +20,13 @@ namespace GCDS.NetTemplate.Templates.Custom
         /// <summary>
         /// Setup the language selector component with titles and a link.
         /// </summary>
-        public required LanguageSelector LanguageSelector { get; set; }
+        public required ExtLanguageSelector LanguageSelector { get; set; }
 
         /// <summary>
         /// English link to terms and conditions (only Text & Href are used).
         /// Defaults set to canada.ca
         /// </summary>
-        public Link TermsEn { get; set; } = new Link
+        public GcdsLink TermsEn { get; set; } = new GcdsLink
         {
             Text = "Terms & conditions",
             Href = "https://www.canada.ca/en/transparency/terms.html"
@@ -36,17 +36,17 @@ namespace GCDS.NetTemplate.Templates.Custom
         /// French link to terms and conditions (only Text & Href are used)
         /// Defaults set to canada.ca
         /// </summary>
-        public Link TermsFr { get; set; } = new Link
+        public GcdsLink TermsFr { get; set; } = new GcdsLink
         {
             Text = "Avis",
             Href = "https://www.canada.ca/fr/transparency/avis.html"
         };
 
-        public Signature TopSignature { get; set; } = new Signature();
+        public GcdsSignature TopSignature { get; set; } = new GcdsSignature();
 
-        public Signature BottomSignature { get; set; } = new Signature
+        public GcdsSignature BottomSignature { get; set; } = new GcdsSignature
         {
-            Type = Signature.SignatureType.wordmark
+            Type = GcdsSignature.SignatureType.wordmark
         };
     }
 }

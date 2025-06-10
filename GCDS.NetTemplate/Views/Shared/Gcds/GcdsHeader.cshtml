@@ -1,0 +1,59 @@
+﻿@using GCDS.NetTemplate.Components.Custom
+@using GCDS.NetTemplate.Components.Gcds
+
+@model GcdsHeader
+
+<gcds-header lang-href="@Model.LangHref"
+			 skip-to-href="@Model.SkipToHref"
+			 lang="@Model.Lang"
+			 signature-has-link="@Model.SignatureHasLink"
+			 signature-variant="@Model.SignatureVariant">
+
+	@if (Model.Banner != null)
+	{
+		<div slot="banner">
+			@await Html.PartialAsync(Model.Banner.ViewName, Model.Banner.Model, Model.Banner.ViewData)
+		</div>
+	}
+
+	@if (Model.Breadcrumb != null)
+	{
+		Model.Breadcrumb.Slot = "breadcrumb";
+		@await Html.PartialAsync("Gcds/GcdsBreadcrumbs", Model.Breadcrumb)
+	}
+
+	@if (Model.Menu != null)
+	{
+		Model.Menu.Slot = "menu";
+		@await Html.PartialAsync("SlotHeaderMenu", Model.Menu)
+	}
+
+	@if (Model.Search != null)
+	{
+		Model.Search.Slot = "search";
+		@await Html.PartialAsync("Gcds/GcdsSearch", Model.Search)
+	}
+
+	@if (Model.SkipToNav != null)
+	{
+		<div slot="skip-to-nav">
+			@switch (Model.SkipToNav)
+			{
+				case ExtSkipTo skip:
+					@await Html.PartialAsync("Custom/ExtSkipTo", skip)
+					break;
+				case CustomPartial partial:
+					@await Html.PartialAsync(partial.ViewName, partial.Model, partial.ViewData)
+					break;
+			}
+		</div>
+	}
+
+	@if (Model.Toggle != null)
+	{
+		<div slot="toggle">
+			@await Html.PartialAsync(Model.Toggle.ViewName, Model.Toggle.Model, Model.Toggle.ViewData)
+		</div>
+	})
+</gcds-header>
+
