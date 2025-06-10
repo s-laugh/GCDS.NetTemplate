@@ -1,4 +1,4 @@
-using GCDS.NetTemplate.Utils;
+using GCDS.NetTemplate.Core;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace GCDS.NetTemplate.Razor.Sanity.Pages

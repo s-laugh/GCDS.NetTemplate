@@ -3,9 +3,9 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.Text;
 
-namespace GCDS.NetTemplate.Utils
+namespace GCDS.NetTemplate.Core
 {
-    public static class CultureConfiguration
+    public static class CultureManager
     {
         public static List<CultureInfo> SupportedCultures { get; set; } =
         [

@@ -1,8 +1,7 @@
-﻿using GCDS.NetTemplate.Templates;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace GCDS.NetTemplate.Utils
+namespace GCDS.NetTemplate.Core
 {
     public static class ServiceCollectionExtensions
     {
@@ -46,7 +45,7 @@ namespace GCDS.NetTemplate.Utils
             Type? defaultTemplateType = null,
             bool global = true)
         {
-            return AddTemplateServices(services, typeof(TemplateActionFilter), defaultTemplateType, global);
+            return services.AddTemplateServices(typeof(TemplateActionFilter), defaultTemplateType, global);
         }
         /// <summary>
         /// Add the TemplateAccessor and TemplatePageFilter to the DI container, and will register the filter globally
@@ -58,7 +57,7 @@ namespace GCDS.NetTemplate.Utils
             this IServiceCollection services,
             Type? defaultTemplateType = null)
         {
-            return AddTemplateServices(services, typeof(TemplatePageFilter), defaultTemplateType);
+            return services.AddTemplateServices(typeof(TemplatePageFilter), defaultTemplateType);
         }
 
         /// <summary>
@@ -72,9 +71,9 @@ namespace GCDS.NetTemplate.Utils
 
             services.Configure<RequestLocalizationOptions>(options =>
             {
-                options.DefaultRequestCulture = CultureConfiguration.DefaultRequestCulture;
-                options.SupportedCultures = CultureConfiguration.SupportedCultures;
-                options.SupportedUICultures = CultureConfiguration.SupportedCultures;
+                options.DefaultRequestCulture = CultureManager.DefaultRequestCulture;
+                options.SupportedCultures = CultureManager.SupportedCultures;
+                options.SupportedUICultures = CultureManager.SupportedCultures;
                 options.RequestCultureProviders.Insert(0, new TemplateCultureProvider());
             });
 

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Reflection;
 
-namespace GCDS.NetTemplate.Templates
+namespace GCDS.NetTemplate.Core
 {
     public class TemplateActionFilter(ITemplateRegister register) : ActionFilterAttribute
     {     

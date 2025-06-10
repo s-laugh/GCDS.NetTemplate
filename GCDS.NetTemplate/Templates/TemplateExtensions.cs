@@ -1,9 +1,9 @@
-﻿using GCDS.NetTemplate.Templates;
+﻿using GCDS.NetTemplate.Core;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace GCDS.NetTemplate.Utils
+namespace GCDS.NetTemplate.Templates
 {
-    public static class ViewDataDictionaryExtensions
+    public static class TemplateExtensions
     {
         public static ITemplateBase? GetITemplate(this ViewDataDictionary viewData, string key = Constants.TEMPLATE_DATA) => viewData[key] as ITemplateBase;
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 
-namespace GCDS.NetTemplate.Utils
+namespace GCDS.NetTemplate.Core
 {
     public class TemplateCultureProvider : RequestCultureProvider
     {

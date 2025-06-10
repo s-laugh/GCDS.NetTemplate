@@ -1,4 +1,6 @@
-﻿namespace GCDS.NetTemplate.Templates
+﻿using GCDS.NetTemplate.Templates;
+
+namespace GCDS.NetTemplate.Core
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
     public class TemplateTypeAttribute : Attribute

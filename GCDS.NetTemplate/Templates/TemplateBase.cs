@@ -1,4 +1,4 @@
-﻿using GCDS.NetTemplate.Utils;
+﻿using GCDS.NetTemplate.Components;
 
 namespace GCDS.NetTemplate.Templates
 {
@@ -30,6 +30,6 @@ namespace GCDS.NetTemplate.Templates
         /// Creates a list of HeadElements that will be added to the head of the page.
         /// Used for adding meta tags, linking to styles or scripts.
         /// </summary>
-        public List<HeadElement> HeadElements { get; set; } = [];
+        public List<ExtHeadElement> HeadElements { get; set; } = [];
     }
 }

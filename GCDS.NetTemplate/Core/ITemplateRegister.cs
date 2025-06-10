@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace GCDS.NetTemplate.Templates
+namespace GCDS.NetTemplate.Core
 {
     public interface ITemplateRegister
     {

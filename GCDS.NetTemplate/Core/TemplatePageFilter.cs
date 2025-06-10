@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Reflection;
 
-namespace GCDS.NetTemplate.Templates
+namespace GCDS.NetTemplate.Core
 {
     public class TemplatePageFilter(ITemplateRegister register) : IAsyncPageFilter
     {

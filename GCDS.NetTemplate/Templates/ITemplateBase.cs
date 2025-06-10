@@ -1,4 +1,4 @@
-﻿using GCDS.NetTemplate.Utils;
+﻿using GCDS.NetTemplate.Components;
 
 namespace GCDS.NetTemplate.Templates
 {
@@ -12,6 +12,6 @@ namespace GCDS.NetTemplate.Templates
 
         string PageTitle { get; set; }
 
-        List<HeadElement> HeadElements { get; set; }
+        List<ExtHeadElement> HeadElements { get; set; }
     }
 }

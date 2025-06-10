@@ -1,4 +1,4 @@
-﻿using GCDS.NetTemplate.Utils;
+﻿using GCDS.NetTemplate.Core;
 using System.Diagnostics.CodeAnalysis;
 
 namespace GCDS.NetTemplate.Components

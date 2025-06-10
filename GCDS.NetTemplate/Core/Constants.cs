@@ -1,4 +1,4 @@
-﻿namespace GCDS.NetTemplate.Utils
+﻿namespace GCDS.NetTemplate.Core
 {
     public static class Constants
     {
