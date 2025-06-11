@@ -1,0 +1,13 @@
+﻿@using GCDS.NetTemplate.Components
+
+@model ISlotHeaderMenu
+
+@switch(Model)
+{
+	case GcdsTopicMenu topicMenu:
+		@await Html.PartialAsync("GcdsTopicMenu.cshtml", topicMenu)
+		break;
+	case GcdsTopNav topNav:
+		@await Html.PartialAsync("GcdsTopNav.cshtml", topNav)
+		break;
+}

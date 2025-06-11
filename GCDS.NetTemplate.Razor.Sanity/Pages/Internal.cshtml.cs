@@ -1,15 +1,13 @@
-﻿using GCDS.NetTemplate.Templates.Custom;
-using GCDS.NetTemplate.Templates;
+﻿using GCDS.NetTemplate.Templates;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using GCDS.NetTemplate.Utils;
-using GCDS.NetTemplate.Components.Custom;
 using Microsoft.AspNetCore.Mvc;
-using GCDS.NetTemplate.Components.Gcds;
+using GCDS.NetTemplate.Components;
+using GCDS.NetTemplate.Core;
 
 namespace GCDS.NetTemplate.Razor.Sanity.Pages
 {
 
-    [TemplateType(typeof(InternalAppTemplate))]
+    [TemplateType(typeof(InternalApp))]
     public class InternalModel : PageModel
     {
         private readonly ILogger<InternalModel> _logger;
@@ -21,9 +19,9 @@ namespace GCDS.NetTemplate.Razor.Sanity.Pages
 
         public void OnGet()
         {
-            var template = ViewData.GetTemplate<InternalAppTemplate>();
-            template.Header = new InternalAppHeader(
-                new SiteTitle { 
+            var template = ViewData.GetTemplate<InternalApp>();
+            template.Header = new ExtAppHeader(
+                new ExtSiteTitle { 
                     Text = "My Application",
                     Href = Url.Page("Index")
                 }

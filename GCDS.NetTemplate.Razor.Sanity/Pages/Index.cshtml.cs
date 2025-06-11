@@ -1,4 +1,4 @@
-using GCDS.NetTemplate.Utils;
+using GCDS.NetTemplate.Core;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace GCDS.NetTemplate.Razor.Sanity.Pages
@@ -14,7 +14,7 @@ namespace GCDS.NetTemplate.Razor.Sanity.Pages
 
         public void OnGet()
         {
-            HttpContext.SetTemplateCulture(Constants.ENGLISH_CULTURE);
+            HttpContext.SetTemplateCulture(CommonConstants.ENGLISH_CULTURE);
         }
     }
 }

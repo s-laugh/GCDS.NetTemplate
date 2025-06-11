@@ -13,44 +13,45 @@ _Open to adapting to Blazor, see [Issue: Include other .NET project types to the
     builder.Services.AddRazorTemplateServices(); // for Razor projects
     ```
 
-3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, ex. `_Layout.XXX`, [_see bellow for changing the template_](#picking-your-template))
+3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, ex. `GCDS.NetTemplate/_Layout.{XXX}`, [_see bellow for changing the template_](#picking-your-template))
    Povided Layouts/Templates:
     - **Basic** template will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
-    - **InternalApp** is a custom template to build an internal application [_see bellow for template requirements_](#using-internalapptemplate)
-    - **Splash** is a custom template to build an generic splash page [_see bellow for template requirements_](#using-splashtemplate)
+    - **InternalApp** is a custom template to build an internal application [_see bellow for template requirements_](#using-internalapp-template)
+    - **Splash** is a custom template to build an generic splash page [_see bellow for template requirements_](#using-splash-template)
 
 ### Additional Features
 
 #### Translation
 
 Use the built-in Translation by adding additionall configurations to your `Program.cs`
+
 ```csharp
 builder.Services.ConfigureTemplateCulture();
-app.UseRequestLocalization();
+app.UseRequestLocalization(); // part of .NET
 ```
 ### Picking your template
 
-By default, the `BasicTemplate` will be loaded, and it will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS.
+By default, the **Basic** template will be loaded, and it will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS.
 
-_Note: Even if a template is loaded, you don't have to use it. It only gets used if your `_Layout.XXX` matches._
+_Note: Even if a template is loaded, you don't have to use it. It only gets used if your `GCDS.NetTemplate/_Layout.{XXX}` matches._
 
 <details>
   <summary>Change the default template</summary>
 
-  **Note: Be sure to use the corrisponding `_Layout.XXX` for the chosen template.**
+  **Note: Be sure to use the corrisponding `GCDS.NetTemplate/_Layout.{XXX}` for the chosen template.**
 
 Option 1. Set a default template type globally in the `Program.cs`.
 
 ```csharp
-builder.Services.AddMvcTemplateServices(typeof(InternalAppTemplate)) // for MVC projects
-builder.Services.AddRazorTemplateServices(typeof(InternalAppTemplate)) // for Razor projects
+builder.Services.AddMvcTemplateServices(typeof(InternalApp)) // for MVC projects
+builder.Services.AddRazorTemplateServices(typeof(InternalApp)) // for Razor projects
 ```
 
-Option 2. Use a different template for a contoller/page or action by applying a `TemplateType` attribute. This Will take precidence over other defaults.
+Option 2. Use a different template for a contoller, page or action by applying a `TemplateType` attribute. This Will take precidence over other defaults.
 
 ```csharp
-[TemplateType(typeof(InternalAppTemplate))]
-public IActionResult Index() / public class IndexModel : PageModel
+[TemplateType(typeof(InternalApp))]
+public IActionResult Index() // public class IndexModel : PageModel
 ```
 
 Option 3. (**MVC only**) Use the template on only some contollers by not registering the service globally in the `Program.cs` and adding a ServiceFilter to the controler that should use it.
@@ -72,7 +73,7 @@ In your page or controller, access the template to manipulate it to your needs.
 This is how you can edit the breadcrumbs, menu, footer links, or override features like the language toggle.
 
 ```csharp
-var template = ViewData.GetTemplate<InternalAppTemplate>();
+var template = ViewData.GetTemplate<InternalApp>();
 ```
 
 It's a good idea to set some basic properties specific to your useage, such as:
@@ -93,20 +94,20 @@ template.HeadElements.AddCustom("tag", new Dictionary<string, string> { { "tagAt
 
 _Note: `Head` and `Script` sections are also avaliable on all templates._
 
-#### Using `InternalAppTemplate`
+#### Using InternalApp Template
 
 This template will require you to manually create the `Header` as it requires you to set `SiteTitle` link text. The object initializer can be used or use the convient constructors.
 
 ```csharp
-template.Header = new InternalAppHeader("My Application");
+template.Header = new ExtAppHeader("My Application");
 // OR
-template.Header = new InternalAppHeader(new SiteTitle { Text = "Home", Href = "#" });
+template.Header = new ExtAppHeader(new ExtSiteTitle { Text = "Home", Href = "#" });
 // OR
-template.Header = new InternalAppHeader
+template.Header = new ExtAppHeader
 {
-    AppHeaderTop = new AppHeaderTop
+    AppHeaderTop = new ExtAppHeaderTop
     {
-        SiteTitle = new SiteTitle
+        SiteTitle = new ExtSiteTitle
         {
             Text = "My Application",
             Href = Url.Action("Index")
@@ -115,14 +116,14 @@ template.Header = new InternalAppHeader
 }
 ```
 
-_Reminder: Be sure to use the `_Layout.InternalApp` when using this template._
+_Reminder: Be sure to use the `GCDS.NetTemplate/_Layout.InternalApp` when using this template._
 
-#### Using `SplashTemplate`
+#### Using Splash Template
 
 This template will require you to manually create the `LanguageSelector`.
 
 ```csharp
-template.LanguageSelector = new LanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));
+template.LanguageSelector = new ExtLanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));
 ```
 
 By default, the splash page will load in either, english or french first depending on the current culture.
@@ -130,7 +131,7 @@ This could be nice if you want it to respond to the last language that was used 
 However if you need it to stick to one language, ensure to force the culture when loading the page.
 
 ```csharp
-HttpContext.SetTemplateCulture(Constants.ENGLISH_CULTURE);
+HttpContext.SetTemplateCulture(CommonConstants.ENGLISH_CULTURE);
 ```
 
 ### Override Settings
@@ -157,27 +158,27 @@ Provided partials & matching component classes: (linked to GCDS matching compone
 _Note: Most GCDS compontes can be used natively within the view so are not buit as a partial_
 
   - GCDS components
-    - [Breadcrumbs](https://design-system.alpha.canada.ca/en/components/breadcrumbs/)
-    - [DateModified](https://design-system.alpha.canada.ca/en/components/date-modified/)
-    - [Footer](https://design-system.alpha.canada.ca/en/components/footer/)
-    - [Header](https://design-system.alpha.canada.ca/en/components/header/)
-    - [Language Toogle (`LangToggle`)](https://design-system.alpha.canada.ca/en/components/language-toggle/)
-    - [Link](https://design-system.alpha.canada.ca/en/components/link/)
-    - _NavGroup_: A sub-component used in the `TopNav`
-    - [Search](https://design-system.alpha.canada.ca/en/components/search/)
-    - [Signature](https://design-system.alpha.canada.ca/en/components/signature/)
-    - [Theme and topic menu (`TopicMenu`)](https://design-system.alpha.canada.ca/en/components/theme-and-topic-menu/)
-    - [Top navigation (`TopNav`)](https://design-system.alpha.canada.ca/en/components/top-navigation/)
+    - [`GcdsBreadcrumbs`](https://design-system.alpha.canada.ca/en/components/breadcrumbs/)
+    - [`GcdsDateModified`](https://design-system.alpha.canada.ca/en/components/date-modified/)
+    - [`GcdsFooter`](https://design-system.alpha.canada.ca/en/components/footer/)
+    - [`GcdsHeader`](https://design-system.alpha.canada.ca/en/components/header/)
+    - [`GcdsLangToggle` (Language Toogle)](https://design-system.alpha.canada.ca/en/components/language-toggle/)
+    - [`GcdsLink`](https://design-system.alpha.canada.ca/en/components/link/)
+    - _GcdsNavGroup_: A sub-component used in the `GcdsTopNav`
+    - [`GcdsSearch`](https://design-system.alpha.canada.ca/en/components/search/)
+    - [`GcdsSignature`](https://design-system.alpha.canada.ca/en/components/signature/)
+    - [`GcdsTopicMenu` (Theme and topic menu)](https://design-system.alpha.canada.ca/en/components/theme-and-topic-menu/)
+    - [`GcdsTopNav` (Top navigation)](https://design-system.alpha.canada.ca/en/components/top-navigation/)
   - Custom components
-    - AppHeaderTop: A top section for the `InternalAppHeader` 
-    - LanguageSelector: A grid that has english and french links with titles for both, used in the `SplashTemplate`
-    - InternalAppHeader: Header for the `InternalAppTemplate`
-    - SiteTitle: Title (link) for the `AppHeaderTop`
-    - SkipTo: Custom hidden link to skip to a section, used in the `InternalAppTemplate`
+    - `ExtAppHeader`: Header for the `InternalApp` template
+    - `ExtAppHeaderTop`: A top section for the `ExtAppHeader` 
+    - `ExtHeadSettings`: Implements `TemplateSettings` for a `<head>` section
+    - `ExtLanguageSelector`: A grid that has english and french links with titles for both, used in the `Splash` template
+    - `ExtRandomBackground`: Will randomize a full screen background image base on a set of image paths, used in the `Splash` template
+    - `ExtSiteTitle`: Title (link) for the `ExtAppHeaderTop`
+    - `ExtSkipTo`: Custom hidden link to skip to a section, used in the `InternalApp` template
   - Other Partials
-    - Head: Implements `TemplateSettings` for a `<head>` section
-    - Menu: Helper to swap the `TopicMenu` or the `TopNav` for the `Header`
-    - RandomBackground: Will randomize a full screen background image base on a set of image paths, used in the `SplashTemplate`
+    - `SlotHeaderMenu`: Helper to swap the `TopicMenu` or the `TopNav` for the `Header`
 
 ## Developing / Contributing
 
