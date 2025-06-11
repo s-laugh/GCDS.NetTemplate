@@ -13,7 +13,7 @@ namespace GCDS.NetTemplate.Core
         /// <param name="global">optional pass false to register filter only on selected controlers, required true for razor</param>
         /// <returns>service collection enabling chaining functions</returns>
         public static IServiceCollection AddTemplateServices(
-            this IServiceCollection services, 
+            this IServiceCollection services,
             Type filter,
             Type? defaultTemplateType = null,
             bool global = true)
@@ -44,9 +44,8 @@ namespace GCDS.NetTemplate.Core
             this IServiceCollection services,
             Type? defaultTemplateType = null,
             bool global = true)
-        {
-            return services.AddTemplateServices(typeof(FilterHandler), defaultTemplateType, global);
-        }
+            => services.AddTemplateServices(typeof(TemplateActionFilter), defaultTemplateType, global);
+
         /// <summary>
         /// Add the TemplateAccessor and TemplatePageFilter to the DI container, and will register the filter globally
         /// </summary>
@@ -56,9 +55,7 @@ namespace GCDS.NetTemplate.Core
         public static IServiceCollection AddRazorTemplateServices(
             this IServiceCollection services,
             Type? defaultTemplateType = null)
-        {
-            return services.AddTemplateServices(typeof(TemplatePageFilter), defaultTemplateType);
-        }
+            => services.AddTemplateServices(typeof(TemplatePageFilter), defaultTemplateType);
 
         /// <summary>
         /// Configure the localization for enabling the templates default settings for language toggle

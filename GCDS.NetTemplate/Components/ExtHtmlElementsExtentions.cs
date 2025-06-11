@@ -1,6 +1,6 @@
 ﻿namespace GCDS.NetTemplate.Components
 {
-    public static class ExtHeadElementsExtentions
+    public static class ExtHtmlElementsExtentions
     {
         public static void AddScript(this List<ExtHeadElement> headElements, string src, bool async = false, bool defer = false)
         {
@@ -73,11 +73,6 @@
                 Attributes = attributes,
                 InnerHtml = innerHtml
             });
-        }
-
-        public static string Render(this List<ExtHeadElement> headElements)
-        {
-            return string.Join(Environment.NewLine, headElements.Select(he => he.Render()));
         }
     }
 }
