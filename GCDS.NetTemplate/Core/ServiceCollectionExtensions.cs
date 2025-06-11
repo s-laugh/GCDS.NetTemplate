@@ -44,9 +44,8 @@ namespace GCDS.NetTemplate.Core
             this IServiceCollection services,
             Type? defaultTemplateType = null,
             bool global = true)
-        {
-            return services.AddTemplateServices(typeof(FilterHandler), defaultTemplateType, global);
-        }
+            => services.AddTemplateServices(typeof(TemplateActionFilter), defaultTemplateType, global);
+        
         /// <summary>
         /// Add the TemplateAccessor and TemplatePageFilter to the DI container, and will register the filter globally
         /// </summary>
@@ -56,9 +55,7 @@ namespace GCDS.NetTemplate.Core
         public static IServiceCollection AddRazorTemplateServices(
             this IServiceCollection services,
             Type? defaultTemplateType = null)
-        {
-            return services.AddTemplateServices(typeof(TemplatePageFilter), defaultTemplateType);
-        }
+            => services.AddTemplateServices(typeof(TemplatePageFilter), defaultTemplateType);
 
         /// <summary>
         /// Configure the localization for enabling the templates default settings for language toggle
