@@ -12,7 +12,7 @@ namespace GCDS.NetTemplate.Templates
 
         string PageTitle { get; set; }
 
-        List<ExtHeadElement> HeadElements { get; set; }
+        List<ExtHtmlElement> HeadElements { get; set; }
     }
 
     public class TemplateBase(TemplateSettings settings)
@@ -43,6 +43,6 @@ namespace GCDS.NetTemplate.Templates
         /// Creates a list of HeadElements that will be added to the head of the page.
         /// Used for adding meta tags, linking to styles or scripts.
         /// </summary>
-        public List<ExtHeadElement> HeadElements { get; set; } = [];
+        public List<ExtHtmlElement> HeadElements { get; set; } = [];
     }
 }
