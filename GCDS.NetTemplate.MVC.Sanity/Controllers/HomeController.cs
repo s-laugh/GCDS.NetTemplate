@@ -41,15 +41,15 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                 Alignment = GcdsTopNav.AlignmentType.left,
                 Links =
                [
-                   new GcdsLink { Text = "Link 1", Href = "#" },
+                   new GcdsNavLink { Text = "Link 1", Href = "#" },
                     new GcdsNavGroup { Label = "Group 1",
                         Links =
                         [
-                            new GcdsLink { Text = "Link 1.1", Href = "#" },
-                            new GcdsLink { Text = "Link 1.2", Href = "#" }
+                            new GcdsNavLink { Text = "Link 1.1", Href = "#" },
+                            new GcdsNavLink { Text = "Link 1.2", Href = "#" }
                         ]
                     },
-                    new GcdsLink { Text = "Link 2", Href = "#" }
+                    new GcdsNavLink { Text = "Link 2", Href = "#" }
                ],
                 //StyleOverride = "background-color: #e1e4e7;"
             };
@@ -59,7 +59,8 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                 Items = [
                         new GcdsLink
                         {
-                            Text = "Home"
+                            Text = "Home",
+                            Href ="#"
                         }
                         ]
             };
@@ -92,15 +93,15 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                     Alignment = GcdsTopNav.AlignmentType.left,
                     Links =
                [
-                   new GcdsLink { Text = "Link 1", Href = "#" },
+                   new GcdsNavLink { Text = "Link 1", Href = "#" },
                     new GcdsNavGroup { Label = "Group 1",
                         Links =
                         [
-                            new GcdsLink { Text = "Link 1.1", Href = "#" },
-                            new GcdsLink { Text = "Link 1.2", Href = "#" }
+                            new GcdsNavLink { Text = "Link 1.1", Href = "#" },
+                            new GcdsNavLink { Text = "Link 1.2", Href = "#" }
                         ]
                     },
-                    new GcdsLink { Text = "Link 2", Href = "#" }
+                    new GcdsNavLink { Text = "Link 2", Href = "#" }
                ],
                     //StyleOverride = "background-color: #e1e4e7;"
                 },

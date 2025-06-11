@@ -4,7 +4,7 @@
     /// Class holder for the link properties as defined in the GCDS template
     /// https://design-system.alpha.canada.ca/en/components/link/
     /// </summary>
-    public class GcdsLink : CommonProps, ISlotHeaderNavLink
+    public class GcdsLink : CommonLinkBase
     {
         public enum DisplayType
         {
@@ -22,9 +22,6 @@
             @default,
             light,
         }
-
-        public string? Href { get; set; }
-        public required string Text { get; set; }
 
         public DisplayType Display { get; set; } = DisplayType.inline;
         public string? Download { get; set; }
