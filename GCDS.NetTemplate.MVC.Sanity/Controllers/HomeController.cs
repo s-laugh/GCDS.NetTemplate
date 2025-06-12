@@ -73,11 +73,9 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         {
             var template = ViewData.GetTemplate<InternalApp>();
 
-            template.Inizialize("My Application Title", "Internal Page Name");
+            template.Inizialize("My Application Title");
             // OR
-            template.Inizialize(
-                new ExtSiteTitle { Text = "Home", Href = "#" }, 
-                "Internal Page Name")
+            template.Inizialize(new ExtSiteTitle { Text = "Home", Href = "#" })
                 .HeadElements.AddMeta("name", "content");
             // OR
             template.Header = new ExtAppHeader

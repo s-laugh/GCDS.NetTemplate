@@ -33,18 +33,17 @@ namespace GCDS.NetTemplate.Templates
         public override void SetLanguageToggleHref(string href)
             => LangToggleHref = href ?? throw new ArgumentNullException(nameof(href));
 
-        public InternalApp Inizialize(string siteTitle, string pageTitle)
+        public InternalApp Inizialize(string siteTitle)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(siteTitle);
             return Inizialize(new ExtSiteTitle
             {
                 Text = siteTitle
-            }, pageTitle);
+            });
         }
-        public InternalApp Inizialize(ExtSiteTitle siteTitle, string pageTitle)
+        public InternalApp Inizialize(ExtSiteTitle siteTitle)
         {
             ArgumentNullException.ThrowIfNull(siteTitle);
-            PageTitle = pageTitle;
             Header = new ExtAppHeader {
                 AppHeaderTop = new ExtAppHeaderTop
                 {
