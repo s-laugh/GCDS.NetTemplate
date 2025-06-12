@@ -174,6 +174,7 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - `ExtAppHeader`: Header for the `InternalApp` template
     - `ExtAppHeaderTop`: A top section for the `ExtAppHeader` 
     - `ExtHeadSettings`: Implements `TemplateSettings` for a `<head>` section
+    - `ExtHtmlElement`: Enables the rendering of a fully customized html element, used for `HeadElements` (meta tags)
     - `ExtLanguageSelector`: A grid that has english and french links with titles for both, used in the `Splash` template
     - `ExtRandomBackground`: Will randomize a full screen background image base on a set of image paths, used in the `Splash` template
     - `ExtSiteTitle`: Title (link) for the `ExtAppHeaderTop`

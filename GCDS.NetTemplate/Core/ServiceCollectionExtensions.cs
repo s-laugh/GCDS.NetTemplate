@@ -13,7 +13,7 @@ namespace GCDS.NetTemplate.Core
         /// <param name="global">optional pass false to register filter only on selected controlers, required true for razor</param>
         /// <returns>service collection enabling chaining functions</returns>
         public static IServiceCollection AddTemplateServices(
-            this IServiceCollection services, 
+            this IServiceCollection services,
             Type filter,
             Type? defaultTemplateType = null,
             bool global = true)
@@ -45,7 +45,7 @@ namespace GCDS.NetTemplate.Core
             Type? defaultTemplateType = null,
             bool global = true)
             => services.AddTemplateServices(typeof(TemplateActionFilter), defaultTemplateType, global);
-        
+
         /// <summary>
         /// Add the TemplateAccessor and TemplatePageFilter to the DI container, and will register the filter globally
         /// </summary>

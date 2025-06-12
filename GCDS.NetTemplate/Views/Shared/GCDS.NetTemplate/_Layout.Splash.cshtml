@@ -18,8 +18,10 @@
 	<title>@template.PageTitle</title>
 
 	@await Html.PartialAsync("ExtHeadSettings.cshtml", template.Settings)
-
-	@Html.Raw(template.HeadElements.Render())
+	@foreach (var headElement in template.HeadElements)
+	{
+		@await Html.PartialAsync("ExtHtmlElement.cshtml", headElement)
+	}
 	@await RenderSectionAsync("Head", required: false)
 
 	<style>

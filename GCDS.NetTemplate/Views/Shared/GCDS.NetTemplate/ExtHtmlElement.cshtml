@@ -1,0 +1,17 @@
+﻿@using GCDS.NetTemplate.Components
+
+@model ExtHtmlElement
+
+@{
+	var attrs = string.Join(" ", Model.Attributes.Select(kv => $"{kv.Key}=\"{kv.Value}\""));
+}
+
+@if (Model.InnerHtml == null)
+{
+	@Html.Raw($"<{Model.TagName} {attrs} />")
+}
+else
+{
+	@Html.Raw($"<{Model.TagName} {attrs}>{Model.InnerHtml}</{Model.TagName}>")
+}
+
