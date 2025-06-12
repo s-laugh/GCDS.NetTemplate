@@ -164,7 +164,8 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - [`GcdsHeader`](https://design-system.alpha.canada.ca/en/components/header/)
     - [`GcdsLangToggle` (Language Toogle)](https://design-system.alpha.canada.ca/en/components/language-toggle/)
     - [`GcdsLink`](https://design-system.alpha.canada.ca/en/components/link/)
-    - _GcdsNavGroup_: A sub-component used in the `GcdsTopNav`
+    - [`GcdsNavGroup`](https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-nav-group): A sub-component used in the `GcdsTopNav`
+    - [`GcdsNavLink`](https://github.com/cds-snc/gcds-components/tree/main/packages/web/src/components/gcds-nav-link): A sub-component used in `GcdsTopNav` and `GcdsNavGroup`
     - [`GcdsSearch`](https://design-system.alpha.canada.ca/en/components/search/)
     - [`GcdsSignature`](https://design-system.alpha.canada.ca/en/components/signature/)
     - [`GcdsTopicMenu` (Theme and topic menu)](https://design-system.alpha.canada.ca/en/components/theme-and-topic-menu/)

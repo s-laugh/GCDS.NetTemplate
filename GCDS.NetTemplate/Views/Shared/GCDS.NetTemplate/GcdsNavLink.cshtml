@@ -1,7 +1,7 @@
-﻿@using GCDS.NetTemplate.Components
+﻿@model GCDS.NetTemplate.Components.GcdsNavLink
 
-@model GcdsLink
-
-<gcds-nav-link href="@Model.Href" slot="@Model.Slot">
+<gcds-nav-link href="@Model.Href"
+			   slot="@Model.Slot"
+			   current="@Model.Current">
 	@Model.Text
 </gcds-nav-link>

@@ -26,7 +26,7 @@
         /// <summary>
         /// Customize the content for the home link.
         /// </summary>
-        public GcdsLink? Home { get; set; }
+        public GcdsNavLink? Home { get; set; }
 
         /// <summary>
         /// Links or NavGroups (dropdown of links) to be displayed in the TopNav

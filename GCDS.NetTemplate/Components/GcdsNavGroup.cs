@@ -6,13 +6,34 @@
     public class GcdsNavGroup : ISlotHeaderNavLink
     {
         /// <summary>
-        /// This is the header, clickable text for the group to open
+        /// Label for the nav group menu
         /// </summary>
         public required string Label { get; set; }
+
+        private string? openTrigger;
+        /// <summary>
+        /// Label for the collapsed button trigger.
+        /// Defaults to Label
+        /// </summary>
+        public string OpenTrigger
+        {
+            get => openTrigger ?? Label;
+            set { openTrigger = value; }
+        }
+
+        /// <summary>
+        /// Label for the expanded button trigger
+        /// </summary>
+        public string? CloseTrigger { get; set; }
+
+        /// <summary>
+        /// Has the nav group been expanded
+        /// </summary>
+        public bool Open { get; set; }
 
         /// <summary>
         /// links that will be shown under the header
         /// </summary>
-        public required IEnumerable<GcdsLink> Links { get; set; }
+        public required IEnumerable<GcdsNavLink> Links { get; set; }
     }
 }

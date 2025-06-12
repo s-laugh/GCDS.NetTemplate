@@ -1,0 +1,11 @@
+﻿@model GCDS.NetTemplate.Components.GcdsNavGroup
+
+<gcds-nav-group menu-label="@Model.Label"
+				open-trigger="@Model.OpenTrigger"
+				close-trigger="@Model.CloseTrigger"
+				open="@Model.Open">
+	@foreach (var subItem in Model.Links)
+	{
+		@await Html.PartialAsync("GcdsNavLink.cshtml", subItem)
+	}
+</gcds-nav-group>

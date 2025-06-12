@@ -3,14 +3,15 @@
 @model GcdsTopNav
 
 <gcds-top-nav slot="@Model.Slot"
-label="@Model.Label"
-alignment="@Model.Alignment"
-lang="@Model.Lang"
-style="@Model.StyleOverride">
+			  label="@Model.Label"
+			  alignment="@Model.Alignment"
+			  lang="@Model.Lang"
+			  style="@Model.StyleOverride">
 
 	@if (Model.Home != null)
 	{
 		Model.Home.Slot = "home";
+		<!--Home Slot-->
 		@await Html.PartialAsync("GcdsNavLink.cshtml", Model.Home)
 	}
 
@@ -18,16 +19,13 @@ style="@Model.StyleOverride">
 	{
 		switch (item)
 		{
-			case GcdsLink link:
+			case GcdsNavLink link:
+				<!--link-->
 				@await Html.PartialAsync("GcdsNavLink.cshtml", link)
 				break;
 			case GcdsNavGroup group:
-				<gcds-nav-group open-trigger="@group.Label" menu-label="@group.Label">
-					@foreach (var subItem in ((GcdsNavGroup)item).Links)
-					{
-						@await Html.PartialAsync("GcdsNavLink.cshtml", subItem)
-					}
-				</gcds-nav-group>
+				<!--group-->
+				@await Html.PartialAsync("GcdsNavGroup.cshtml", group)
 				break;
 		}
 	}
