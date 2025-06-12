@@ -4,31 +4,22 @@
 
 @{
 	Basic? template = ViewData.GetTemplate<Basic>();
-	ArgumentNullException.ThrowIfNull(template, 
-		"Must call Add[Mvc]TemplateServices in Program,cs, and verify the BasicTemplate (Default) is loaded to the ViewData to use this layout.");
-	Layout = "_Layout.Base.cshtml"; // Use the base layout for this template"
+	ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
+	Layout = "_Layout.Base.cshtml"; // Use the base layout for this template
 }
 
-@section Header {
+@section LayoutBody {
 	<header>
-		@{
-			template.Header.LangHref = template.LanguageToggleHref;
-			template.Header.SkipToHref = "#" + CommonConstants.SKIP_TO_CONTENT_ID;
-		}
 		@await Html.PartialAsync("GcdsHeader.cshtml", template.Header)
 	</header>
-}
-	
-@section MainContent {
-	<gcds-container size="xl" centered mmmonCoain-container>
+
+	<gcds-container size="xl" centered main-container>
 		<main id="@CommonConstants.SKIP_TO_CONTENT_ID" role="main">
 			@RenderBody()
 		</main>
 
 		@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
 	</gcds-container>
-}
 
-@section Footer {
 	@await Html.PartialAsync("GcdsFooter.cshtml", template.Footer)
 }

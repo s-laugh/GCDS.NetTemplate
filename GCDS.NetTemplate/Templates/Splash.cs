@@ -47,5 +47,8 @@ namespace GCDS.NetTemplate.Templates
         {
             Type = GcdsSignature.SignatureType.wordmark
         };
+
+        // Do nothing, this layout doesn't use a toggle
+        public override void SetLanguageToggleHref(string href) { }
     }
 }

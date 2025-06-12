@@ -20,11 +20,12 @@ namespace GCDS.NetTemplate.Razor.Sanity.Pages
         public void OnGet()
         {
             var template = ViewData.GetTemplate<InternalApp>();
-            template.Header = new ExtAppHeader(
+            template.Inizialize(
                 new ExtSiteTitle { 
                     Text = "My Application",
                     Href = Url.Page("Index")
-                }
+                },
+                "Internal Page Name"
             );
         }
     }

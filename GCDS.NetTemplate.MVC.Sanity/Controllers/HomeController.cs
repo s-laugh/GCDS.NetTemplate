@@ -73,13 +73,18 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         {
             var template = ViewData.GetTemplate<InternalApp>();
 
-            template.Header = new ExtAppHeader("My Application");
-            template.Header = new ExtAppHeader(new ExtSiteTitle { Text = "Home", Href = "#" });
+            template.Inizialize("My Application Title", "Internal Page Name");
+            // OR
+            template.Inizialize(
+                new ExtSiteTitle { Text = "Home", Href = "#" }, 
+                "Internal Page Name")
+                .HeadElements.AddMeta("name", "content");
             // OR
             template.Header = new ExtAppHeader
             {
                 AppHeaderTop = new ExtAppHeaderTop
                 {
+                    LanguageToggle = new GcdsLangToggle { Href = template.LangToggleHref },
                     SiteTitle = new ExtSiteTitle
                     {
                         Text = "My Very Long Application Title That fills the whole header",

@@ -1,9 +1,9 @@
 ﻿@using GCDS.NetTemplate.Templates
+@using GCDS.NetTemplate.Core
 
 @{
-    var template = ViewData.GetITemplate();
-	ArgumentNullException.ThrowIfNull(template, 
-        "Must call Add[Mvc]TemplateServices in Program.cs, and verify the template is loaded to the ViewData to use this layout.");
+    var template = ViewData.GetTemplateBase();
+	ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
 }
 
 <!DOCTYPE html>
@@ -17,12 +17,11 @@
     {
         @await Html.PartialAsync("ExtHtmlElement.cshtml", headElement)
     }
-    @await RenderSectionAsync("Head", required: false)
+	@await RenderSectionAsync("LayoutHead", required: false)
+    @await RenderSectionAsync("PageHead", required: false)
 </head>
 <body>
-    @RenderSection("Header", required: false)
-    @RenderSection("MainContent", required: true)
-    @RenderSection("Footer", required: false)
-    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("LayoutBody", required: true)
+    @await RenderSectionAsync("PageScripts", required: false)
 </body>
 </html>

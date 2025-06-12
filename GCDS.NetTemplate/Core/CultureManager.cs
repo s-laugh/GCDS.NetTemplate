@@ -18,7 +18,7 @@ namespace GCDS.NetTemplate.Core
 
         public static string BuildLanguageToggleHref(NameValueCollection nameValues)
         {
-            if (nameValues == null) throw new ArgumentNullException(nameof(nameValues));
+            ArgumentNullException.ThrowIfNull(nameValues);
 
             nameValues.Set(CommonConstants.QUERYSTRING_CULTURE_KEY,
                 Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.StartsWith(CommonConstants.ENGLISH_CULTURE_TWO_LETTER,

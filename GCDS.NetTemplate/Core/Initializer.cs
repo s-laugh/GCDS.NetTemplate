@@ -36,8 +36,8 @@ namespace GCDS.NetTemplate.Core
             var template = Activator.CreateInstance(templateType, _settings) as ITemplateBase 
                 ?? throw new InvalidOperationException($"Cannot create instance of {templateType}");
 
-            template.LanguageToggleHref = CultureManager.BuildLanguageToggleHref(
-                HttpUtility.ParseQueryString(context.Request.QueryString.ToString()));
+            template.SetLanguageToggleHref(CultureManager.BuildLanguageToggleHref(
+                HttpUtility.ParseQueryString(context.Request.QueryString.ToString())));
 
             viewData[CommonConstants.TEMPLATE_DATA] = template;
         }

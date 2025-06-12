@@ -1,30 +1,9 @@
 ﻿using GCDS.NetTemplate.Core;
-using System.Diagnostics.CodeAnalysis;
 
 namespace GCDS.NetTemplate.Components
 {
     public class ExtAppHeader
     {
-        public ExtAppHeader() { }
-
-        [SetsRequiredMembers]
-        public ExtAppHeader(string siteTitleText)
-        {
-            AppHeaderTop = new ExtAppHeaderTop
-            {
-                SiteTitle = new ExtSiteTitle
-                {
-                    Text = siteTitleText
-                }
-            };
-        }
-
-        [SetsRequiredMembers]
-        public ExtAppHeader(ExtSiteTitle siteTitle)
-        {
-            AppHeaderTop = new ExtAppHeaderTop { SiteTitle = siteTitle };
-        }
-
         /// <summary>
         /// Provides information for the skip to content link
         /// Automatically set for the current language

@@ -1,4 +1,5 @@
 ﻿using GCDS.NetTemplate.Components;
+using GCDS.NetTemplate.Core;
 using System.Reflection;
 
 namespace GCDS.NetTemplate.Templates
@@ -10,6 +11,7 @@ namespace GCDS.NetTemplate.Templates
         /// </summary>
         public GcdsHeader Header { get; } = new GcdsHeader()
         {
+            SkipToHref = $"#{CommonConstants.SKIP_TO_CONTENT_ID}",
             Search = new GcdsSearch(),
             Breadcrumb = new GcdsBreadcrumbs()
         };
@@ -31,5 +33,9 @@ namespace GCDS.NetTemplate.Templates
             // get the date changed of the project that started (impemented this package)
             Text = File.GetLastWriteTime(Assembly.GetEntryAssembly()?.Location ?? string.Empty).ToString("MMMM dd, yyyy")
         };
+
+        public override void SetLanguageToggleHref(string href)
+            => Header.LangHref = href ?? throw new ArgumentNullException(nameof(href));
+        
     };
 }
