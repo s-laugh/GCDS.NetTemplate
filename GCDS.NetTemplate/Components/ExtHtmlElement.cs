@@ -1,6 +1,6 @@
 ﻿namespace GCDS.NetTemplate.Components
 {
-    public class ExtHeadElement
+    public class ExtHtmlElement
     {
         public required string TagName { get; set; } // e.g., "script", "link", "style"
         public Dictionary<string, string> Attributes { get; set; } = [];
