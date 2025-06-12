@@ -24,8 +24,7 @@ namespace GCDS.NetTemplate.Razor.Sanity.Pages
                 new ExtSiteTitle { 
                     Text = "My Application",
                     Href = Url.Page("Index")
-                },
-                "Internal Page Name"
+                }
             );
         }
     }

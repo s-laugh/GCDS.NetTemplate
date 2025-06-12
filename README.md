@@ -115,7 +115,7 @@ template.Header = new ExtAppHeader
         LanguageToggle = new GcdsLangToggle { Href = template.LangToggleHref },
         SiteTitle = new ExtSiteTitle
         {
-            Text = "My Very Long Application Title That fills the whole header",
+            Text = "My Application",
             Href = Url.Action("Index")
         },
     }
