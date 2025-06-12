@@ -1,0 +1,28 @@
+﻿@using GCDS.NetTemplate.Templates
+
+@{
+    var template = ViewData.GetITemplate();
+	ArgumentNullException.ThrowIfNull(template, 
+        "Must call Add[Mvc]TemplateServices in Program.cs, and verify the template is loaded to the ViewData to use this layout.");
+}
+
+<!DOCTYPE html>
+<html lang="@template.Lang">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@template.PageTitle</title>
+    @await Html.PartialAsync("ExtHeadSettings.cshtml", template.Settings)
+    @foreach (var headElement in template.HeadElements)
+    {
+        @await Html.PartialAsync("ExtHtmlElement.cshtml", headElement)
+    }
+    @await RenderSectionAsync("Head", required: false)
+</head>
+<body>
+    @RenderSection("Header", required: false)
+    @RenderSection("MainContent", required: true)
+    @RenderSection("Footer", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
