@@ -1,0 +1,27 @@
+﻿@using GCDS.NetTemplate.Templates
+@using GCDS.NetTemplate.Core
+
+@{
+    var template = ViewData.GetTemplateBase();
+	ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
+}
+
+<!DOCTYPE html>
+<html lang="@template.Lang">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@template.PageTitle</title>
+    @await Html.PartialAsync("ExtHeadSettings.cshtml", template.Settings)
+    @foreach (var headElement in template.HeadElements)
+    {
+        @await Html.PartialAsync("ExtHtmlElement.cshtml", headElement)
+    }
+	@await RenderSectionAsync("LayoutHead", required: false)
+    @await RenderSectionAsync("PageHead", required: false)
+</head>
+<body>
+    @await RenderSectionAsync("LayoutBody", required: true)
+    @await RenderSectionAsync("PageScripts", required: false)
+</body>
+</html>

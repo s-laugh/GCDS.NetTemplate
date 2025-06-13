@@ -9,7 +9,7 @@ namespace GCDS.NetTemplate.Templates
         /// <summary>
         /// Loading all the configurations for the header component
         /// </summary>
-        public required ExtAppHeader Header { get; set; }
+        public ExtAppHeader? Header { get; set; }
 
         /// <summary>
         /// Loading all the configurations for the footer component
@@ -23,10 +23,35 @@ namespace GCDS.NetTemplate.Templates
         public GcdsDateModified DateModified { get; set; } = new GcdsDateModified()
         {
             // get the version number of the project that started (impemented this package) and trim any trailing zeros from the version
-            Text = string.Join(".", 
+            Text = string.Join(".",
                 (FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly()?.Location ?? string.Empty).FileVersion ?? string.Empty)
                 .Split('.').Reverse().SkipWhile(s => s == "0").Reverse()),
             Type = GcdsDateModified.DateModifiedType.version
         };
+
+        public string LangToggleHref { get; set; } = "";
+        public override void SetLanguageToggleHref(string href)
+            => LangToggleHref = href ?? throw new ArgumentNullException(nameof(href));
+
+        public InternalApp Inizialize(string siteTitle)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(siteTitle);
+            return Inizialize(new ExtSiteTitle
+            {
+                Text = siteTitle
+            });
+        }
+        public InternalApp Inizialize(ExtSiteTitle siteTitle)
+        {
+            ArgumentNullException.ThrowIfNull(siteTitle);
+            Header = new ExtAppHeader {
+                AppHeaderTop = new ExtAppHeaderTop
+                {
+                    LanguageToggle = new GcdsLangToggle { Href = LangToggleHref },
+                    SiteTitle = siteTitle
+                }
+            };
+            return this;
+        }        
     }
 }

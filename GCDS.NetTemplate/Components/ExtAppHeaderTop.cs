@@ -6,7 +6,7 @@
         /// Language toogle link
         /// Will be set inside the layout from the Template
         /// </summary>
-        public GcdsLangToggle LanguageToggle { get; set; } = new GcdsLangToggle() { Href = string.Empty };
+        public required GcdsLangToggle LanguageToggle { get; set; }
 
         /// <summary>
         /// Sets the title of the site (or application)

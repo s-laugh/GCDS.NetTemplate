@@ -96,22 +96,28 @@ _Note: `Head` and `Script` sections are also avaliable on all templates._
 
 #### Using InternalApp Template
 
-This template will require you to manually create the `Header` as it requires you to set `SiteTitle` link text. The object initializer can be used or use the convient constructors.
+It's recommended to use the `Inizialize` function on this template to set the required properties. This function is chainable to access other properties.
 
 ```csharp
-template.Header = new ExtAppHeader("My Application");
+template.Inizialize("My Application Title");
 // OR
-template.Header = new ExtAppHeader(new ExtSiteTitle { Text = "Home", Href = "#" });
-// OR
+template.Inizialize(new ExtSiteTitle { Text = "Home", Href = "#" })
+    .HeadElements.AddMeta("name", "content");
+```
+
+You can still self initialize the required props. When doing so you can access the `LangToggleHref` built by the template instaed of creating that yourself.
+
+```csharp
 template.Header = new ExtAppHeader
 {
     AppHeaderTop = new ExtAppHeaderTop
     {
+        LanguageToggle = new GcdsLangToggle { Href = template.LangToggleHref },
         SiteTitle = new ExtSiteTitle
         {
             Text = "My Application",
             Href = Url.Action("Index")
-        }
+        },
     }
 }
 ```

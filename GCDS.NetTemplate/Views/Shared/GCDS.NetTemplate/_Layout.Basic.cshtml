@@ -4,33 +4,16 @@
 
 @{
 	Basic? template = ViewData.GetTemplate<Basic>();
-	ArgumentNullException.ThrowIfNull(template, "Must call Add[Mvc]TemplateServices in Program,cs, and verify the BasicTemplate (Default) is loaded to the ViewData to use this layout.");
+	ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
+	Layout = "_Layout.Base.cshtml"; // Use the base layout for this template
 }
 
-<!DOCTYPE html>
-<html lang="@template.Lang">
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>@template.PageTitle</title>
-
-	@await Html.PartialAsync("ExtHeadSettings.cshtml", template.Settings)
-	@foreach (var headElement in template.HeadElements)
-	{
-		@await Html.PartialAsync("ExtHtmlElement.cshtml", headElement)
-	}
-	@await RenderSectionAsync("Head", required: false)
-</head>
-<body>
+@section LayoutBody {
 	<header>
-		@{
-			template.Header.LangHref = template.LanguageToggleHref;
-			template.Header.SkipToHref = "#" + CommonConstants.SKIP_TO_CONTENT_ID;
-		}
 		@await Html.PartialAsync("GcdsHeader.cshtml", template.Header)
 	</header>
 
-	<gcds-container size="xl" centered mmmonCoain-container>
+	<gcds-container size="xl" centered main-container>
 		<main id="@CommonConstants.SKIP_TO_CONTENT_ID" role="main">
 			@RenderBody()
 		</main>
@@ -39,7 +22,4 @@
 	</gcds-container>
 
 	@await Html.PartialAsync("GcdsFooter.cshtml", template.Footer)
-
-	@await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+}

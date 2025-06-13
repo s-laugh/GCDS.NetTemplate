@@ -15,5 +15,7 @@
         public const string SKIP_TO_AIRIA_LABEL_FR = "Passer au";
         public const string SKIP_TO_TEXT_EN = "Skip to main content";
         public const string SKIP_TO_TEXT_FR = "Passer au contenu principal";
+
+        public const string ERRMSG_LOAD_TEMPLATE = "Must call Add[Mvc/Razor]TemplateServices in Program.cs, and verify the template is loaded to the ViewData to use this layout.";
     }
 }

@@ -5,25 +5,11 @@
 
 @{
 	Splash? template = ViewData.GetTemplate<Splash>();
-	ArgumentNullException.ThrowIfNull(template, "Must call Add[Mvc]TemplateServices in Program,cs, and verify the SplashTemplate is loaded to the ViewData to use this layout.");
+	ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
+	Layout = "_Layout.Base.cshtml"; // Use the base layout for this template
 }
 
-<!DOCTYPE html>
-<html lang="@template.Lang">
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport"
-		  content="width=device-width, initial-scale=1.0" />
-
-	<title>@template.PageTitle</title>
-
-	@await Html.PartialAsync("ExtHeadSettings.cshtml", template.Settings)
-	@foreach (var headElement in template.HeadElements)
-	{
-		@await Html.PartialAsync("ExtHtmlElement.cshtml", headElement)
-	}
-	@await RenderSectionAsync("Head", required: false)
-
+@section LayoutHead {
 	<style>
 		#splash-window-top {
 			padding: 1rem 2.5rem 3rem;
@@ -76,10 +62,9 @@
 			font: var(--gcds-font-h6);
 		}
 	</style>
-</head>
+}
 
-<body>
-
+@section LayoutBody {
 	@await Html.PartialAsync("ExtRandomBackground.cshtml", template.SplashImages)
 
 	<main>
@@ -89,7 +74,8 @@
 				@await Html.PartialAsync("GcdsSignature.cshtml", template.TopSignature)
 
 				@{
-					ArgumentNullException.ThrowIfNull(template.LanguageSelector, "LanguageSelector must be set when using this template.");
+					ArgumentNullException.ThrowIfNull(template.LanguageSelector, 
+						"LanguageSelector must be set when using this template.");
 				}
 				@await Html.PartialAsync("ExtLanguageSelector.cshtml", template.LanguageSelector)
 			</div>
@@ -100,7 +86,7 @@
 							var enTerms = new HtmlString($@"<li><a href='{template.TermsEn.Href}' lang='en'>{template.TermsEn.Text}</a></li>");
 							var frTerms = new HtmlString($@"<li><a href='{template.TermsFr.Href}' lang='fr'>{template.TermsFr.Text}</a></li>");
 						}
-mmonCo
+
 						@if (template.Lang == CommonConstants.ENGLISH_CULTURE_TWO_LETTER)
 						{
 							@enTerms
@@ -117,8 +103,4 @@ mmonCo
 		</gcds-container>
 		@RenderBody()
 	</main>
-	
-	@await RenderSectionAsync("Scripts", required: false)
-</body>
-
-</html>
+}
