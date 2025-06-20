@@ -9,11 +9,16 @@ namespace GCDS.NetTemplate.Core
         void InitializeTemplate(ViewDataDictionary viewData, HttpContext context, IEnumerable<TemplateTypeAttribute>? templateAttr);
     }
 
-    public class Initializer(IConfiguration configuration) : IInitializer
+    public class Initializer : IInitializer
     {
         // Load template settings from appsettings.json, or set to defaults
-        private readonly TemplateSettings _settings = configuration.GetSection("TemplateSettings").Get<TemplateSettings>() 
-            ?? new TemplateSettings();
+        private readonly TemplateSettings _settings;
+
+        public Initializer(IConfiguration configuration)
+        {
+            _settings = new TemplateSettings();
+            configuration.GetSection("TemplateSettings").Bind(_settings);
+        }
 
         /// <summary>
         /// Set a global default template type
