@@ -1,8 +1,8 @@
-name: Build and test
+name: Build and Test
 
 on:
   push:
-    # branches: [ "main" ]
+    branches: [ "main" ]
   pull_request:
 
 permissions:
@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   build_test:
+    name: Build and Test
 
     runs-on: ubuntu-latest
 
@@ -27,5 +28,5 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
 
-    - name: test
+    - name: Test
       run: dotnet test --no-build
