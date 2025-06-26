@@ -11,7 +11,7 @@
     <Title>.NET wrapper for the GC Design System</Title>
     <Description>This provides a template but also a wrapper to naitively leverage the GC Design System that is distributed over a CDN</Description>
     <Copyright>Copyright (c) Government of Canada - Gouvernement du Canada 2025</Copyright>
-    <PackageIcon>facicon.ico</PackageIcon>
+    <PackageIcon>favicon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
     <!-- Repository reference -->
@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\images\facicon.ico" Pack="true" PackagePath="" />
+    <None Include="wwwroot\images\favicon.png" Pack="true" PackagePath="" />
     <None Update="..\README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
