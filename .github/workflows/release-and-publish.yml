@@ -26,8 +26,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
 
-      - name: Confirm favicon.png relative to .csproj
-        run: ls -l ./GCDS.NetTemplate/wwwroot/images
+      - name: Tree of project directory
+        run: |
+          sudo apt-get install tree
+          tree ./GCDS.NetTemplate
 
       # Build and pack package
       - name: Build & Pack
