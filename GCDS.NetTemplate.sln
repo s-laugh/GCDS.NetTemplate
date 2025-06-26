@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCDS.NetTemplate.MVC.Sanity
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCDS.NetTemplate.Razor.Sanity", "GCDS.NetTemplate.Razor.Sanity\GCDS.NetTemplate.Razor.Sanity.csproj", "{0B317DD4-05C1-40BB-A06B-36E6E9122B65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCDS.NetTemplate.Test", "GCDS.NetTemplate.Test\GCDS.NetTemplate.Test.csproj", "{ED398067-86EF-4E2A-BDBC-0F14935EDCA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0B317DD4-05C1-40BB-A06B-36E6E9122B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B317DD4-05C1-40BB-A06B-36E6E9122B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B317DD4-05C1-40BB-A06B-36E6E9122B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED398067-86EF-4E2A-BDBC-0F14935EDCA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED398067-86EF-4E2A-BDBC-0F14935EDCA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED398067-86EF-4E2A-BDBC-0F14935EDCA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED398067-86EF-4E2A-BDBC-0F14935EDCA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
