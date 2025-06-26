@@ -28,8 +28,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot/images/favicon.png" Pack="true" PackagePath="" />
-    <None Include="../README.md" Pack="true" PackagePath="" />
+    <None Include="GCDS.NetTemplate/wwwroot/images/favicon.png" Pack="true" PackagePath="" />
+    <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>
