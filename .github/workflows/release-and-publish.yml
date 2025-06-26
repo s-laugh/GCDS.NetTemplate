@@ -26,12 +26,8 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
 
-      - name: Check for favicon.png
-        run: |
-          echo "Listing ./GCDS.NetTemplate/wwwroot/images:"
-          ls -l ./GCDS.NetTemplate/wwwroot/images
-          echo "Checking for favicon.png:"
-          test -f ./GCDS.NetTemplate/wwwroot/images/favicon.png && echo "Found favicon.png" || echo "Missing favicon.png"
+      - name: Confirm favicon.png relative to .csproj
+        run: ls -l ./GCDS.NetTemplate/wwwroot/images
 
       # Build and pack package
       - name: Build & Pack
