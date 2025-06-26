@@ -26,6 +26,13 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
 
+      - name: Check for favicon.png
+        run: |
+          echo "Listing wwwroot/images:"
+          ls -l wwwroot/images
+          echo "Checking for favicon.png:"
+          test -f wwwroot/images/favicon.png && echo "Found favicon.png" || echo "Missing favicon.png"
+
       # Build and pack package
       - name: Pack
         shell: pwsh
