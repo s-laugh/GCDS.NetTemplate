@@ -34,7 +34,7 @@ namespace GCDS.NetTemplate.Core
                 buff.Append(seperator);
                 buff.Append(Uri.EscapeDataString(key));
                 buff.Append('=');
-                buff.Append(Uri.EscapeDataString(nameValues[key]));
+                buff.Append(Uri.EscapeDataString(nameValues[key] ?? string.Empty));
                 seperator = '&';
             }
 
