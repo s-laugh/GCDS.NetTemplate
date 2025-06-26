@@ -28,10 +28,10 @@ jobs:
 
       - name: Check for favicon.png
         run: |
-          echo "Listing wwwroot/images:"
-          ls -l wwwroot/images
+          echo "Listing ./GCDS.NetTemplate/wwwroot/images:"
+          ls -l ./GCDS.NetTemplate/wwwroot/images
           echo "Checking for favicon.png:"
-          test -f wwwroot/images/favicon.png && echo "Found favicon.png" || echo "Missing favicon.png"
+          test -f ./GCDS.NetTemplate/wwwroot/images/favicon.png && echo "Found favicon.png" || echo "Missing favicon.png"
 
       # Build and pack package
       - name: Pack
