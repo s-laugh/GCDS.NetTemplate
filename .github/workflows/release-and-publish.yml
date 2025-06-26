@@ -26,18 +26,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
 
-      - name: Tree of project directory
-        run: |
-          sudo apt-get install tree
-          tree ./GCDS.NetTemplate
-          
-      - name: Print .csproj file
-        run: cat ./GCDS.NetTemplate/GCDS.NetTemplate.csproj
-
       # Build and pack package
       - name: Build & Pack
         shell: pwsh
-        run: dotnet pack ./GCDS.NetTemplate -v:diag -p:PackageVersion=${{ github.ref_name }} --configuration Release --output ${{ env.NuGetDirectory }}
+        run: dotnet pack ./GCDS.NetTemplate -p:PackageVersion=${{ github.ref_name }} --configuration Release --output ${{ env.NuGetDirectory }}
 
       # Uploading an artifact to the repository for access from other jobs
       - uses: actions/upload-artifact@v4
