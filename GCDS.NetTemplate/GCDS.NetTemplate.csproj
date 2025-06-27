@@ -4,23 +4,32 @@
 
     <!-- Nuget package unique identifier and version -->
     <PackageId>GCDS.NetTemplate</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.4.0</Version>
    
     <!--  Author, description, icon, documentation -->
     <Authors>Shaun Laughland</Authors>
     <Title>.NET wrapper for the GC Design System</Title>
     <Description>This provides a template but also a wrapper to naitively leverage the GC Design System that is distributed over a CDN</Description>
+    <Copyright>Copyright (c) Government of Canada - Gouvernement du Canada 2025</Copyright>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
 
     <!-- Repository reference -->
     <RepositoryUrl>https://github.com/s-laugh/GCDS.NetTemplate</RepositoryUrl>
 
     <!-- Tags describing the project for indexing and searching -->
     <PackageTags>dotnet, GCDS, design system, template, GC, CDTS</PackageTags>
+    <PackageReleaseNotes>https://github.com/s-laugh/GCDS.NetTemplate/releases</PackageReleaseNotes>
 
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="assets/icon.png" Pack="true" PackagePath="" />
+    <None Include="../README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
 
 </Project>

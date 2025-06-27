@@ -28,7 +28,7 @@ namespace GCDS.NetTemplate.Core
 
                 httpContext.SetTemplateCulture(requestedCultureName);
 
-                return Task.FromResult(new ProviderCultureResult(requestedCultureName));
+                return Task.FromResult<ProviderCultureResult?>(new ProviderCultureResult(requestedCultureName));
             }
 
             return Task.FromResult(null as ProviderCultureResult);

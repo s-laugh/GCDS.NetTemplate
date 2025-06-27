@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-dotnet@v4
 
       # Build and pack package
-      - name: Pack
+      - name: Build & Pack
         shell: pwsh
         run: dotnet pack ./GCDS.NetTemplate -p:PackageVersion=${{ github.ref_name }} --configuration Release --output ${{ env.NuGetDirectory }}
 
