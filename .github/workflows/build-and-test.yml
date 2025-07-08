@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   build_test:
-    name: Build and Accessibility Test
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -35,8 +35,8 @@ jobs:
 
     - name: Start MVC and Razor sanity apps
       run: |
-        dotnet run --project ./GCDS.NetTemplate.Mvc.Sanity --urls=http://localhost:5000 &
-        dotnet run --project ./GCDS.NetTemplate.Razor.Sanity --urls=http://localhost:5001 &
+        dotnet run --project GCDS.NetTemplate.MVC.Sanity --urls=http://localhost:5000 &
+        dotnet run --project GCDS.NetTemplate.Razor.Sanity --urls=http://localhost:5001 &
         sleep 10 # wait for both apps to start
 
     - name: Run Tests
