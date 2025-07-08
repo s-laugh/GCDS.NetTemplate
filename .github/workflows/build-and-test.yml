@@ -10,8 +10,7 @@ permissions:
 
 jobs:
   build_test:
-    name: Build and Test
-
+    name: Build and Accessibility Test
     runs-on: ubuntu-latest
 
     steps:
@@ -28,5 +27,24 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
 
-    - name: Test
-      run: dotnet test --no-build
+    - name: Install Playwright CLI
+      run: dotnet tool install --global Microsoft.Playwright.CLI
+
+    - name: Install Playwright Browsers
+      run: playwright install --with-deps
+
+    - name: Start MVC and Razor sanity apps
+      run: |
+        dotnet run --project ./GCDS.NetTemplate.Mvc.Sanity --urls=http://localhost:5000 &
+        dotnet run --project ./GCDS.NetTemplate.Razor.Sanity --urls=http://localhost:5001 &
+        sleep 10 # wait for both apps to start
+
+    - name: Run Tests
+      run: dotnet test --no-build --logger "trx;LogFileName=test_results.trx"
+
+    - name: Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: '**/test_results.trx'
