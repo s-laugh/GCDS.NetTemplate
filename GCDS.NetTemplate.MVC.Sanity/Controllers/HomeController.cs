@@ -23,8 +23,8 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             HttpContext.SetTemplateCulture(CommonConstants.ENGLISH_CULTURE);
 
             var template = ViewData.GetTemplate<Splash>();
-            template.LanguageSelector = new ExtLanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));
-            template.PageTitle = "Custom Title / Titre personnalisé";
+            template.LanguageSelector = new ExtLanguageSelector("Custom Splash Title", "Titre d'ï¿½claboussure personnalisï¿½", Url.Action("Home"));
+            template.PageTitle = "Custom Title / Titre personnalisï¿½";
             template.HeadElements.AddMeta("description", "This is a custom splash page for testing purposes.");
             return View(); 
         }
@@ -32,6 +32,8 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         public IActionResult Home()
         {
             var template = ViewData.GetTemplate<Basic>();
+            ArgumentNullException.ThrowIfNull(template);
+            template.PageTitle = "Home Page";
             template.Header.Banner = new CustomPartial() { ViewName = "Banner", Model = new Banner() { Text = "Jokes on You!" } };
             template.Header.SkipToNav = new ExtSkipTo() { Link = new GcdsLink { Text = "Skip to nav content", Href = "#nav" } };
 
@@ -72,7 +74,8 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         public IActionResult Internal()
         {
             var template = ViewData.GetTemplate<InternalApp>();
-
+            ArgumentNullException.ThrowIfNull(template);
+            template.PageTitle = "Home Page";
             template.Inizialize("My Application Title");
             // OR
             template.Inizialize(new ExtSiteTitle { Text = "Home", Href = "#" })
