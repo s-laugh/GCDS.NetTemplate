@@ -28,8 +28,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="assets/icon.png" Pack="true" PackagePath="" />
+    <!-- Include README in NuGet package root -->
     <None Include="../README.md" Pack="true" PackagePath="" />
+    <!-- Copy the icon from wwwroot/images to the package root -->
+    <None Include="wwwroot/images/icon.png" Pack="true" PackagePath="" />
+
+    <!-- Include all wwwroot files in NuGet package under contentFiles -->
+    <None Include="wwwroot\**\*" Pack="true" PackagePath="contentFiles\any\any\wwwroot\" />
+
+    <!-- Ensure all wwwroot files are copied to output directory -->
+    <None Update="wwwroot\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
+
 
 </Project>
