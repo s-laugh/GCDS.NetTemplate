@@ -11,7 +11,7 @@
     <Title>.NET wrapper for the GC Design System</Title>
     <Description>This provides a template but also a wrapper to naitively leverage the GC Design System that is distributed over a CDN</Description>
     <Copyright>Copyright (c) Government of Canada - Gouvernement du Canada 2025</Copyright>
-    <PackageIcon>wwwroot/images/icon.png</PackageIcon>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
     <!-- Repository reference -->
@@ -31,7 +31,7 @@
     <!-- Include README in NuGet package root -->
     <None Include="../README.md" Pack="true" PackagePath="" />
     <!-- Copy the icon from wwwroot/images to the natural path -->
-    <None Include="wwwroot/images/icon.png" Pack="true" PackagePath="wwwroot/images/" />
+    <None Include="wwwroot/images/icon.png" Pack="true" PackagePath="" />
 
     <!-- Include all wwwroot files in NuGet package under contentFiles -->
     <None Include="wwwroot\**\*" Pack="true" PackagePath="contentFiles\any\any\wwwroot\" />
@@ -41,5 +41,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <Target Name="CopyIconToRoot" BeforeTargets="Pack">
+    <Copy SourceFiles="wwwroot/images/icon.png"
+          DestinationFiles="icon.png"
+          SkipUnchangedFiles="true" />
+  </Target>
 
 </Project>
