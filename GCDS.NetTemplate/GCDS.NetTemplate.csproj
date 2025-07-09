@@ -1,30 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-
-    <!-- Nuget package unique identifier and version -->
-    <PackageId>GCDS.NetTemplate</PackageId>
-    <Version>0.4.0</Version>
-   
-    <!--  Author, description, icon, documentation -->
-    <Authors>Shaun Laughland</Authors>
-    <Title>.NET wrapper for the GC Design System</Title>
-    <Description>This provides a template but also a wrapper to naitively leverage the GC Design System that is distributed over a CDN</Description>
-    <Copyright>Copyright (c) Government of Canada - Gouvernement du Canada 2025</Copyright>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-
-    <!-- Repository reference -->
-    <RepositoryUrl>https://github.com/s-laugh/GCDS.NetTemplate</RepositoryUrl>
-
-    <!-- Tags describing the project for indexing and searching -->
-    <PackageTags>dotnet, GCDS, design system, template, GC, CDTS</PackageTags>
-    <PackageReleaseNotes>https://github.com/s-laugh/GCDS.NetTemplate/releases</PackageReleaseNotes>
-
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <IsPackable>true</IsPackable>
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+
+    <!-- Nuget metadata -->
+    <PackageId>GCDS.NetTemplate</PackageId>
+    <Version>0.4.0</Version>
+    <Authors>Shaun Laughland</Authors>
+    <Title>.NET wrapper for the GC Design System</Title>
+    <PackageTags>dotnet, GCDS, design system, template, GC, CDTS</PackageTags>
+    <Description>This provides a template but also a wrapper to naitively leverage the GC Design System that is distributed over a CDN</Description>
+    <Copyright>Copyright (c) Government of Canada - Gouvernement du Canada 2025</Copyright>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/s-laugh/GCDS.NetTemplate</RepositoryUrl>
+    <PackageReleaseNotes>https://github.com/s-laugh/GCDS.NetTemplate/releases</PackageReleaseNotes>
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,13 +28,14 @@
     <!-- Copy the icon from wwwroot/images to the natural path -->
     <None Include="icon.png" Pack="true" PackagePath="" />
 
-    <!-- Include all wwwroot files in NuGet package under contentFiles -->
-    <None Include="wwwroot\**\*" Pack="true" PackagePath="contentFiles\any\any\wwwroot\" />
+    <!-- Include wwwroot files in NuGet package -->
+    <Content Include="wwwroot\**\*">
+      <Pack>true</Pack>
+      <PackagePath>contentFiles\any\any\wwwroot\</PackagePath>
+      <CopyToOutput>true</CopyToOutput>
+    </Content>
 
-    <!-- Ensure all wwwroot files are copied to output directory -->
-    <None Update="wwwroot\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="GCDS.NetTemplate.targets" Pack="true" PackagePath="build\net8.0\" />
   </ItemGroup>
   
   <Target Name="CopyIconToRoot" BeforeTargets="Build">
