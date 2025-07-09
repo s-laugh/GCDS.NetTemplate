@@ -42,7 +42,7 @@
     </None>
   </ItemGroup>
   
-  <Target Name="CopyIconToRoot" BeforeTargets="Pack">
+  <Target Name="CopyIconToRoot" BeforeTargets="Build">
     <Copy SourceFiles="wwwroot/images/icon.png"
           DestinationFiles="icon.png"
           SkipUnchangedFiles="true" />
