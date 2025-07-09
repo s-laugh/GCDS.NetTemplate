@@ -1,9 +1,15 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <!-- Copy wwwroot files from the NuGet package to the consuming project's output -->
+    <!-- Static files -->
     <Content Include="$(MSBuildThisFileDirectory)..\contentFiles\any\any\wwwroot\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Link>wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Content>
+
+    <!-- Razor views -->
+    <Content Include="$(MSBuildThisFileDirectory)..\contentFiles\any\any\Views\**\*.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Views\%(RecursiveDir)%(Filename)%(Extension)</Link>
     </Content>
   </ItemGroup>
 </Project>

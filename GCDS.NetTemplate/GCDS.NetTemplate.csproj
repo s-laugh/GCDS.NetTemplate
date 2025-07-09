@@ -34,6 +34,11 @@
       <PackagePath>contentFiles\any\any\wwwroot\</PackagePath>
       <CopyToOutput>true</CopyToOutput>
     </Content>
+    <Content Include="Views\**\*.cshtml">
+      <Pack>true</Pack>
+      <PackagePath>contentFiles\any\any\Views\</PackagePath>
+      <CopyToOutput>true</CopyToOutput>
+    </Content>
 
     <None Include="GCDS.NetTemplate.targets" Pack="true" PackagePath="build\net8.0\" />
   </ItemGroup>
