@@ -31,7 +31,7 @@
     <!-- Include README in NuGet package root -->
     <None Include="../README.md" Pack="true" PackagePath="" />
     <!-- Copy the icon from wwwroot/images to the natural path -->
-    <None Include="wwwroot/images/icon.png" Pack="true" PackagePath="" />
+    <None Include="icon.png" Pack="true" PackagePath="" />
 
     <!-- Include all wwwroot files in NuGet package under contentFiles -->
     <None Include="wwwroot\**\*" Pack="true" PackagePath="contentFiles\any\any\wwwroot\" />
@@ -41,7 +41,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  
   <Target Name="CopyIconToRoot" BeforeTargets="Pack">
     <Copy SourceFiles="wwwroot/images/icon.png"
           DestinationFiles="icon.png"
