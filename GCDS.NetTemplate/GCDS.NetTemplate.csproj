@@ -42,5 +42,10 @@
     </None>
   </ItemGroup>
 
-
+  <Target Name="CopyIconForNuGet" BeforeTargets="Pack">
+    <Copy SourceFiles="wwwroot/images/icon.png"
+          DestinationFiles="icon.png"
+          SkipUnchangedFiles="true" />
+  </Target>
+  
 </Project>
