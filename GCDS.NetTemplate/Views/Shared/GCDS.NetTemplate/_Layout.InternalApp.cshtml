@@ -20,7 +20,9 @@
 			@RenderBody()
 		</main>
 
-		@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
+		<aside>
+			@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
+		</aside>
 	</gcds-container>
 
 	@await Html.PartialAsync("GcdsFooter.cshtml", template.Footer)

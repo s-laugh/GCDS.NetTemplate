@@ -9,16 +9,16 @@
 }
 
 @section LayoutBody {
-	<header>
-		@await Html.PartialAsync("GcdsHeader.cshtml", template.Header)
-	</header>
+	@await Html.PartialAsync("GcdsHeader.cshtml", template.Header)
 
 	<gcds-container size="xl" centered main-container>
 		<main id="@CommonConstants.SKIP_TO_CONTENT_ID" role="main">
 			@RenderBody()
 		</main>
 
-		@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
+		<aside>
+			@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
+		</aside>
 	</gcds-container>
 
 	@await Html.PartialAsync("GcdsFooter.cshtml", template.Footer)
