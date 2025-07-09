@@ -26,10 +26,19 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
 
+      - name: Restore
+        run: dotnet restore ./GCDS.NetTemplate
+
+      - name: Build
+        run: dotnet build ./GCDS.NetTemplate --configuration Release --no-restore
+
+      - name: List files (debug)
+        run: ls -R
+
       # Build and pack package
-      - name: Build & Pack
+      - name: Pack
         shell: pwsh
-        run: dotnet pack ./GCDS.NetTemplate -p:PackageVersion=${{ github.ref_name }} --configuration Release --output ${{ env.NuGetDirectory }}
+        run: dotnet pack ./GCDS.NetTemplate --configuration Release --no-build -p:PackageVersion=${{ github.ref_name }} --output ${{ env.NuGetDirectory }}
 
       # Uploading an artifact to the repository for access from other jobs
       - uses: actions/upload-artifact@v4
