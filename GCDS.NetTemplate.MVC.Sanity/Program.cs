@@ -1,5 +1,4 @@
 using GCDS.NetTemplate.Core;
-using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,18 +23,6 @@ app.UseRequestLocalization();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-var libraryStaticFiles = Path.Combine(AppContext.BaseDirectory, "wwwroot");
-
-if (Directory.Exists(libraryStaticFiles))
-{
-    app.UseStaticFiles(new StaticFileOptions
-    {
-        FileProvider = new PhysicalFileProvider(libraryStaticFiles),
-        RequestPath = ""
-    });
-}
-
 
 app.UseRouting();
 

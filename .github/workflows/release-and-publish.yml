@@ -32,9 +32,6 @@ jobs:
       - name: Build
         run: dotnet build ./GCDS.NetTemplate --configuration Release --no-restore
 
-      - name: List files (debug)
-        run: ls -R
-
       # Build and pack package
       - name: Pack
         shell: pwsh
