@@ -23,8 +23,9 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             HttpContext.SetTemplateCulture(CommonConstants.ENGLISH_CULTURE);
 
             var template = ViewData.GetTemplate<Splash>();
-            template.LanguageSelector = new ExtLanguageSelector("Custom Splash Title", "Titre d'�claboussure personnalis�", Url.Action("Home"));
-            template.PageTitle = "Custom Title / Titre personnalis�";
+            ArgumentNullException.ThrowIfNull(template);
+            template.LanguageSelector = new ExtLanguageSelector("Custom Splash Title", "Titre d'claboussure personnalis", Url.Action("Home")!);
+            template.PageTitle = "Custom Title / Titre personnalis";
             template.HeadElements.AddMeta("description", "This is a custom splash page for testing purposes.");
             return View(); 
         }
@@ -117,7 +118,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                         new GcdsLink
                         {
                             Text = "Home",
-                            Href = Url.Action("Index")
+                            Href = Url.Action("Index") ?? ""
                         },
                         ]
                 }
