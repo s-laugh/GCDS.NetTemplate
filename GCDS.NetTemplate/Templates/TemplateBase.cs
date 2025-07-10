@@ -37,7 +37,7 @@ namespace GCDS.NetTemplate.Templates
         /// Creates a list of HeadElements that will be added to the head of the page.
         /// Used for adding meta tags, linking to styles or scripts.
         /// </summary>
-        public List<ExtHtmlElement> HeadElements { get; set; } = new List<ExtHtmlElement>().AddLink("images/icon.png", "icon", "image/png");
+        public List<ExtHtmlElement> HeadElements { get; set; } = new List<ExtHtmlElement>().AddLink($"/_content/{typeof(TemplateBase).Assembly.GetName().Name}/images/icon.png", "icon", "image/png");
 
         public virtual TemplateBase Initialize(string pageTitle)
         {

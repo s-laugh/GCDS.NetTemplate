@@ -33,6 +33,7 @@
       <Pack>true</Pack>
       <PackagePath>contentFiles\any\any\wwwroot\</PackagePath>
       <CopyToOutput>true</CopyToOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\**\*.cshtml">
       <Pack>true</Pack>

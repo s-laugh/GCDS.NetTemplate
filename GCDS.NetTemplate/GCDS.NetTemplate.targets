@@ -1,15 +1,28 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <!-- Static files -->
-    <Content Include="$(MSBuildThisFileDirectory)..\contentFiles\any\any\wwwroot\**\*">
+    <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)contentFiles\any\any\wwwroot\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
-    </Content>
+      <TargetPath>wwwroot\%(RecursiveDir)%(Filename)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
 
     <!-- Razor views -->
-    <Content Include="$(MSBuildThisFileDirectory)..\contentFiles\any\any\Views\**\*.cshtml">
+    <ContentWithTargetPath Include="$(MSBuildThisFileDirectory)contentFiles\any\any\Views\**\*.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>Views\%(RecursiveDir)%(Filename)%(Extension)</Link>
-    </Content>
+      <TargetPath>Views\%(RecursiveDir)%(Filename)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
   </ItemGroup>
+
+  <Target Name="IncludeGCDSStaticFiles" AfterTargets="Build">
+    <ItemGroup>
+      <Content Include="$(MSBuildThisFileDirectory)contentFiles\any\any\wwwroot\**\*">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <Link>wwwroot\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      </Content>
+      <Content Include="$(MSBuildThisFileDirectory)contentFiles\any\any\Views\**\*.cshtml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <Link>Views\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      </Content>
+    </ItemGroup>
+  </Target>
 </Project>
