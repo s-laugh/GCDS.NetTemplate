@@ -13,12 +13,14 @@ namespace GCDS.NetTemplate.Test.TemplateTests
             var settings = new TemplateSettings();
             var template = new InternalApp(settings);
             string siteTitle = "Test Site";
+            string pageTitle = "Test Title";
             // Act
-            template.Inizialize(siteTitle);
+            template.Inizialize(pageTitle, siteTitle);
             // Assert
             template.Header.Should().NotBeNull();
             template.Header.AppHeaderTop.Should().NotBeNull();
             template.Header.AppHeaderTop.SiteTitle.Text.Should().Be(siteTitle);
+            template.PageTitle.Should().Be(pageTitle);
         }
 
         [Fact]
@@ -42,7 +44,7 @@ namespace GCDS.NetTemplate.Test.TemplateTests
             var settings = new TemplateSettings();
             var template = new InternalApp(settings);
             // Act
-            Action act = () => template.Inizialize((string)null!);
+            Action act = () => template.Inizialize(null!, (string)null!);
             // Assert
             act.Should().Throw<ArgumentNullException>().WithMessage("*siteTitle*");
         }
