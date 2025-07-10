@@ -40,7 +40,8 @@ namespace GCDS.NetTemplate.Templates
         public List<ExtHtmlElement> HeadElements { get; set; } = new List<ExtHtmlElement>().AddLink($"/_content/{typeof(TemplateBase).Assembly.GetName().Name}/images/icon.png", "icon", "image/png");
 
         public virtual TemplateBase Initialize(string pageTitle)
-        {
+        {            
+            ArgumentNullException.ThrowIfNull(pageTitle);
             PageTitle = pageTitle;
             return this;
         }

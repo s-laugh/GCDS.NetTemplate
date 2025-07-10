@@ -48,6 +48,21 @@ namespace GCDS.NetTemplate.Templates
             Type = GcdsSignature.SignatureType.wordmark
         };
 
+        public Splash Inizialize(string pageTitle, string englishTitle, string frenchTitle, string href)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(englishTitle);
+            ArgumentException.ThrowIfNullOrWhiteSpace(frenchTitle);
+            ArgumentException.ThrowIfNullOrWhiteSpace(href);
+            return Inizialize(pageTitle, new ExtLanguageSelector(englishTitle, frenchTitle, href));
+        }
+        public Splash Inizialize(string pageTitle, ExtLanguageSelector languageSelector)
+        {
+            base.Initialize(pageTitle);
+            if (languageSelector == null) throw new ArgumentException(nameof(languageSelector));
+            LanguageSelector = languageSelector;
+            return this;
+        }
+
         // Do nothing, this layout doesn't use a toggle
         public override void SetLanguageToggleHref(string href) { }
     }
