@@ -1,4 +1,5 @@
 ﻿using GCDS.NetTemplate.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -33,16 +34,14 @@ namespace GCDS.NetTemplate.Templates
         public override void SetLanguageToggleHref(string href)
             => LangToggleHref = href ?? throw new ArgumentNullException(nameof(href));
 
-        public InternalApp Inizialize(string siteTitle)
+        public InternalApp Inizialize(string pageTitle, string siteTitle)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(siteTitle);
-            return Inizialize(new ExtSiteTitle
-            {
-                Text = siteTitle
-            });
+            return Inizialize(pageTitle, new ExtSiteTitle { Text = siteTitle });
         }
-        public InternalApp Inizialize(ExtSiteTitle siteTitle)
+        public InternalApp Inizialize(string pageTitle, ExtSiteTitle siteTitle)
         {
+            base.Initialize(pageTitle);
             ArgumentNullException.ThrowIfNull(siteTitle);
             Header = new ExtAppHeader {
                 AppHeaderTop = new ExtAppHeaderTop

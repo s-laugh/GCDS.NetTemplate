@@ -70,16 +70,11 @@ public class HomeController : Controller
 ### Leveraging the templates
 
 In your page or controller, access the template to manipulate it to your needs.
-This is how you can edit the breadcrumbs, menu, footer links, or override features like the language toggle.
+This is how you can edit the breadcrumbs, menu, footer links, or override features like the language toggle. The `Inizialize` function will prompt you to add required feilds.
 
 ```csharp
 var template = ViewData.GetTemplate<InternalApp>();
-```
-
-It's a good idea to set some basic properties specific to your useage, such as:
-
-```csharp
-template.PageTitle = "Text for the browser tab";
+template.Inizialize(...)
 ```
 
 Since most sties work better with meta data, be sure to add some through the `HeadElements`. You can also add links to scripts and style pages, or any kind of head element you wish.
@@ -126,10 +121,10 @@ _Reminder: Be sure to use the `GCDS.NetTemplate/_Layout.InternalApp` when using 
 
 #### Using Splash Template
 
-This template will require you to manually create the `LanguageSelector`.
+Remeber to Initialize the template!
 
 ```csharp
-template.LanguageSelector = new ExtLanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home"));
+template.Initialize("Page Name", new ExtLanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home")));
 ```
 
 By default, the splash page will load in either, english or french first depending on the current culture.
