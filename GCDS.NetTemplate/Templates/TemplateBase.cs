@@ -1,4 +1,5 @@
 ﻿using GCDS.NetTemplate.Components;
+using GCDS.NetTemplate.Core;
 
 namespace GCDS.NetTemplate.Templates
 {
@@ -15,12 +16,19 @@ namespace GCDS.NetTemplate.Templates
         void SetLanguageToggleHref(string href);
     }
 
-    public abstract class TemplateBase(TemplateSettings settings) : ITemplateBase
+    public abstract class TemplateBase : ITemplateBase
     {
+        public TemplateBase(TemplateSettings settings, HttpContext context)
+        {
+            Settings = settings;
+            SetLanguageToggleHref(context.Request.QueryString.AddTemplateLangugeToogle());
+            HeadElements.AddLink($"{context.Request.PathBase.Value}/_content/{typeof(TemplateBase).Assembly.GetName().Name}/images/icon.png", "icon", "image/png");
+        }
+
         /// <summary>
         /// Template settings, loaded from the appsettings.json file
         /// </summary>
-        public TemplateSettings Settings { get; set; } = settings;
+        public required TemplateSettings Settings { get; set; }
 
         /// <summary>
         /// The CurrentUICulture to ensure the components load with the right language settings

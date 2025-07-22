@@ -2,7 +2,7 @@
 
 namespace GCDS.NetTemplate.Templates
 {
-    public class Splash(TemplateSettings settings) : TemplateBase(settings), ITemplateBase
+    public class Splash(TemplateSettings settings, HttpContext context) : TemplateBase(settings, context), ITemplateBase
     {
         /// <summary>
         /// Set links to the splash images that will be randomly selcted to be used in the splash screen.

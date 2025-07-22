@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace GCDS.NetTemplate.Templates
 {
-    public class Basic(TemplateSettings settings) : TemplateBase(settings), ITemplateBase
+    public class Basic(TemplateSettings settings, HttpContext context) : TemplateBase(settings, context), ITemplateBase
     {
         /// <summary>
         /// Loading all the configurations for the header component
