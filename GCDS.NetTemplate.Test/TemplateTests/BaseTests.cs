@@ -5,33 +5,28 @@ namespace GCDS.NetTemplate.Test.TemplateTests
 {
     public class BaseTests
     {
-        [Fact]
-        public void TemplateBase_Initialize_ShouldSetDefaultValues()
+        [Theory, AutoNSubstituteData]
+        public void TemplateBase_Initialize_ShouldSetDefaultValues(Basic sut)
         {
-            // Arrange
-            var settings = new TemplateSettings();
-            var template = new Basic(settings);
             // Act
-            template.Initialize("Test Page");
+            sut.Initialize("Test Page");
             // Assert
-            template.Lang.Should().NotBeNullOrEmpty();
-            template.PageTitle.Should().Be("Test Page");
-            template.HeadElements.Should().NotBeNull();
-            template.Header.Should().NotBeNull();
-            template.Footer.Should().NotBeNull();
+            sut.Lang.Should().NotBeNullOrEmpty();
+            sut.PageTitle.Should().Be("Test Page");
+            sut.HeadElements.Should().NotBeNull();
+            sut.Header.Should().NotBeNull();
+            sut.Footer.Should().NotBeNull();
         }
 
-        [Fact]
-        public void TemplateBase_SetLanguageToggleHref_ShouldSetHref()
+        [Theory, AutoNSubstituteData]
+        public void TemplateBase_SetLanguageToggleHref_ShouldSetHref(Basic sut)
         {
             // Arrange
-            var settings = new TemplateSettings();
-            var template = new Basic(settings);
             string href = "https://example.com/lang-toggle";
             // Act
-            template.SetLanguageToggleHref(href);
+            sut.SetLanguageToggleHref(href);
             // Assert
-            template.Header.LangHref.Should().Be(href);
+            sut.Header.LangHref.Should().Be(href);
         }
     }
 }

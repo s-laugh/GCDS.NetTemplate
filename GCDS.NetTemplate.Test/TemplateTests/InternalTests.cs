@@ -1,89 +1,79 @@
 ﻿using FluentAssertions;
 using GCDS.NetTemplate.Components;
 using GCDS.NetTemplate.Templates;
+using Microsoft.AspNetCore.Http;
 
 namespace GCDS.NetTemplate.Test.TemplateTests
 {
     public class InternalTests
     {
-        [Fact]
-        public void InternalApp_Initialize_ShouldSetSiteTitle()
+        [Theory, AutoNSubstituteData]
+        public void InternalApp_Initialize_ShouldSetSiteTitle(InternalApp sut)
         {
             // Arrange
-            var settings = new TemplateSettings();
-            var template = new InternalApp(settings);
             string siteTitle = "Test Site";
             string pageTitle = "Test Page";
             // Act
-            template.Inizialize(pageTitle, siteTitle);
+            sut.Inizialize(pageTitle, siteTitle);
             // Assert
-            template.Header.Should().NotBeNull();
-            template.Header.AppHeaderTop.Should().NotBeNull();
-            template.Header.AppHeaderTop.SiteTitle.Text.Should().Be(siteTitle);
+            sut.Header.Should().NotBeNull();
+            sut.Header.AppHeaderTop.Should().NotBeNull();
+            sut.Header.AppHeaderTop.SiteTitle.Text.Should().Be(siteTitle);
         }
 
-        [Fact]
-        public void InternalApp_Initialize_ShouldSetPageTitle()
+        [Theory, AutoNSubstituteData]
+        public void InternalApp_Initialize_ShouldSetPageTitle(InternalApp sut)
         {
             // Arrange
-            var settings = new TemplateSettings();
-            var template = new InternalApp(settings);
             string siteTitle = "Test Site";
             string pageTitle = "Test Page";
             // Act
-            template.Inizialize(pageTitle, siteTitle);
+            sut.Inizialize(pageTitle, siteTitle);
             // Assert
-            template.PageTitle.Should().Be(pageTitle);
+            sut.PageTitle.Should().Be(pageTitle);
         }
 
-        [Fact]
-        public void InternalApp_Initialize_ShouldThrowIfSiteTitleIsNull()
+        [Theory, AutoNSubstituteData]
+        public void InternalApp_Initialize_ShouldThrowIfSiteTitleIsNull(InternalApp sut)
         {
             // Arrange
-            var settings = new TemplateSettings();
-            var template = new InternalApp(settings);
             // Act
-            Action act = () => template.Inizialize(null!, (string)null!);
+            Action act = () => sut.Inizialize(null!, (string)null!);
             // Assert
             act.Should().Throw<ArgumentNullException>().WithMessage("*siteTitle*");
         }
 
-        [Fact]
-        public void InternalApp_Inizialize_ShouldSetHeaderAndFooter()
+        [Theory, AutoNSubstituteData]
+        public void InternalApp_Inizialize_ShouldSetHeaderAndFooter(InternalApp sut)
         {
             // Arrange
-            var settings = new TemplateSettings();
             string siteTitle = "Test Site";
             string pageTitle = "Test Page";
             // Act
-            var template = new InternalApp(settings);
-            template.Inizialize(pageTitle, siteTitle);
+            sut.Inizialize(pageTitle, siteTitle);
             // Assert
-            template.Header.Should().NotBeNull();
-            template.Footer.Should().NotBeNull();
+            sut.Header.Should().NotBeNull();
+            sut.Footer.Should().NotBeNull();
         }
 
-        [Fact]
-        public void InternalApp_SetLanguageToggleHref_ShouldSetLangToggleHref()
+        [Theory, AutoNSubstituteData]
+        public void InternalApp_SetLanguageToggleHref_ShouldSetLangToggleHref(InternalApp sut)
         {
             // Arrange
-            var settings = new TemplateSettings();
-            var template = new InternalApp(settings);
             string href = "https://example.com/lang-toggle";
             // Act
-            template.SetLanguageToggleHref(href);
+            sut.SetLanguageToggleHref(href);
             // Assert
-            template.LangToggleHref.Should().Be(href);
+            sut.LangToggleHref.Should().Be(href);
         }
 
-        [Fact]
-        public void InternalApp_DateModified_ShouldReturnVersion()
+        [Theory, AutoNSubstituteData]
+        public void InternalApp_DateModified_ShouldReturnVersion(TemplateSettings settings, HttpContext context)
         {
             // Arrange
-            var settings = new TemplateSettings();
-            var template = new InternalApp(settings);
+            var sut = new InternalApp(settings, context);
             // Act
-            var dateModified = template.DateModified;
+            var dateModified = sut.DateModified;
             // Assert
             dateModified.Text.Should().NotBeNullOrEmpty();
             dateModified.Type.Should().Be(GcdsDateModified.DateModifiedType.version);

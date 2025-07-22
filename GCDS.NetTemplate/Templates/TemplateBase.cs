@@ -5,7 +5,7 @@ namespace GCDS.NetTemplate.Templates
 {
     public interface ITemplateBase
     {
-        TemplateSettings Settings { get; set; }
+        TemplateSettings Settings { get; }
 
         string Lang { get; set; }
 
@@ -28,7 +28,7 @@ namespace GCDS.NetTemplate.Templates
         /// <summary>
         /// Template settings, loaded from the appsettings.json file
         /// </summary>
-        public required TemplateSettings Settings { get; set; }
+        public TemplateSettings Settings { get; init; }
 
         /// <summary>
         /// The CurrentUICulture to ensure the components load with the right language settings
@@ -45,7 +45,7 @@ namespace GCDS.NetTemplate.Templates
         /// Creates a list of HeadElements that will be added to the head of the page.
         /// Used for adding meta tags, linking to styles or scripts.
         /// </summary>
-        public List<ExtHtmlElement> HeadElements { get; set; } = new List<ExtHtmlElement>().AddLink($"/_content/{typeof(TemplateBase).Assembly.GetName().Name}/images/icon.png", "icon", "image/png");
+        public List<ExtHtmlElement> HeadElements { get; set; } = [];
 
         public virtual TemplateBase Initialize(string pageTitle)
         {            
