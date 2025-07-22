@@ -20,8 +20,6 @@ namespace GCDS.NetTemplate.Core
         public static string AddTemplateLangugeToogle(this QueryString queryString)
         {
             var nameValues = HttpUtility.ParseQueryString(queryString.ToString());
-            ArgumentNullException.ThrowIfNull(nameValues);
-
             nameValues.Set(CommonConstants.QUERYSTRING_CULTURE_KEY,
                 Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.StartsWith(CommonConstants.ENGLISH_CULTURE_TWO_LETTER,
                     StringComparison.OrdinalIgnoreCase)

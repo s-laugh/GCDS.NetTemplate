@@ -10,35 +10,17 @@ namespace GCDS.NetTemplate.Test.CoreTests
 {
     public class CultureManagerTests
     {
-        [Fact]
-        public void BuildLanguageToggleHref_ShouldThrow_WhenNameValuesIsNull()
-        {
-            // Arrange
-            NameValueCollection nameValues = null;
-
-            // Act
-            Action act = () => CultureManager.BuildLanguageToggleHref(nameValues);
-
-            // Assert
-            act.Should().Throw<ArgumentNullException>()
-                .WithParameterName("nameValues");
-        }
-
         [Theory]
         [InlineData("en", "fr")]
         [InlineData("fr", "en")]
-        public void BuildLanguageToggleHref_ShouldToggleCultureCorrectly(string currentCulture, string expectedCulture)
+        public void AddTemplateLangugeToogle_ShouldToggleCultureCorrectly(string currentCulture, string expectedCulture)
         {
             // Arrange
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(currentCulture);
-            var nameValues = new NameValueCollection
-            {
-                { "page", "home" },
-                { "lang", "en" } // this will be overridden
-            };
+            var queryString = new QueryString("?page=home");
 
             // Act
-            var result = CultureManager.BuildLanguageToggleHref(nameValues);
+            var result = queryString.AddTemplateLangugeToogle();
 
             // Assert
             result.Should().Contain("?page=home")
