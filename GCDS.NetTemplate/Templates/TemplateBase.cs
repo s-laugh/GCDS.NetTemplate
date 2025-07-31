@@ -6,13 +6,9 @@ namespace GCDS.NetTemplate.Templates
     public interface ITemplateBase
     {
         TemplateSettings Settings { get; }
-
         string Lang { get; set; }
-
         string PageTitle { get; set; }
-
         List<ExtHtmlElement> HeadElements { get; set; }
-
         void SetLanguageToggleHref(string href);
     }
 
@@ -21,7 +17,7 @@ namespace GCDS.NetTemplate.Templates
         public TemplateBase(TemplateSettings settings, HttpContext context)
         {
             Settings = settings;
-            SetLanguageToggleHref(context.Request.QueryString.AddTemplateLangugeToogle());
+            SetLanguageToggleHref(context.Request.QueryString.BuildLanguageToggleQuery());
             HeadElements.AddLink($"{context.Request.PathBase.Value}/_content/{typeof(TemplateBase).Assembly.GetName().Name}/images/icon.png", "icon", "image/png");
         }
 

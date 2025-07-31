@@ -4,8 +4,7 @@ namespace GCDS.NetTemplate.Templates
 {
     public class Splash(TemplateSettings settings, HttpContext context) 
         : TemplateBase(settings, context)
-    {
-        
+    {        
         /// <summary>
         /// Set links to the splash images that will be randomly selcted to be used in the splash screen.
         /// Defaults set to canada.ca
@@ -60,7 +59,7 @@ namespace GCDS.NetTemplate.Templates
         public Splash Inizialize(string pageTitle, ExtLanguageSelector languageSelector)
         {
             base.Initialize(pageTitle);
-            if (languageSelector == null) throw new ArgumentException(nameof(languageSelector));
+            ArgumentNullException.ThrowIfNull(languageSelector);
             LanguageSelector = languageSelector;
             return this;
         }

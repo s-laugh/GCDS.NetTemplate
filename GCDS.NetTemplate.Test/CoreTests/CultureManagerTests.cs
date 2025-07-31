@@ -20,7 +20,7 @@ namespace GCDS.NetTemplate.Test.CoreTests
             var queryString = new QueryString("?page=home");
 
             // Act
-            var result = queryString.AddTemplateLangugeToogle();
+            var result = queryString.BuildLanguageToggleQuery();
 
             // Assert
             result.Should().Contain("?page=home")
