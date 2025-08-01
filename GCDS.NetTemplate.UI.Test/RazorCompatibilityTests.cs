@@ -14,6 +14,7 @@ namespace GCDS.NetTemplate.UI.Test
             var page = await browser.NewPageAsync();
 
             var response = await page.GotoAsync(url);
+            Assert.NotNull(response);
             Assert.True(response.Ok, $"Failed to load {url}: {response.Status}");
         }
     }

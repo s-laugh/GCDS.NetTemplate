@@ -1,11 +1,11 @@
 ﻿using GCDS.NetTemplate.Components;
-using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics;
 using System.Reflection;
 
 namespace GCDS.NetTemplate.Templates
 {
-    public class InternalApp(TemplateSettings settings) : TemplateBase(settings), ITemplateBase
+    public class InternalApp(TemplateSettings settings, HttpContext context) 
+        : TemplateBase(settings, context)
     {
         /// <summary>
         /// Loading all the configurations for the header component

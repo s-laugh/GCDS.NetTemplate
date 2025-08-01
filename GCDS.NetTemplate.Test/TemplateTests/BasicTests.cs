@@ -2,66 +2,60 @@
 using GCDS.NetTemplate.Components;
 using GCDS.NetTemplate.Core;
 using GCDS.NetTemplate.Templates;
+using Microsoft.AspNetCore.Http;
 
 namespace GCDS.NetTemplate.Test.TemplateTests
 {
     public class BasicTests
     {
-        [Fact]
-        public void Basic_Template_ShouldHaveDefaultHeaderAndFooter()
+        [Theory, AutoNSubstituteData]
+        public void Basic_Template_ShouldHaveDefaultHeaderAndFooter(Basic sut)
         {
             // Arrange
-            var settings = new TemplateSettings();
-            var template = new Basic(settings);
             // Act
-            template.Initialize("Test Page");
+            sut.Initialize("Test Page");
             // Assert
-            template.Header.Should().NotBeNull();
-            template.Footer.Should().NotBeNull();
-            template.Header.SkipToHref.Should().Be($"#{CommonConstants.SKIP_TO_CONTENT_ID}");
-            template.Footer.Display.Should().Be(GcdsFooter.DisplayType.full);
+            sut.Header.Should().NotBeNull();
+            sut.Footer.Should().NotBeNull();
+            sut.Header.SkipToHref.Should().Be($"#{CommonConstants.SKIP_TO_CONTENT_ID}");
+            sut.Footer.Display.Should().Be(GcdsFooter.DisplayType.full);
         }
 
-        [Fact]
-        public void Basic_Template_DateModified_ShouldReturnLastWriteTime()
+        [Theory, AutoNSubstituteData]
+        public void Basic_Template_DateModified_ShouldReturnLastWriteTime(TemplateSettings settings, HttpContext context)
         {
             // Arrange
-            var settings = new TemplateSettings();
-            var template = new Basic(settings);
+            var sut = new Basic(settings, context);
             // Act
-            var dateModified = template.DateModified;
+            var dateModified = sut.DateModified;
             // Assert
             dateModified.Text.Should().NotBeNullOrEmpty();
             DateTime.TryParse(dateModified.Text, out _).Should().BeTrue();
         }
 
-        [Fact]
-        public void Basic_Template_SetLanguageToggleHref_ShouldSetLangHref()
+        [Theory, AutoNSubstituteData]
+        public void Basic_Template_SetLanguageToggleHref_ShouldSetLangHref(Basic sut)
         {
             // Arrange
-            var settings = new TemplateSettings();
-            var template = new Basic(settings);
             string href = "https://example.com/lang-toggle";
             // Act
-            template.SetLanguageToggleHref(href);
+            sut.SetLanguageToggleHref(href);
             // Assert
-            template.Header.LangHref.Should().Be(href);
+            sut.Header.LangHref.Should().Be(href);
         }
 
-        [Fact]
-        public void Basic_Template_Initialize_ShouldSetDefaultValues()
+        [Theory, AutoNSubstituteData]
+        public void Basic_Template_Initialize_ShouldSetDefaultValues(Basic sut)
         {
             // Arrange
-            var settings = new TemplateSettings();
-            var template = new Basic(settings);
             // Act
-            template.Initialize("Test Page");
+            sut.Initialize("Test Page");
             // Assert
-            template.Lang.Should().NotBeNullOrEmpty();
-            template.PageTitle.Should().Be("Test Page");
-            template.HeadElements.Should().NotBeNull();
-            template.Header.Should().NotBeNull();
-            template.Footer.Should().NotBeNull();
+            sut.Lang.Should().NotBeNullOrEmpty();
+            sut.PageTitle.Should().Be("Test Page");
+            sut.HeadElements.Should().NotBeNull();
+            sut.Header.Should().NotBeNull();
+            sut.Footer.Should().NotBeNull();
         }
     }
 }

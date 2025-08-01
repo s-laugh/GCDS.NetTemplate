@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Text;
+using System.Web;
 
 namespace GCDS.NetTemplate.Core
 {
@@ -16,10 +17,10 @@ namespace GCDS.NetTemplate.Core
         public static RequestCulture DefaultRequestCulture { get; set; } =
             new RequestCulture(SupportedCultures[0]);
 
-        public static string BuildLanguageToggleHref(NameValueCollection nameValues)
+        public static string BuildLanguageToggleQuery(this QueryString queryString)
+            => BuildLanguageToggleHref(HttpUtility.ParseQueryString(queryString.ToString()));
+        public static string BuildLanguageToggleHref(this NameValueCollection nameValues)
         {
-            if (nameValues == null) throw new ArgumentNullException(nameof(nameValues));
-
             nameValues.Set(CommonConstants.QUERYSTRING_CULTURE_KEY,
                 Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.StartsWith(CommonConstants.ENGLISH_CULTURE_TWO_LETTER,
                     StringComparison.OrdinalIgnoreCase)

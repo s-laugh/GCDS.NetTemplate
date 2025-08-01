@@ -2,6 +2,7 @@
 using GCDS.NetTemplate.Core;
 using GCDS.NetTemplate.Templates;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,8 @@ namespace GCDS.NetTemplate.Test.CoreTests
             var sut = new Initializer(configuration);
             var viewData = new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary());
             var context = new DefaultHttpContext();
+            var pathBase = "/my/path/base";
+            context.Request.PathBase = new PathString(pathBase);
 
             // Act
             sut.InitializeTemplate(viewData, context, null);
@@ -33,6 +36,8 @@ namespace GCDS.NetTemplate.Test.CoreTests
             var template = viewData[CommonConstants.TEMPLATE_DATA] as Basic;
             template.Should().NotBeNull();
             template.Header.LangHref.Should().NotBeEmpty();
+            template.HeadElements.Should().HaveCount(1);
+            template.HeadElements.Select(e => e.Attributes).Select(a => a["href"]).Should().BeEquivalentTo($"{pathBase}/_content/{typeof(TemplateBase).Assembly.GetName().Name}/images/icon.png");
         }
     }
 }
