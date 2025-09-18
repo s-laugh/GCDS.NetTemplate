@@ -77,7 +77,7 @@ var template = ViewData.GetTemplate<InternalApp>();
 template.Inizialize(...)
 ```
 
-Since most sties work better with meta data, be sure to add some through the `HeadElements`. You can also add links to scripts and style pages, or any kind of head element you wish.
+Since most sites work better with meta data, be sure to add some through the `HeadElements`. You can also add links to scripts and style pages, or any kind of head element you wish.
 
 ```csharp
 template.HeadElements.AddMeta("description", "This is a custom splash page for testing purposes.");
