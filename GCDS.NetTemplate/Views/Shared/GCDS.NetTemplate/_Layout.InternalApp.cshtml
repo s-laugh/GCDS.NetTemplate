@@ -8,6 +8,13 @@
 	Layout = "_Layout.Base.cshtml"; // Use the base layout for this template
 }
 
+<style>
+	aside {
+		display: flex;
+		flex-direction: column;
+	}
+</style>
+
 @section LayoutBody {
 	@{
 		ArgumentNullException.ThrowIfNull(template.Header, 
@@ -20,7 +27,7 @@
 			@RenderBody()
 		</main>
 
-		<aside style="display: flex; flex-direction: column;">
+		<aside>
 			@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
 			@await Html.PartialAsync("PageIdentifier.cshtml")
 		</aside>
