@@ -20,8 +20,9 @@
 			@RenderBody()
 		</main>
 
-		<aside>
+		<aside style="display: flex; flex-direction: column;">
 			@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
+			@await Html.PartialAsync("PageIdentifier.cshtml")
 		</aside>
 	</gcds-container>
 
