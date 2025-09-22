@@ -8,6 +8,13 @@
 	Layout = "_Layout.Base.cshtml"; // Use the base layout for this template
 }
 
+<style>
+	aside {
+		display: flex;
+		flex-direction: column;
+	}
+</style>
+
 @section LayoutBody {
 	@{
 		ArgumentNullException.ThrowIfNull(template.Header, 
