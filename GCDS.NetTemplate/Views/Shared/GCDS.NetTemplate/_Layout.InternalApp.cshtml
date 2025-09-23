@@ -22,6 +22,7 @@
 
 		<aside>
 			@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
+			@await Html.PartialAsync("PageIdentifier.cshtml", new CommonProps { Lang = template.Lang })
 		</aside>
 	</gcds-container>
 

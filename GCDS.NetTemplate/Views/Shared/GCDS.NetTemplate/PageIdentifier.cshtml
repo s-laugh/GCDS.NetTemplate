@@ -1,0 +1,16 @@
+﻿@using GCDS.NetTemplate.Components
+
+@model CommonProps
+
+@if (ViewData["PageIdentifier"] != null) {
+	@if (Model.Lang == "en") {
+		<gcds-text size="small">
+			Page Identifier: @ViewData["PageIdentifier"]
+		</gcds-text>
+	}
+	else if (Model.Lang == "fr") {
+		<gcds-text size="small">
+			Identifiant de Page: @ViewData["PageIdentifier"]
+		</gcds-text>
+	}
+}
