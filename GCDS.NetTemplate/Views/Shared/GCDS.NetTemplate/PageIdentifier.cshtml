@@ -1,9 +1,7 @@
 ﻿@using GCDS.NetTemplate.Components
 
-<style>
-	span {
-		font-size: 1rem;
-	}
-</style>
-
-<span>Page Identifier: @ViewData["PageIdentifier"]</span>
+@if (ViewData["PageIdentifier"] != null) {
+	<gcds-text size="small">
+		Page Identifier: @ViewData["PageIdentifier"]
+	</gcds-text>
+}
