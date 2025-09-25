@@ -102,10 +102,5 @@
                 return GCDSRootPath + GCDSUtilityDirectory;
             }
         }
-
-        /// <summary>
-        /// configuration toogle to load the latest bootstrap css from a CDN
-        /// </summary>
-        public bool LoadBootstrapCdn { get; set; }
     }
 }
