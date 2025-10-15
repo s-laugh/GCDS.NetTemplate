@@ -26,21 +26,13 @@ namespace GCDS.NetTemplate.Templates
         /// English link to terms and conditions (only Text & Href are used).
         /// Defaults set to canada.ca
         /// </summary>
-        public GcdsLink TermsEn { get; set; } = new GcdsLink
-        {
-            Text = "Terms & conditions",
-            Href = "https://www.canada.ca/en/transparency/terms.html"
-        };
+        public GcdsLink TermsEn { get; set; } = new GcdsLink("https://www.canada.ca/en/transparency/terms.html", "Terms & conditions");
 
         /// <summary>
         /// French link to terms and conditions (only Text & Href are used)
         /// Defaults set to canada.ca
         /// </summary>
-        public GcdsLink TermsFr { get; set; } = new GcdsLink
-        {
-            Text = "Avis",
-            Href = "https://www.canada.ca/fr/transparency/avis.html"
-        };
+        public GcdsLink TermsFr { get; set; } = new GcdsLink("https://www.canada.ca/fr/transparency/avis.html", "Avis");
 
         public GcdsSignature TopSignature { get; set; } = new GcdsSignature();
 
