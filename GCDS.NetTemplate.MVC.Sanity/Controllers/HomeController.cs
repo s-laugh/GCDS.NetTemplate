@@ -4,6 +4,7 @@ using System.Diagnostics;
 using GCDS.NetTemplate.Templates;
 using GCDS.NetTemplate.Components;
 using GCDS.NetTemplate.Core;
+using Microsoft.AspNetCore.Html;
 
 namespace GCDS.NetTemplate.MVC.Sanity.Controllers
 {
@@ -36,7 +37,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             ArgumentNullException.ThrowIfNull(template);
             template.PageTitle = "Home Page";
             template.Header.Banner = new CustomPartial() { ViewName = "Banner", Model = new Banner() { Text = "Jokes on You!" } };
-            template.Header.SkipToNav = new ExtSkipTo() { Link = new GcdsLink { Text = "Skip to nav content", Href = "#nav" } };
+            template.Header.SkipToNav = new ExtSkipTo() { Link = new GcdsLink { Text = new HtmlString("Skip to nav content"), Href = "#nav" } };
 
             template.Header.Menu = new GcdsTopNav
             {
@@ -44,28 +45,22 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                 Alignment = GcdsTopNav.AlignmentType.left,
                 Links =
                [
-                   new GcdsNavLink { Text = "Link 1", Href = "#" },
+                   new GcdsNavLink { Text = new HtmlString("Link 1"), Href = "#" },
                     new GcdsNavGroup { Label = "Group 1",
                         Links =
                         [
-                            new GcdsNavLink { Text = "Link 1.1", Href = "#" },
-                            new GcdsNavLink { Text = "Link 1.2", Href = "#" }
+                            new GcdsNavLink("#", "Link 1.1"),
+                            new GcdsNavLink("#", "Link 1.2")
                         ]
                     },
-                    new GcdsNavLink { Text = "Link 2", Href = "#" }
+                    new GcdsNavLink ("#", "Link 2")
                ],
                 //StyleOverride = "background-color: #e1e4e7;"
             };
 
             template.Header.Breadcrumb = new GcdsBreadcrumbs
             {
-                Items = [
-                        new GcdsLink
-                        {
-                            Text = "Home",
-                            Href ="#"
-                        }
-                        ]
+                Items = [new GcdsLink("#", "Home")]
             };
 
             return View();
@@ -100,15 +95,15 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                     Alignment = GcdsTopNav.AlignmentType.left,
                     Links =
                [
-                   new GcdsNavLink { Text = "Link 1", Href = "#" },
+                   new GcdsNavLink ("#", "Link 1"),
                     new GcdsNavGroup { Label = "Group 1",
                         Links =
                         [
-                            new GcdsNavLink { Text = "Link 1.1", Href = "#" },
-                            new GcdsNavLink { Text = "Link 1.2", Href = "#" }
+                            new GcdsNavLink ("#", "Link 1.1"),
+                            new GcdsNavLink ("#", "Link 1.2")
                         ]
                     },
-                    new GcdsNavLink { Text = "Link 2", Href = "#" }
+                    new GcdsNavLink { Text = new HtmlString("Link <abbr title=\"two\">2</abbr>"), Href = "#" }
                ],
                     //StyleOverride = "background-color: #e1e4e7;"
                 },
@@ -117,7 +112,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                     Items = [
                         new GcdsLink
                         {
-                            Text = "Home",
+                            Text = new HtmlString("Home"),
                             Href = Url.Action("Index") ?? ""
                         },
                         ]

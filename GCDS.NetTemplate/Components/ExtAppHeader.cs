@@ -10,13 +10,11 @@ namespace GCDS.NetTemplate.Components
         /// </summary>
         public ExtSkipTo SkipToMainContent { get; set; } = new ExtSkipTo()
         {
-            Link = new GcdsLink
-            {
-                Text = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "en"
+            Link = new GcdsLink(
+                $"#{CommonConstants.SKIP_TO_CONTENT_ID}",
+                Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "en"
                     ? CommonConstants.SKIP_TO_TEXT_EN
-                    : CommonConstants.SKIP_TO_TEXT_FR,
-                Href = $"#{CommonConstants.SKIP_TO_CONTENT_ID}",
-            }
+                    : CommonConstants.SKIP_TO_TEXT_FR)
         };
 
         /// <summary>

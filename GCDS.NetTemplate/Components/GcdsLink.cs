@@ -1,4 +1,6 @@
-﻿namespace GCDS.NetTemplate.Components
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace GCDS.NetTemplate.Components
 {
     /// <summary>
     /// Class holder for the link properties as defined in the GCDS template
@@ -6,6 +8,11 @@
     /// </summary>
     public class GcdsLink : CommonLinkBase
     {
+        public GcdsLink() { }
+
+        [SetsRequiredMembers]
+        public GcdsLink(string href, string text) : base(href, text) { }
+
         public enum DisplayType
         {
             inline,
