@@ -140,16 +140,16 @@ HttpContext.SetTemplateCulture(CommonConstants.ENGLISH_CULTURE);
 Add configuration values to your `appsettings.json` to override from the defaults (shown in comments)
 ```json
 "TemplateSettings": {
-    "GCDSRootPath": "https://cdn.design-system.alpha.canada.ca/@cdssnc",
-    "GCDSComponentsVersion": "latest",
-    "GCDSCssDirectory": "/gcds-components@{0}/dist/gcds/gcds.css", //will have the `GCDSComponentsVersion` injected, alternatively a version can be provided directly in place of `{0}`
-    "GCDSJsDirectory": "/gcds-components@{0}/dist/gcds/gcds.js", //will have the `GCDSComponentsVersion` injected, alternatively a version can be provided directly in place of `{0}`
-    "GCDSModuleDirectory": "/gcds-components@{0}/dist/gcds/gcds.esm.js", //will have the `GCDSComponentsVersion` injected, alternatively a version can be provided directly in place of `{0}`
-    "FontAwesomePath": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css",
-    "GCDSUtilityDirectory": "/gcds-utility@1.8.0/dist/gcds-utility.min.css",
+    "GcdsRootPath": "https://cdn.design-system.alpha.canada.ca/",
+    "GcdsComponentsVersion": "latest",
+    "GcdsComponetsStylePath": "@cdssnc/gcds-components@{0}/dist/gcds/gcds.css",
+    "GcdsComponentsModulePath": "@cdssnc/gcds-components@{0}/dist/gcds/gcds.esm.js",
+    "GcdsCssShortcutsPath": "@gcds-core/css-shortcuts@latest/dist/gcds-css-shortcuts.min.css"
     "SplashLoadsDefaultBackgroundImage": true
 }
 ```
+GcdsComponentsVersion will be injected into `{0}`.
+GcdsCssShortcutsPath has a distinct version it uses directly only.
 
 ### Leverage the components
 

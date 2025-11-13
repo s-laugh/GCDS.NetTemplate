@@ -3,104 +3,78 @@
     public class TemplateSettings //: ITemplateSettings
     {
         // Set up consts here for easy editing to set as default values
-        private const string _gcdsRootPathDefault = "https://cdn.design-system.alpha.canada.ca/@cdssnc";
+        private const string _gcdsRootPathDefault = "https://cdn.design-system.alpha.canada.ca/";
         private const string _gcdsComponentsVersionDefault = "latest";
-        private const string _gcdsCssDirectoryDefault = "/gcds-components@{0}/dist/gcds/gcds.css";
-        private const string _gcdsModuleDirectoryDefault = "/gcds-components@{0}/dist/gcds/gcds.esm.js";
-        private const string _gcdsJsDirectoryDefault = "/gcds-components@{0}/dist/gcds/gcds.js";
-        private const string _gcdsUtilityDirectoryDefault = "/gcds-utility@1.8.0/dist/gcds-utility.min.css";  
-        private const string _fontAwesomePathDefault = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
+        private const string _gcdsComponentsStylePathDefault = "@cdssnc/gcds-components@{0}/dist/gcds/gcds.css";
+        private const string _gcdsComponentsModulePathDefault = "@cdssnc/gcds-components@{0}/dist/gcds/gcds.esm.js";
+        private const string _gcdsCssShortcutsPathDefault = "@gcds-core/css-shortcuts@latest/dist/gcds-css-shortcuts.min.css";
         private const bool _splashLoadsDefaultBackgroundImage = true;
 
         /// <summary>
         /// root path to the GC Design System web location
         /// up to the version
-        /// required to be loaded from the appsettings.json file
+        /// will default to 'https://cdn.design-system.alpha.canada.ca/' if not provided
         /// </summary>
-        public string GCDSRootPath { get; set; } = _gcdsRootPathDefault;
+        public string GcdsRootPath { get; set; } = _gcdsRootPathDefault;
 
         /// <summary>
         /// version of GC Design System that should be targeted
         /// should be loaded from the appsettings.json file
         /// will default to 'latest' if not provided
         /// </summary>
-        public string GCDSComponentsVersion { get; set; } = _gcdsComponentsVersionDefault;
+        public string GcdsComponentsVersion { get; set; } = _gcdsComponentsVersionDefault;
 
         /// <summary>
         /// the directory where the css file is stored
         /// can be loaded from the appsettings.json file
-        /// will default to '/gcds-components@{0}/dist/gcds/gcds.css' if not provided
+        /// will default to '@cdssnc/gcds-components@{0}/dist/gcds/gcds.css' if not provided
         /// </summary>
-        public string GCDSCssDirectory { get; set; } = _gcdsCssDirectoryDefault;
+        public string GcdsComponentsStylePath { get; set; } = _gcdsComponentsStylePathDefault;
 
         /// <summary>
-        /// will generate a full path to the css file using the GCDSRootPath and GCDSCssDirectory, injecting the GCDSComponentsVersion
+        /// will generate a full path to the css file using the GcdsRootPath and GcdsComponentsStylePath, injecting the GcdsComponentsVersion
         /// </summary>
-        public string GCDSCssFullPath
+        public string GcdsComponentsStyleFullPath
         {
             get
             {
-                return GCDSRootPath + string.Format(GCDSCssDirectory, GCDSComponentsVersion);
-            }
-        }
-
-        /// <summary>
-        /// the directory where the js file is stored
-        /// can be loaded from the appsettings.json file
-        /// will default to '/gcds-components@{0}/dist/gcds/gcds.js' if not provided
-        /// </summary>
-        public string GCDSJsDirectory { get; set; } = _gcdsJsDirectoryDefault;
-
-        /// <summary>
-        /// will generate a full path to the css file using the GCDSRootPath and GCDSJsDirectory, injecting the GCDSComponentsVersion
-        /// </summary>
-        public string GCDSJsFullPath
-        {
-            get
-            {
-                return GCDSRootPath + string.Format(GCDSJsDirectory, GCDSComponentsVersion);
+                return Path.Combine(GcdsRootPath, string.Format(GcdsComponentsStylePath, GcdsComponentsVersion));
             }
         }
 
         /// <summary>
         /// the directory where the js module file is stored
         /// can be loaded from the appsettings.json file
-        /// will default to '/gcds-components@{0}/dist/gcds/gcds.esm.js' if not provided
+        /// will default to '@cdssnc/gcds-components@{0}/dist/gcds/gcds.esm.js' if not provided
         /// </summary>
-        public string GCDSModuleDirectory { get; set; } = _gcdsModuleDirectoryDefault;
+        public string GcdsComponentsModulePath { get; set; } = _gcdsComponentsModulePathDefault;
 
         /// <summary>
-        /// will generate a full path to the css file using the GCDSRootPath and GCDSModuleDirectory, injecting the GCDSComponentsVersion
+        /// will generate a full path to the css file using the GcdsComponentsModulePath and GcdsComponentsModulePath, injecting the GcdsComponentsVersion
         /// </summary>
-        public string GCDSModuleFullPath
+        public string GcdsComponentsModuleFullPath
         {
             get
             {
-                return GCDSRootPath + string.Format(GCDSModuleDirectory, GCDSComponentsVersion);
+                return Path.Combine(GcdsRootPath, string.Format(GcdsComponentsModulePath, GcdsComponentsVersion));
             }
         }
 
         /// <summary>
-        /// the url where the font awesome css file is stored
-        /// defaults to https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css
-        /// </summary>
-        public string FontAwesomePath { get; set; } = _fontAwesomePathDefault;
-
-        /// <summary>
         /// the directory where the css file is stored
         /// can be loaded from the appsettings.json file
-        /// will default to '/gcds-utility@1.8.0/dist/gcds-utility.min.css' if not provided
+        /// will default to '@gcds-core/css-shortcuts@latest/dist/gcds-css-shortcuts.min.css' if not provided
         /// </summary>
-        public string GCDSUtilityDirectory { get; set; } = _gcdsUtilityDirectoryDefault;
+        public string GcdsCssShortcutsPath { get; set; } = _gcdsCssShortcutsPathDefault;
 
         /// <summary>
-        /// will generate a full path to the css file using the GCDSRootPath and GCDSUtilityDirectory
+        /// will generate a full path to the css file using the GcdsRootPath and GcdsCssShortcutsPath
         /// </summary>
-        public string GCDSUtilityFullPath
+        public string GcdsCssShortcutsFullPath
         {
             get
             {
-                return GCDSRootPath + GCDSUtilityDirectory;
+                return Path.Combine(GcdsRootPath, GcdsCssShortcutsPath);
             }
         }
 
