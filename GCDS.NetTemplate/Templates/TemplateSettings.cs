@@ -104,6 +104,6 @@
             }
         }
 
-        internal bool SplashLoadsDefaultBackgroundImage { get; set; } = _splashLoadsDefaultBackgroundImage;
+        public bool SplashLoadsDefaultBackgroundImage { get; set; } = _splashLoadsDefaultBackgroundImage;
     }
 }
