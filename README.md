@@ -9,8 +9,8 @@ _Open to adapting to Blazor, see [Issue: Include other .NET project types to the
 
 2. Add the required services to your application in your `Program.cs` enabling the dependancy injection of the template to work
     ```csharp
-    builder.Services.AddMvcTemplateServices(); // for MVC projects
-    builder.Services.AddRazorTemplateServices(); // for Razor projects
+    builder.AddMvcTemplateServices(); // for MVC projects
+    builder.AddRazorTemplateServices(); // for Razor projects
     ```
 
 3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, ex. `GCDS.NetTemplate/_Layout.{XXX}`, [_see bellow for changing the template_](#picking-your-template))
@@ -146,7 +146,8 @@ Add configuration values to your `appsettings.json` to override from the default
     "GCDSJsDirectory": "/gcds-components@{0}/dist/gcds/gcds.js", //will have the `GCDSComponentsVersion` injected, alternatively a version can be provided directly in place of `{0}`
     "GCDSModuleDirectory": "/gcds-components@{0}/dist/gcds/gcds.esm.js", //will have the `GCDSComponentsVersion` injected, alternatively a version can be provided directly in place of `{0}`
     "FontAwesomePath": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css",
-    "GCDSUtilityDirectory": "/gcds-utility@1.8.0/dist/gcds-utility.min.css"
+    "GCDSUtilityDirectory": "/gcds-utility@1.8.0/dist/gcds-utility.min.css",
+    "SplashLoadsDefaultBackgroundImage": true
 }
 ```
 

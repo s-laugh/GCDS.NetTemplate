@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Project specific files
+GCDS.NetTemplate/icon.png
+**/launchSettings.json
+
 # User-specific files
 *.rsuser
 *.suo

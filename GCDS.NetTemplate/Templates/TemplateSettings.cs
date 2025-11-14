@@ -4,12 +4,13 @@
     {
         // Set up consts here for easy editing to set as default values
         private const string _gcdsRootPathDefault = "https://cdn.design-system.alpha.canada.ca/@cdssnc";
-        private const string _gcdsComponetsVersionDefault = "latest";
+        private const string _gcdsComponentsVersionDefault = "latest";
         private const string _gcdsCssDirectoryDefault = "/gcds-components@{0}/dist/gcds/gcds.css";
         private const string _gcdsModuleDirectoryDefault = "/gcds-components@{0}/dist/gcds/gcds.esm.js";
         private const string _gcdsJsDirectoryDefault = "/gcds-components@{0}/dist/gcds/gcds.js";
         private const string _gcdsUtilityDirectoryDefault = "/gcds-utility@1.8.0/dist/gcds-utility.min.css";  
         private const string _fontAwesomePathDefault = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
+        private const bool _splashLoadsDefaultBackgroundImage = true;
 
         /// <summary>
         /// root path to the GC Design System web location
@@ -23,7 +24,7 @@
         /// should be loaded from the appsettings.json file
         /// will default to 'latest' if not provided
         /// </summary>
-        public string GCDSComponentsVersion { get; set; } = _gcdsComponetsVersionDefault;
+        public string GCDSComponentsVersion { get; set; } = _gcdsComponentsVersionDefault;
 
         /// <summary>
         /// the directory where the css file is stored
@@ -102,5 +103,7 @@
                 return GCDSRootPath + GCDSUtilityDirectory;
             }
         }
+
+        public bool SplashLoadsDefaultBackgroundImage { get; set; } = _splashLoadsDefaultBackgroundImage;
     }
 }
