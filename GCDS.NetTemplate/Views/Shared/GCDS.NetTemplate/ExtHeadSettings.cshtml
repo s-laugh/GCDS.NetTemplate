@@ -2,12 +2,12 @@
 
 @model TemplateSettings
 
-<!-- Icons Font Awesome (to access icons, import Font Awesome) -->
-<link rel="stylesheet" href="@Model.FontAwesomePath" crossorigin="anonymous">
+<!---------- GC Design System CSS Shortcuts ---------->
+<link rel="stylesheet"
+      href="@Model.GcdsCssShortcutsFullPath" />
 
-<!-- GC Design System -->
-<link rel="stylesheet" href="@Model.GCDSUtilityFullPath" />
-
-<link rel="stylesheet" href="@Model.GCDSCssFullPath">
-<script type="module" src="@Model.GCDSModuleFullPath"></script>
-<script nomodule src="@Model.GCDSJsFullPath"></script>
+<!---------- GC Design System Components ---------->
+<link rel="stylesheet"
+      href="@Model.GcdsComponentsStyleFullPath" />
+<script type="module"
+        src="@Model.GcdsComponentsModuleFullPath"></script>
