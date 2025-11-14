@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
+		<StaticWebAssetBasePath>GCDS.NetTemplate</StaticWebAssetBasePath>
 
 		<!-- Nuget metadata -->
 		<PackageId>GCDS.NetTemplate</PackageId>
