@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // template
-builder.Services.AddMvcTemplateServices()
+builder.AddMvcTemplateServices()
     .ConfigureTemplateCulture();
 
 var app = builder.Build();

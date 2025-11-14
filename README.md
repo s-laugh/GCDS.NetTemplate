@@ -146,7 +146,8 @@ Add configuration values to your `appsettings.json` to override from the default
     "GCDSJsDirectory": "/gcds-components@{0}/dist/gcds/gcds.js", //will have the `GCDSComponentsVersion` injected, alternatively a version can be provided directly in place of `{0}`
     "GCDSModuleDirectory": "/gcds-components@{0}/dist/gcds/gcds.esm.js", //will have the `GCDSComponentsVersion` injected, alternatively a version can be provided directly in place of `{0}`
     "FontAwesomePath": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css",
-    "GCDSUtilityDirectory": "/gcds-utility@1.8.0/dist/gcds-utility.min.css"
+    "GCDSUtilityDirectory": "/gcds-utility@1.8.0/dist/gcds-utility.min.css",
+    "SplashLoadsDefaultBackgroundImage": true
 }
 ```
 

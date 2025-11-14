@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 // template
-builder.Services.AddRazorTemplateServices()
+builder.AddRazorTemplateServices()
     .ConfigureTemplateCulture();
 
 var app = builder.Build();
