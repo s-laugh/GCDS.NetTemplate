@@ -9,8 +9,8 @@ _Open to adapting to Blazor, see [Issue: Include other .NET project types to the
 
 2. Add the required services to your application in your `Program.cs` enabling the dependancy injection of the template to work
     ```csharp
-    builder.Services.AddMvcTemplateServices(); // for MVC projects
-    builder.Services.AddRazorTemplateServices(); // for Razor projects
+    builder.AddMvcTemplateServices(); // for MVC projects
+    builder.AddRazorTemplateServices(); // for Razor projects
     ```
 
 3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, ex. `GCDS.NetTemplate/_Layout.{XXX}`, [_see bellow for changing the template_](#picking-your-template))
