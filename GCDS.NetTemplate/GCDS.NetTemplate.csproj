@@ -51,10 +51,6 @@ public static class Assets
 		  File="Generated/StaticAssets.g.cs"
 		  Overwrite="true"
 		  Lines="$(_CodeEscaped)" />
-		<ItemGroup>
-			<Compile Include="Generated/StaticAssets.g.cs" />
-		</ItemGroup>
 	</Target>
-
 
 </Project>
