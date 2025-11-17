@@ -37,9 +37,10 @@
 
 	<!-- Gnerate a static assests path name to refrence the smae StaticWebAssetBasePath in the PropertyGroup-->
 	<Target Name="GenerateStaticAssetsConst"
+			BeforeTargets="CoreCompile"
 			Inputs="$(MSBuildProjectFullPath)"
 			Outputs="$(IntermediateOutputPath)StaticAssets.g.cs">
-		<MakeDir Directories="Generated" />
+		<MakeDir Directories="$(IntermediateOutputPath)" />
 		<PropertyGroup>
 			<_Code>
 namespace GCDS;
@@ -49,8 +50,20 @@ public static class Assets
 }
 			</_Code>
 			<_CodeEscaped>$([MSBuild]::Escape($(_Code)))</_CodeEscaped>
-		</PropertyGroup>
-		<WriteLinesToFile File="Generated/StaticAssets.g.cs" Overwrite="true" Lines="$(_CodeEscaped)" />
+		</PropertyGroup>		
+		<WriteLinesToFile
+			File="$(IntermediateOutputPath)StaticAssets.g.cs"
+			Overwrite="true"
+			Encoding="UTF-8"
+			Lines="$(_CodeEscaped)" />
 	</Target>
+	<ItemGroup>
+	<!-- Include the generated file only after it exists (first build on clean agents won’t fail) -->
+	<Compile Include="$(IntermediateOutputPath)StaticAssets.g.cs"
+			Condition="Exists('$(IntermediateOutputPath)StaticAssets.g.cs')">
+		<!-- Optional: show it under a friendly folder in Solution Explorer -->
+		<Link>Generated\StaticAssets.g.cs</Link>
+	</Compile>
+	</ItemGroup>
 
 </Project>
