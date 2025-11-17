@@ -35,7 +35,7 @@
 	</Target>
 
 	<!-- Gnerate a static assests path name to refrence the smae StaticWebAssetBasePath in the PropertyGroup-->
-	<Target Name="GenerateStaticAssetsConst" BeforeTargets="BeforeBuild">
+	<Target Name="GenerateStaticAssetsConst" BeforeTargets="CoreCompile">
 		<MakeDir Directories="Generated" />
 		<PropertyGroup>
 			<_Code>
@@ -47,10 +47,7 @@ public static class Assets
 			</_Code>
 			<_CodeEscaped>$([MSBuild]::Escape($(_Code)))</_CodeEscaped>
 		</PropertyGroup>
-		<WriteLinesToFile
-		  File="Generated/StaticAssets.g.cs"
-		  Overwrite="true"
-		  Lines="$(_CodeEscaped)" />
+		<WriteLinesToFile File="Generated/StaticAssets.g.cs" Overwrite="true" Lines="$(_CodeEscaped)" />
 	</Target>
 
 </Project>
