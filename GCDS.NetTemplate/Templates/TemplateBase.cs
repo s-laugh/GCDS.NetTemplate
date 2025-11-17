@@ -18,7 +18,7 @@ namespace GCDS.NetTemplate.Templates
         {
             Settings = settings;
             SetLanguageToggleHref(context.Request.QueryString.BuildLanguageToggleQuery());
-            HeadElements.AddLink($"{context.Request.PathBase.Value}/_content/{typeof(TemplateBase).Assembly.GetName().Name}/images/icon.png", "icon", "image/png");
+            HeadElements.AddLink($"{context.Request.PathBase.Value}/{Assets.BasePath}/images/icon.png", "icon", "image/png");
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace GCDS.NetTemplate.Templates
         }
 
         /// <summary>
-        /// Enables settign the toogle link for the language
+        /// Enables setting the toggle link for the language
         /// Set in the ActionFilter by default
         /// </summary>
         public abstract void SetLanguageToggleHref(string href);

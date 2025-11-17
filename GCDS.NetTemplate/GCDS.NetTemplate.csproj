@@ -34,4 +34,27 @@
 		<Copy SourceFiles="wwwroot/images/icon.png" DestinationFiles="icon.png" SkipUnchangedFiles="true" />
 	</Target>
 
+	<!-- Gnerate a static assests path name to refrence the smae StaticWebAssetBasePath in the PropertyGroup-->
+	<Target Name="GenerateStaticAssetsConst" BeforeTargets="BeforeBuild">
+		<MakeDir Directories="Generated" />
+		<PropertyGroup>
+			<_Code>
+namespace GCDS;
+public static class Assets
+{
+	public const string BasePath = "$(StaticWebAssetBasePath)";
+}
+			</_Code>
+			<_CodeEscaped>$([MSBuild]::Escape($(_Code)))</_CodeEscaped>
+		</PropertyGroup>
+		<WriteLinesToFile
+		  File="Generated/StaticAssets.g.cs"
+		  Overwrite="true"
+		  Lines="$(_CodeEscaped)" />
+		<ItemGroup>
+			<Compile Include="Generated/StaticAssets.g.cs" />
+		</ItemGroup>
+	</Target>
+
+
 </Project>
