@@ -6,6 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
 		<StaticWebAssetBasePath>GCDS.NetTemplate</StaticWebAssetBasePath>
+		<CoreCompileDependsOn>GenerateStaticAssetsConst;$(CoreCompileDependsOn)</CoreCompileDependsOn>
 
 		<!-- Nuget metadata -->
 		<PackageId>GCDS.NetTemplate</PackageId>
@@ -35,7 +36,9 @@
 	</Target>
 
 	<!-- Gnerate a static assests path name to refrence the smae StaticWebAssetBasePath in the PropertyGroup-->
-	<Target Name="GenerateStaticAssetsConst" BeforeTargets="CoreCompile">
+	<Target Name="GenerateStaticAssetsConst"
+			Inputs="$(MSBuildProjectFullPath)"
+			Outputs="$(IntermediateOutputPath)StaticAssets.g.cs">
 		<MakeDir Directories="Generated" />
 		<PropertyGroup>
 			<_Code>
