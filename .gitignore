@@ -6,7 +6,6 @@
 # Project specific files
 GCDS.NetTemplate/icon.png
 **/launchSettings.json
-GCDS.NetTemplate/Generated/*
 
 # User-specific files
 *.rsuser
