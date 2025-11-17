@@ -31,5 +31,10 @@ namespace GCDS.NetTemplate.Components
         /// Enables implementing a Breadcrumbs component
         /// </summary>
         public GcdsBreadcrumbs? Breadcrumbs { get; set; }
+
+        /// <summary>
+        /// Add a custom partial that points to a banner to display above the header
+        /// </summary>
+        public CustomPartial? Banner { get; set; }
     }
 }

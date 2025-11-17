@@ -79,6 +79,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             // OR
             template.Header = new ExtAppHeader
             {
+                Banner = new CustomPartial() { ViewName = "Banner", Model = new Banner() { Text = "Jokes on You!" } },
                 AppHeaderTop = new ExtAppHeaderTop
                 {
                     LanguageToggle = new GcdsLangToggle { Href = template.LangToggleHref },
