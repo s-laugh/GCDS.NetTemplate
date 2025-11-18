@@ -14,7 +14,7 @@ namespace GCDS.NetTemplate.Test.TemplateTests
             string siteTitle = "Test Site";
             string pageTitle = "Test Page";
             // Act
-            sut.Inizialize(pageTitle, siteTitle);
+            sut.Initialize(pageTitle, siteTitle);
             // Assert
             sut.Header.Should().NotBeNull();
             sut.Header.AppHeaderTop.Should().NotBeNull();
@@ -28,7 +28,7 @@ namespace GCDS.NetTemplate.Test.TemplateTests
             string siteTitle = "Test Site";
             string pageTitle = "Test Page";
             // Act
-            sut.Inizialize(pageTitle, siteTitle);
+            sut.Initialize(pageTitle, siteTitle);
             // Assert
             sut.PageTitle.Should().Be(pageTitle);
         }
@@ -38,7 +38,7 @@ namespace GCDS.NetTemplate.Test.TemplateTests
         {
             // Arrange
             // Act
-            Action act = () => sut.Inizialize(null!, (string)null!);
+            Action act = () => sut.Initialize(null!, (string)null!);
             // Assert
             act.Should().Throw<ArgumentNullException>().WithMessage("*siteTitle*");
         }
@@ -50,7 +50,7 @@ namespace GCDS.NetTemplate.Test.TemplateTests
             string siteTitle = "Test Site";
             string pageTitle = "Test Page";
             // Act
-            sut.Inizialize(pageTitle, siteTitle);
+            sut.Initialize(pageTitle, siteTitle);
             // Assert
             sut.Header.Should().NotBeNull();
             sut.Footer.Should().NotBeNull();

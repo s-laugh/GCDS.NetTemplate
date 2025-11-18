@@ -19,11 +19,11 @@ namespace GCDS.NetTemplate.Templates
 
         /// <summary>
         /// Apply a last modified date or version number
-        /// Will atomatically grab the version from your dll.
+        /// Will automatically grab the version from your dll.
         /// </summary>
         public GcdsDateModified DateModified { get; set; } = new GcdsDateModified()
         {
-            // get the version number of the project that started (impemented this package) and trim any trailing zeros from the version
+            // get the version number of the project that started (implemented this package) and trim any trailing zeros from the version
             Text = string.Join(".",
                 (FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly()?.Location ?? string.Empty).FileVersion ?? string.Empty)
                 .Split('.').Reverse().SkipWhile(s => s == "0").Reverse()),
@@ -34,12 +34,12 @@ namespace GCDS.NetTemplate.Templates
         public override void SetLanguageToggleHref(string href)
             => LangToggleHref = href ?? throw new ArgumentNullException(nameof(href));
 
-        public InternalApp Inizialize(string pageTitle, string siteTitle)
+        public InternalApp Initialize(string pageTitle, string siteTitle)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(siteTitle);
-            return Inizialize(pageTitle, new ExtSiteTitle { Text = siteTitle });
+            return Initialize(pageTitle, new ExtSiteTitle { Text = siteTitle });
         }
-        public InternalApp Inizialize(string pageTitle, ExtSiteTitle siteTitle)
+        public InternalApp Initialize(string pageTitle, ExtSiteTitle siteTitle)
         {
             base.Initialize(pageTitle);
             ArgumentNullException.ThrowIfNull(siteTitle);

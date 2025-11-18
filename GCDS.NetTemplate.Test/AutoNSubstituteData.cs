@@ -2,6 +2,7 @@
 using AutoFixture.AutoNSubstitute;
 using AutoFixture.Xunit2;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace GCDS.NetTemplate.Test
 {
@@ -24,6 +25,7 @@ namespace GCDS.NetTemplate.Test
         public void Customize(IFixture fixture)
         {
             fixture.Register<HttpContext>(() => new DefaultHttpContext());
+            fixture.Register(() => new ViewDataDictionary(new Microsoft.AspNetCore.Mvc.ModelBinding.EmptyModelMetadataProvider(), new Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary()));
         }
     }
 }
