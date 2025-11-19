@@ -6,6 +6,11 @@
 
 	@await Html.PartialAsync("ExtSkipTo.cshtml", Model.SkipToMainContent)
 
+	@if (Model.Banner != null)
+	{
+		@await Html.PartialAsync(Model.Banner.ViewName, Model.Banner.Model, Model.Banner.ViewData)
+	}
+
 	@await Html.PartialAsync("ExtAppHeaderTop.cshtml", Model.AppHeaderTop)
 
 	@if (Model.Menu != null)

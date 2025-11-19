@@ -22,7 +22,7 @@ namespace GCDS.NetTemplate.Razor.Sanity.Pages
         {
             var template = ViewData.GetTemplate<InternalApp>();            
             ArgumentNullException.ThrowIfNull(template);
-            template.Inizialize("Internal",
+            template.Initialize("Internal",
                 new ExtSiteTitle
                 {
                     Text = "My Application",
