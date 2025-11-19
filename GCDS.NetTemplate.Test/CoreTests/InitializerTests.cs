@@ -2,7 +2,6 @@
 using GCDS.NetTemplate.Core;
 using GCDS.NetTemplate.Templates;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Configuration;
@@ -10,7 +9,7 @@ using NSubstitute;
 
 namespace GCDS.NetTemplate.Test.CoreTests
 {
-    public class InitalizerTests
+    public class InitializerTests
     {
         [Fact]
         public void InitializeTemplate_SetsTemplateInViewData_WithLang()
@@ -37,7 +36,7 @@ namespace GCDS.NetTemplate.Test.CoreTests
             template.Should().NotBeNull();
             template.Header.LangHref.Should().NotBeEmpty();
             template.HeadElements.Should().HaveCount(1);
-            template.HeadElements.Select(e => e.Attributes).Select(a => a["href"]).Should().BeEquivalentTo($"{pathBase}/_content/{typeof(TemplateBase).Assembly.GetName().Name}/images/icon.png");
+            template.HeadElements.Select(e => e.Attributes).Select(a => a["href"]).Should().BeEquivalentTo($"{template.StaticAssetsBasePath}/images/icon.png");
         }
     }
 }

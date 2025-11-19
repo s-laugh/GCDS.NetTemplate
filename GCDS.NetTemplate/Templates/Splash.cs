@@ -9,9 +9,8 @@ namespace GCDS.NetTemplate.Templates
         {
             if(settings.SplashLoadsDefaultBackgroundImage)
             {
-                var assemblyName = typeof(TemplateBase).Assembly.GetName().Name;
-                HeadElements.AddScript($"{context.Request.PathBase.Value}/_content/{assemblyName}/scripts/LoadRandomBackground.js");
-                HeadElements.AddLink($"{context.Request.PathBase.Value}/_content/{assemblyName}/styles/BackgroundCover.css");
+                HeadElements.AddScript($"{StaticAssetsBasePath}/scripts/LoadRandomBackground.js");
+                HeadElements.AddLink($"{StaticAssetsBasePath}/styles/BackgroundCover.css");
             }
         }
 
