@@ -76,6 +76,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             // OR
             template.Initialize("Internal Page", new ExtSiteTitle { Text = "Home", Href = "#" })
                 .HeadElements.AddMeta("name", "content");
+            
             // OR
             template.Header = new ExtAppHeader
             {
@@ -119,6 +120,9 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                         ]
                 }
             };
+
+            template.PageTitleAction = TemplateBase.ViewDataAction.Append;
+            template.Header.Breadcrumbs.ItemsAction = TemplateBase.ViewDataAction.Prepend;
             //template.Footer.StyleOverride = "border-top: 4px solid #243851; background: #f8f8f8;";
 
             return View();

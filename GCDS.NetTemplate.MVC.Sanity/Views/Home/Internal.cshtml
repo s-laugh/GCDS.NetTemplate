@@ -1,6 +1,12 @@
-﻿@{
+﻿@using GCDS.NetTemplate.Components
+@{
     Layout = "GCDS.NetTemplate/_Layout.InternalApp";
     ViewData["PageIdentifier"] = "CESG4010F";
+
+    ViewBag.PageTitle = "Home Page"; // could use a localizer here
+    ViewBag.Breadcrumbs = new List<GcdsLink> {
+        new("#", "Go back") // can use a Url.Action here
+    };
 }
 
 <h1>Hello!</h1>

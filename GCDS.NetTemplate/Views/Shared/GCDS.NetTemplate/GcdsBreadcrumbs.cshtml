@@ -1,10 +1,24 @@
 ﻿@using GCDS.NetTemplate.Components
+@using static GCDS.NetTemplate.Templates.TemplateBase
 
 @model GcdsBreadcrumbs
 
+@{
+	if(ViewData["Breadcrumbs"] is IEnumerable<GcdsLink> gcdsLinks)
+	{
+		Model.Items = Model.Items == null || Model.Items.Count() <= 0
+			? gcdsLinks
+			: Model.ItemsAction switch
+			{
+				ViewDataAction.Prepend => gcdsLinks.Concat(Model.Items),
+				ViewDataAction.Append => Model.Items.Concat(gcdsLinks),
+				_ => gcdsLinks
+			};
+	}
+}
+
 <gcds-breadcrumbs hide-canada-link="@Model.HideCanadaLink"
 				  lang="@Model.Lang" slot="@Model.Slot">
-
 	@if (Model.Items != null)
 	{
 		foreach (var item in Model.Items)
