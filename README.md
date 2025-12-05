@@ -77,6 +77,8 @@ var template = ViewData.GetTemplate<InternalApp>();
 template.Inizialize(...)
 ```
 
+#### Adding Head data
+ 
 Since most sites work better with meta data, be sure to add some through the `HeadElements`. You can also add links to scripts and style pages, or any kind of head element you wish.
 
 ```csharp
@@ -88,6 +90,25 @@ template.HeadElements.AddCustom("tag", new Dictionary<string, string> { { "tagAt
 ```
 
 _Note: `Head` and `Script` sections are also avaliable on all templates._
+
+#### Dynamic ViewData
+
+There are currently 2 dynamic ViewData attributes `Breadcrumbs` and `PageTitle`.
+They are configured inside anwhere you can access the ViewData or ViewBag.
+```cshtml
+ViewBag.PageTitle = "Home Page"; // should use a localizer here
+ViewBag.Breadcrumbs = new List<GcdsLink> {
+    new("#", "Go back") // should use a Url.Action here
+};
+```
+
+How they are used can also be modified with the following attributes: (the default is "Replace")
+```csharp
+public enum ViewDataAction { Replace, Prepend, Append }
+template.PageTitleAction = TemplateBase.ViewDataAction.Append;
+template.Header.Breadcrumbs.ItemsAction = TemplateBase.ViewDataAction.Prepend;
+```
+
 
 #### Using InternalApp Template
 
