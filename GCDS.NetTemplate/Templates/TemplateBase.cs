@@ -40,6 +40,10 @@ namespace GCDS.NetTemplate.Templates
         /// </summary>
         public string PageTitle { get; set; } = null!;
 
+        public enum ViewDataAction { Replace, Prepend, Append }
+
+        public ViewDataAction PageTitleAction { get; set; } = ViewDataAction.Replace;
+
         /// <summary>
         /// Creates a list of HeadElements that will be added to the head of the page.
         /// Used for adding meta tags, linking to styles or scripts.

@@ -1,4 +1,6 @@
-﻿namespace GCDS.NetTemplate.Components
+﻿using static GCDS.NetTemplate.Templates.TemplateBase;
+
+namespace GCDS.NetTemplate.Components
 {
     /// <summary>
     /// Class holder for the breadcrumb properties as defined in the GCDS template
@@ -15,5 +17,7 @@
         /// List of links to be displayed in the breadcrumbs
         /// </summary>
         public IEnumerable<GcdsLink>? Items { get; set; }
+
+        public ViewDataAction ItemsAction { get; set; } = ViewDataAction.Replace;
     }
 }

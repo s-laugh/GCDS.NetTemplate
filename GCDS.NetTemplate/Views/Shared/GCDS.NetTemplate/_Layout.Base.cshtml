@@ -3,7 +3,20 @@
 
 @{
     var template = ViewData.GetTemplateBase();
-	ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
+    ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
+
+    var pageTitle = ViewData["PageTitle"] as string;
+    if (!string.IsNullOrEmpty(pageTitle))
+    {
+        template.PageTitle = string.IsNullOrEmpty(template.PageTitle)
+            ? pageTitle
+            : template.PageTitleAction switch
+            {
+                TemplateBase.ViewDataAction.Prepend => $"{pageTitle} - {template.PageTitle}",
+                TemplateBase.ViewDataAction.Append => $"{template.PageTitle} - {pageTitle}",
+                _ => pageTitle
+            };
+    }
 }
 
 <!DOCTYPE html>
