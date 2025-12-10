@@ -25,7 +25,7 @@ namespace GCDS.NetTemplate.Components
         /// <summary>
         /// Enables implementing a Menu with the TopNav component
         /// </summary>
-        public GcdsTopNav? Menu { get; set; }
+        public ISlotHeaderMenu? Menu { get; set; }
 
         /// <summary>
         /// Enables implementing a Breadcrumbs component

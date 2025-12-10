@@ -8,16 +8,9 @@ using Microsoft.AspNetCore.Html;
 
 namespace GCDS.NetTemplate.MVC.Sanity.Controllers
 {
-    //[ServiceFilter(typeof(TemplateActionFilter))] // Uncomment to use the TemplateActionFilter when not enabled globably
+    //[ServiceFilter(typeof(TemplateActionFilter))] // Uncomment to use the TemplateActionFilter when not enabled globally
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         [TemplateType(typeof(Splash))]
         public IActionResult Index()
         {
@@ -64,6 +57,21 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             };
 
             return View();
+        }
+
+        [TemplateType(typeof(InternalApp))]
+        public IActionResult AltInternal()
+        {
+            var template = ViewData.GetTemplate<InternalApp>();
+            ArgumentNullException.ThrowIfNull(template);
+            template.PageTitle = "Alt Home Page";
+            // OR
+            template.Initialize("Alt Internal Page", new ExtSiteTitle { Text = "Home", Href = "#" });
+
+            // OR
+            template.Header!.Menu = new CustomPartial() { ViewName = "Banner", Model = new Banner { Text = "This is my custom menu" } };
+
+            return View("Internal");
         }
 
         [TemplateType(typeof(InternalApp))]
