@@ -203,7 +203,8 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - `ExtSkipTo`: Custom hidden link to skip to a section, used in the `InternalApp` template
     - `PageIdentifier`: Identify the page by a unique string
   - Other Partials
-    - `SlotHeaderMenu`: Helper to swap the `TopicMenu` or the `TopNav` for the `Header`
+    - `SlotHeaderMenu`: Helper to swap the `TopicMenu` or the `TopNav` or `CustomPartial` for the `GcdsHeader.Menu` and `ExtAppHeader.Menu`
+    - `CustomPartial`: Enables providing a partail name, model, and view data, to load a fully custom partail.
 
 ## Developing / Contributing
 
