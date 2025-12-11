@@ -64,11 +64,8 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         {
             var template = ViewData.GetTemplate<InternalApp>();
             ArgumentNullException.ThrowIfNull(template);
-            template.PageTitle = "Alt Home Page";
-            // OR
             template.Initialize("Alt Internal Page", new ExtSiteTitle { Text = "Home", Href = "#" });
 
-            // OR
             template.Header!.Menu = new CustomPartial() { ViewName = "Banner", Model = new Banner { Text = "This is my custom menu" } };
 
             return View("Internal");
