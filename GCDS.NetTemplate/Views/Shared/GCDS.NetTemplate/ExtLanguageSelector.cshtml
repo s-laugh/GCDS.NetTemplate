@@ -21,19 +21,7 @@
 	var frBlock = RenderLanguageSelectorBlock("fr", Model.FrenchTitle, Model.FrenchHref, "Français");
 }
 
-<style>
-	gcds-grid div:first-child {
-		text-align: right;
-	}
-	gcds-grid div {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-		height: 100%;
-	}
-</style>
-
-<gcds-grid columns="1fr 1fr">
+<gcds-grid id="gnt-language-selector" columns="1fr 1fr">
 	@if (Model.Lang == CommonConstants.ENGLISH_CULTURE_TWO_LETTER)
 	{
 		@enBlock

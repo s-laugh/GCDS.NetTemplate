@@ -20,6 +20,7 @@ namespace GCDS.NetTemplate.Templates
             SetLanguageToggleHref(context.Request.QueryString.BuildLanguageToggleQuery());
             StaticAssetsBasePath = $"{context.Request.PathBase.Value}/_content/{typeof(TemplateBase).Assembly.GetName().Name}";
             HeadElements.AddLink($"{StaticAssetsBasePath}/images/icon.png", "icon", "image/png");
+            HeadElements.AddLink($"{StaticAssetsBasePath}/styles/GCDS.NetTemplate.css");
         }
 
         public string StaticAssetsBasePath { get; set; } 
