@@ -2,7 +2,7 @@
 
 namespace GCDS.NetTemplate.Components
 {
-    public class CustomPartial : ISlotHeaderSkipTo
+    public class CustomPartial : CommonProps, ISlotHeaderSkipTo, ISlotHeaderMenu
     {
         /// <summary>
         /// Name of the view to render

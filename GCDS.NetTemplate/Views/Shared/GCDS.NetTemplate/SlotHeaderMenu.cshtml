@@ -10,4 +10,7 @@
 	case GcdsTopNav topNav:
 		@await Html.PartialAsync("GcdsTopNav.cshtml", topNav)
 		break;
+	case CustomPartial customPartial:
+		@await Html.PartialAsync(customPartial.ViewName, customPartial.Model, customPartial.ViewData)
+        break;
 }

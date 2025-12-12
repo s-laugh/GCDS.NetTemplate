@@ -2,15 +2,10 @@
 
 @model CommonProps
 
-@if (ViewData["PageIdentifier"] != null) {
-	@if (Model.Lang == "en") {
-		<gcds-text size="small">
-			Page Identifier: @ViewData["PageIdentifier"]
-		</gcds-text>
-	}
-	else if (Model.Lang == "fr") {
-		<gcds-text size="small">
-			Identifiant de Page: @ViewData["PageIdentifier"]
-		</gcds-text>
-	}
+@if (ViewData["PageIdentifier"] != null)
+{
+    <dl style="margin-top:-1rem; font:var(--gcds-date-modified-font);">
+        <dt class="mb-0 d-inline">@(Model.Lang == "fr" ? "Identifiant de page" : "Page identifier")</dt>
+        <dd class="mb-0 d-inline">@ViewData["PageIdentifier"]</dd>
+    </dl>
 }
