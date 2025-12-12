@@ -1,0 +1,116 @@
+/* For Random Background */
+body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+/* For SkipTo */
+.hidden-link {
+    position: absolute;
+    top: var(--gcds-header-skiptonav-top);
+    width: 100%;
+    text-align: center;
+}
+
+.hidden-link gcds-link {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: inherit;
+    z-index: 3;
+}
+
+    .hidden-link gcds-link:not(:focus) {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+    }
+
+
+/* Layout.Splash  */
+#splash-window-top {
+    padding: 1rem 2.5rem 3rem;
+    background-color: var(--gcds-bg-light);
+}
+
+    #splash-window-top h1 {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+    }
+
+    #splash-window-top h2 {
+        font: var(--gcds-font-h6);
+    }
+
+#splash-window-bttm {
+    padding: 2rem;
+    background-color: var(--gcds-disabled-background);
+}
+
+#bttm-links {
+    list-style-type: none;
+}
+
+    #bttm-links li {
+        display: inline-block;
+        font: var(--gcds-font-text-small);
+    }
+
+        #bttm-links li::before {
+            content: "\2022";
+            display: inline;
+            margin: var(--gcds-footer-sub-listitem-before-margin);
+        }
+
+        #bttm-links li:first-of-type::before {
+            content: "";
+            margin: 0;
+        }
+
+    #bttm-links a, #bttm-links a:visited {
+        color: var(--gcds-link-default);
+        text-decoration: none;
+    }
+
+        #bttm-links a:hover, #bttm-links a:active {
+            color: var(--gcds-link-hover);
+            text-decoration: underline;
+        }
+
+
+/* ExtLanguageSelector */
+gcds-grid#gnt-language-selector div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+    gcds-grid#gnt-language-selector div:first-child {
+        text-align: right;
+    }
+
+/* ExtSiteTitle */
+#site-title {
+    font: 700 1.5rem/133% "Noto Sans",sans-serif;
+    padding: var(--gcds-nav-link-top-nav-home-padding);
+}
+
+a#site-title:visited:not(:focus) {
+    color: var(--gcds-nav-link-top-nav-text);
+}
+
+a#site-title:not(:hover) {
+    text-decoration-color: transparent;
+}
+
+a#site-title:hover:not(:focus) {
+    color: var(--gcds-nav-link-hover-text) !important;
+}
+
