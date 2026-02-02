@@ -18,6 +18,11 @@ namespace GCDS.NetTemplate.Templates
         public GcdsFooter Footer { get; set; } = new GcdsFooter();
 
         /// <summary>
+        /// Preload side navigation properties
+        /// </summary>
+        public ISlotSideNav? SideNav { get; set; }
+
+        /// <summary>
         /// Apply a last modified date or version number
         /// Will automatically grab the version from your dll.
         /// </summary>

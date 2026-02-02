@@ -31,7 +31,7 @@
         /// <summary>
         /// Links or NavGroups (dropdown of links) to be displayed in the TopNav
         /// </summary>
-        public IEnumerable<ISlotHeaderNavLink> Links { get; set; } = new List<ISlotHeaderNavLink>();
+        public IEnumerable<ISlotNavLink> Links { get; set; } = new List<ISlotNavLink>();
 
         /// <summary>
         /// Enables the user to provide limited custom styling for the TopNav

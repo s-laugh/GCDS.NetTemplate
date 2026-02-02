@@ -2,7 +2,7 @@
 
 namespace GCDS.NetTemplate.Components
 {
-    public class GcdsNavLink : CommonLinkBase, ISlotHeaderNavLink
+    public class GcdsNavLink : CommonLinkBase, ISlotNavLink
     {
         public GcdsNavLink() { }
 

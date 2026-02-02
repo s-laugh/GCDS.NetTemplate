@@ -15,19 +15,6 @@
 		@await Html.PartialAsync("GcdsNavLink.cshtml", Model.Home)
 	}
 
-	@foreach (var item in Model.Links)
-	{
-		switch (item)
-		{
-			case GcdsNavLink link:
-				<!--link-->
-				@await Html.PartialAsync("GcdsNavLink.cshtml", link)
-				break;
-			case GcdsNavGroup group:
-				<!--group-->
-				@await Html.PartialAsync("GcdsNavGroup.cshtml", group)
-				break;
-		}
-	}
+	@await Html.PartialAsync("SlotNavLinks.cshtml", Model.Links)
 
 </gcds-top-nav>
