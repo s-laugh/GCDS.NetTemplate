@@ -66,7 +66,11 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             ArgumentNullException.ThrowIfNull(template);
             template.Initialize("Alt Internal Page", new ExtSiteTitle { Text = "Home", Href = "#" });
 
-            template.Header!.Menu = new CustomPartial() { ViewName = "Banner", Model = new Banner { Text = "This is my custom menu" } };
+            template.Header!.Menu = new CustomPartial() 
+            { 
+                ViewName = "CustomNav", 
+                Model = new Banner { Text = "This is my custom menu" } 
+            };
 
             return View("Internal");
         }
@@ -131,6 +135,49 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             //template.Footer.StyleOverride = "border-top: 4px solid #243851; background: #f8f8f8;";
 
             return View();
+        }
+
+        [TemplateType(typeof(InternalApp))]
+        public IActionResult InternalSideNav()
+        {
+            var template = ViewData.GetTemplate<InternalApp>();
+            ArgumentNullException.ThrowIfNull(template);
+            template.Initialize("Internal Left Nav Page", "My Application Title");
+            template.SideNav = new GcdsSideNav
+            {
+                Label = "Left Nav",
+                Links =
+                [
+                    new GcdsNavLink { Text = new HtmlString("Link 1"), Href = "#" },
+                    new GcdsNavGroup { Label = "Group 1",
+                        Links =
+                        [
+                            new GcdsNavLink("#", "Link 1.1"),
+                            new GcdsNavLink("#", "Link 1.2")
+                        ]
+                    },
+                    new GcdsNavLink ("#", "Link 2")
+                ],
+                StyleOverride = "background-color: #e1e4e7;"
+            };
+
+            return View();
+        }
+
+        [TemplateType(typeof(InternalApp))]
+        public IActionResult AltInternalSideNav()
+        {
+            var template = ViewData.GetTemplate<InternalApp>();
+            ArgumentNullException.ThrowIfNull(template);
+            template.Initialize("Internal Left Nav Page", "My Application Title");
+            template.SideNav = new CustomPartial()
+            {
+                ViewName = "CustomNav",
+                Model = new Banner { Text = "This is my custom menu" }
+            };
+            ViewBag.SideNavWidth = "40%"; // Example of setting a custom width for the side nav; accepted as text, so px, %, etc. are all valid
+
+            return View("InternalSideNav");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

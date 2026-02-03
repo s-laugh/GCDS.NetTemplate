@@ -1,0 +1,10 @@
+﻿@using GCDS.NetTemplate.Components
+
+@model GcdsSideNav
+
+<gcds-side-nav label="@Model.Label"
+			  style="@Model.StyleOverride">
+
+    @await Html.PartialAsync("SlotNavLinks.cshtml", Model.Links)
+
+</gcds-side-nav>

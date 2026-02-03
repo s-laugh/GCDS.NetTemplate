@@ -1,0 +1,18 @@
+﻿@using GCDS.NetTemplate.Components
+
+@model IEnumerable<ISlotNavLink>
+
+@foreach (var item in Model)
+{
+	switch (item)
+	{
+		case GcdsNavLink link:
+			<!--link-->
+			@await Html.PartialAsync("GcdsNavLink.cshtml", link)
+			break;
+		case GcdsNavGroup group:
+			<!--group-->
+			@await Html.PartialAsync("GcdsNavGroup.cshtml", group)
+			break;
+	}
+}

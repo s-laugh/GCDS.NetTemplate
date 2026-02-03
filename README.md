@@ -1,20 +1,18 @@
 # DotNetTemplates-GCDS
 A quick install template solution to develop and deploy .NET application using [GC Design System (GCDS)](https://github.com/cds-snc/gcds-components). Currently designed for MVC & Razor projects. 
 
-_Open to adapting to Blazor, see [Issue: Include other .NET project types to the templates #2](../../issues/#2) for more details._
-
 ## Using / Implementing / Installing
 
 1. Download the `GCDS.NetTemplate` from Nuget.org into an .NET 8 or later MVC project
 
-2. Add the required services to your application in your `Program.cs` enabling the dependancy injection of the template to work
+2. Add the required services to your application in your `Program.cs` enabling the dependency injection of the template to work
     ```csharp
     builder.AddMvcTemplateServices(); // for MVC projects
     builder.AddRazorTemplateServices(); // for Razor projects
     ```
 
-3. Ensure your view points one of the templates provided Layouts (matching the tageted tempalte, ex. `GCDS.NetTemplate/_Layout.{XXX}`, [_see bellow for changing the template_](#picking-your-template))
-   Povided Layouts/Templates:
+3. Ensure your view points one of the templates provided Layouts (matching the targeted template, ex. `GCDS.NetTemplate/_Layout.{XXX}`, [_see bellow for changing the template_](#picking-your-template))
+   Provided Layouts/Templates:
     - **Basic** template will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
     - **InternalApp** is a custom template to build an internal application [_see bellow for template requirements_](#using-internalapp-template)
     - **Splash** is a custom template to build an generic splash page [_see bellow for template requirements_](#using-splash-template)
@@ -23,12 +21,13 @@ _Open to adapting to Blazor, see [Issue: Include other .NET project types to the
 
 #### Translation
 
-Use the built-in Translation by adding additionall configurations to your `Program.cs`
+Use the built-in Translation by adding additional configurations to your `Program.cs`
 
 ```csharp
 builder.Services.ConfigureTemplateCulture();
 app.UseRequestLocalization(); // part of .NET
 ```
+
 ### Picking your template
 
 By default, the **Basic** template will be loaded, and it will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS.
@@ -38,7 +37,7 @@ _Note: Even if a template is loaded, you don't have to use it. It only gets used
 <details>
   <summary>Change the default template</summary>
 
-  **Note: Be sure to use the corrisponding `GCDS.NetTemplate/_Layout.{XXX}` for the chosen template.**
+  **Note: Be sure to use the corresponding `GCDS.NetTemplate/_Layout.{XXX}` for the chosen template.**
 
 Option 1. Set a default template type globally in the `Program.cs`.
 
@@ -47,14 +46,14 @@ builder.Services.AddMvcTemplateServices(typeof(InternalApp)) // for MVC projects
 builder.Services.AddRazorTemplateServices(typeof(InternalApp)) // for Razor projects
 ```
 
-Option 2. Use a different template for a contoller, page or action by applying a `TemplateType` attribute. This Will take precidence over other defaults.
+Option 2. Use a different template for a controller, page or action by applying a `TemplateType` attribute. This Will take precedence over other defaults.
 
 ```csharp
 [TemplateType(typeof(InternalApp))]
 public IActionResult Index() // public class IndexModel : PageModel
 ```
 
-Option 3. (**MVC only**) Use the template on only some contollers by not registering the service globally in the `Program.cs` and adding a ServiceFilter to the controler that should use it.
+Option 3. (**MVC only**) Use the template on only some controllers by not registering the service globally in the `Program.cs` and adding a ServiceFilter to the controller that should use it.
 
 ```csharp
 // Program.cs
@@ -65,16 +64,54 @@ builder.Services.AddMvcTemplateServices(global: false)
 public class HomeController : Controller
 ```
 
+#### Side (Left) Menu Variant
+
+Available on the Internal template.
+
+##### Steps to use
+1. Target the left menu layout variant
+    ```cshtml
+    Layout = "GCDS.NetTemplate/_Layout.{TemplateType}.SideNav";
+    ```
+
+2. Set the `SideNav` property of your template has with either `GcdsSideNav` or `CustomPartial`
+    ```csharp
+    template.SideNav = new GcdsSideNav
+    {
+        Label = "Left Nav",
+        Links =
+        [
+            new GcdsNavLink { Text = new HtmlString("Link 1"), Href = "#" },
+            new GcdsNavGroup { Label = "Group 1",
+                Links =
+                [
+                    new GcdsNavLink("#", "Link 1.1"),
+                    new GcdsNavLink("#", "Link 1.2")
+                ]
+            },
+            new GcdsNavLink ("#", "Link 2")
+        ],
+        StyleOverride = "background-color: #e1e4e7;"
+    };
+    // OR
+    template.SideNav = new CustomPartial() { ViewName = "Banner", Model = new Banner { Text = "This is my custom menu" } };
+    ```
+
+3. Adjust the width of the side nav with `ViewData["SideNavWidth"]`
+    ```csharp
+    ViewBag.SideNavWidth = "40%"; // accepted as text, so px, %, etc. are all valid
+    ```
+
 </details>
 
 ### Leveraging the templates
 
 In your page or controller, access the template to manipulate it to your needs.
-This is how you can edit the breadcrumbs, menu, footer links, or override features like the language toggle. The `Inizialize` function will prompt you to add required feilds.
+This is how you can edit the breadcrumbs, menu, footer links, or override features like the language toggle. The `Initialize` function will prompt you to add required fields.
 
 ```csharp
 var template = ViewData.GetTemplate<InternalApp>();
-template.Inizialize(...)
+template.Initialize(...)
 ```
 
 #### Adding Head data
@@ -89,12 +126,12 @@ template.HeadElements.AddScript("www.google.ca");
 template.HeadElements.AddCustom("tag", new Dictionary<string, string> { { "tagAttribute", "value" } }, "innerHtml");
 ```
 
-_Note: `Head` and `Script` sections are also avaliable on all templates._
+_Note: `Head` and `Script` sections are also available on all templates._
 
 #### Dynamic ViewData
 
 There are currently 2 dynamic ViewData attributes `Breadcrumbs` and `PageTitle`.
-They are configured inside anwhere you can access the ViewData or ViewBag.
+They are configured inside anywhere you can access the ViewData or ViewBag.
 ```cshtml
 ViewBag.PageTitle = "Home Page"; // should use a localizer here
 ViewBag.Breadcrumbs = new List<GcdsLink> {
@@ -109,19 +146,18 @@ template.PageTitleAction = TemplateBase.ViewDataAction.Append;
 template.Header.Breadcrumbs.ItemsAction = TemplateBase.ViewDataAction.Prepend;
 ```
 
-
 #### Using InternalApp Template
 
-It's recommended to use the `Inizialize` function on this template to set the required properties. This function is chainable to access other properties.
+It's recommended to use the `Initialize` function on this template to set the required properties. This function is chainable to access other properties.
 
 ```csharp
-template.Inizialize("My Application Title");
+template.Initialize("My Application Title");
 // OR
-template.Inizialize(new ExtSiteTitle { Text = "Home", Href = "#" })
+template.Initialize(new ExtSiteTitle { Text = "Home", Href = "#" })
     .HeadElements.AddMeta("name", "content");
 ```
 
-You can still self initialize the required props. When doing so you can access the `LangToggleHref` built by the template instaed of creating that yourself.
+You can still self initialize the required props. When doing so you can access the `LangToggleHref` built by the template instead of creating that yourself.
 
 ```csharp
 template.Header = new ExtAppHeader
@@ -142,7 +178,7 @@ _Reminder: Be sure to use the `GCDS.NetTemplate/_Layout.InternalApp` when using 
 
 #### Using Splash Template
 
-Remeber to Initialize the template!
+Remember to Initialize the template!
 
 ```csharp
 template.Initialize("Page Name", new ExtLanguageSelector("Custom Splash Title", "Titre d'éclaboussure personnalisé", Url.Action("Home")));
@@ -175,9 +211,9 @@ GcdsCssShortcutsPath has a distinct version it uses directly only.
 ### Leverage the components
 
 Leverage the component partials to build your own templates and features within your page.
-Provided partials & matching component classes: (linked to GCDS matching component if avaliable)
+Provided partials & matching component classes: (linked to GCDS matching component if available)
 
-_Note: Most GCDS compontes can be used natively within the view so are not buit as a partial_
+_Note: Most GCDS components can be used natively within the view so are not built as a partial_
 
   - GCDS components
     - [`GcdsBreadcrumbs`](https://design-system.alpha.canada.ca/en/components/breadcrumbs/)
@@ -192,6 +228,7 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - [`GcdsSignature`](https://design-system.alpha.canada.ca/en/components/signature/)
     - [`GcdsTopicMenu` (Theme and topic menu)](https://design-system.alpha.canada.ca/en/components/theme-and-topic-menu/)
     - [`GcdsTopNav` (Top navigation)](https://design-system.alpha.canada.ca/en/components/top-navigation/)
+    - [`GcdsSideNav` (Left Menu)](https://design-system.alpha.canada.ca/en/components/side-navigation/)
   - Custom components
     - `ExtAppHeader`: Header for the `InternalApp` template
     - `ExtAppHeaderTop`: A top section for the `ExtAppHeader` 
@@ -203,8 +240,9 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - `ExtSkipTo`: Custom hidden link to skip to a section, used in the `InternalApp` template
     - `PageIdentifier`: Identify the page by a unique string
   - Other Partials
-    - `SlotHeaderMenu`: Helper to swap the `TopicMenu` or the `TopNav` or `CustomPartial` for the `GcdsHeader.Menu` and `ExtAppHeader.Menu`
-    - `CustomPartial`: Enables providing a partail name, model, and view data, to load a fully custom partail.
+    - `SlotHeaderMenu`: Helper to swap the `GcdsTopicMenu` or the `GcdsTopNav` or `CustomPartial` for the `GcdsHeader.Menu` and `ExtAppHeader.Menu`
+    - `SlotNavLinks`: Helper to iterate over a `IEnumerable<ISlotNavLink>` to swap the `GcdsNavLink` and the `GcdsNavGroup` for the `GcdsSideNav.Links` and `GcdsTopNav.Links`.
+    - `CustomPartial`: Enables providing a partial name, model, and view data, to load a fully custom partial.
 
 ## Developing / Contributing
 
@@ -212,6 +250,6 @@ Anyone can create Issues (Bugs, Feature Requests, Suggestions)
 
 You must be GC employee to contribute. Fork and make a pull request with signed commits.
 
-It's using .NET 8, Visaul Studio or VSCode should work.
+It's using .NET 8, Visual Studio or VSCode should work.
 
 Use the Sanity project to run and validate changes locally, as these a files that should not be released in the package.

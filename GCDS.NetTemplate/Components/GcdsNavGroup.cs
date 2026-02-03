@@ -3,7 +3,7 @@
     /// <summary>
     /// Class holder for the NavGroup properties within the TopNav component in GCDS
     /// </summary>
-    public class GcdsNavGroup : ISlotHeaderNavLink
+    public class GcdsNavGroup : ISlotNavLink
     {
         /// <summary>
         /// Label for the nav group menu

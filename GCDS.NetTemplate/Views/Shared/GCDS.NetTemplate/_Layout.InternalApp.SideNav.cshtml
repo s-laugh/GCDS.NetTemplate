@@ -1,0 +1,44 @@
+﻿@using GCDS.NetTemplate.Components
+@using GCDS.NetTemplate.Templates
+@using GCDS.NetTemplate.Core
+
+@{
+	InternalApp? template = ViewData.GetTemplate<InternalApp>();
+	ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
+	Layout = "_Layout.Base.cshtml"; // Use the base layout for this template
+    ViewBag.SideNavWidth ??= "320px"; // Default width for the side nav
+}
+
+@section LayoutBody {
+	@{
+		ArgumentNullException.ThrowIfNull(template.Header, 
+			"Header must be set when using this template.");
+	}
+	@await Html.PartialAsync("ExtAppHeader.cshtml", template.Header)
+
+	<gcds-container size="xl" centered main-container>
+		<gcds-grid columns="minmax(0, 1fr)" columns-desktop="@ViewBag.SideNavWidth minmax(0, 1fr)">
+			@switch (template.SideNav)
+			{
+				case GcdsSideNav sn:
+                    @await Html.PartialAsync("GcdsSideNav.cshtml", sn)
+					break;
+				case CustomPartial cp:
+					@await Html.PartialAsync(cp.ViewName, cp.Model, cp.ViewData)
+					break;
+				default:
+					throw new ArgumentException(nameof(template.SideNav), "SideNav must be set to an expected type when using this template.");
+			}
+			<main id="@CommonConstants.SKIP_TO_CONTENT_ID" role="main">
+				@RenderBody()
+			</main>
+		</gcds-grid>
+
+		<aside>
+			@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
+			@await Html.PartialAsync("PageIdentifier.cshtml", new CommonProps { Lang = template.Lang })
+		</aside>
+	</gcds-container>
+
+	@await Html.PartialAsync("GcdsFooter.cshtml", template.Footer)
+}
