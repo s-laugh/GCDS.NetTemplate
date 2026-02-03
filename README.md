@@ -1,8 +1,6 @@
 # DotNetTemplates-GCDS
 A quick install template solution to develop and deploy .NET application using [GC Design System (GCDS)](https://github.com/cds-snc/gcds-components). Currently designed for MVC & Razor projects. 
 
-_Open to adapting to Blazor, see [Issue: Include other .NET project types to the templates #2](../../issues/#2) for more details._
-
 ## Using / Implementing / Installing
 
 1. Download the `GCDS.NetTemplate` from Nuget.org into an .NET 8 or later MVC project
@@ -29,6 +27,7 @@ Use the built-in Translation by adding additionall configurations to your `Progr
 builder.Services.ConfigureTemplateCulture();
 app.UseRequestLocalization(); // part of .NET
 ```
+
 ### Picking your template
 
 By default, the **Basic** template will be loaded, and it will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS.
@@ -64,6 +63,44 @@ builder.Services.AddMvcTemplateServices(global: false)
 [ServiceFilter(typeof(TemplateActionFilter))] 
 public class HomeController : Controller
 ```
+
+#### Side (Left) Menu Variant
+
+Avaliable on the Internal template.
+
+##### Steps to use
+1. Target the left menu layout varient
+    ```cshtml
+    Layout = "GCDS.NetTemplate/_Layout.{TemplateType}.SideNav";
+    ```
+
+2. Set the `SideNav` property of your template has with either `GcdsSideNav` or `CustomPartial`
+    ```csharp
+    template.SideNav = new GcdsSideNav
+    {
+        Label = "Left Nav",
+        Links =
+        [
+            new GcdsNavLink { Text = new HtmlString("Link 1"), Href = "#" },
+            new GcdsNavGroup { Label = "Group 1",
+                Links =
+                [
+                    new GcdsNavLink("#", "Link 1.1"),
+                    new GcdsNavLink("#", "Link 1.2")
+                ]
+            },
+            new GcdsNavLink ("#", "Link 2")
+        ],
+        StyleOverride = "background-color: #e1e4e7;"
+    };
+    // OR
+    template.SideNav = new CustomPartial() { ViewName = "Banner", Model = new Banner { Text = "This is my custom menu" } };
+    ```
+
+3. Adjust the width of the side nav with `ViewData["SideNavWidth"]`
+    ```csharp
+    ViewBag.SideNavWidth = "40%"; // accepted as text, so px, %, etc. are all valid
+    ```
 
 </details>
 
@@ -108,7 +145,6 @@ public enum ViewDataAction { Replace, Prepend, Append }
 template.PageTitleAction = TemplateBase.ViewDataAction.Append;
 template.Header.Breadcrumbs.ItemsAction = TemplateBase.ViewDataAction.Prepend;
 ```
-
 
 #### Using InternalApp Template
 
