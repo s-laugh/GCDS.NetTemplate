@@ -228,6 +228,7 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - [`GcdsSignature`](https://design-system.alpha.canada.ca/en/components/signature/)
     - [`GcdsTopicMenu` (Theme and topic menu)](https://design-system.alpha.canada.ca/en/components/theme-and-topic-menu/)
     - [`GcdsTopNav` (Top navigation)](https://design-system.alpha.canada.ca/en/components/top-navigation/)
+    - [`GcdsSideNav` (Left Menu)](https://design-system.alpha.canada.ca/en/components/side-navigation/)
   - Custom components
     - `ExtAppHeader`: Header for the `InternalApp` template
     - `ExtAppHeaderTop`: A top section for the `ExtAppHeader` 
@@ -239,7 +240,8 @@ _Note: Most GCDS compontes can be used natively within the view so are not buit 
     - `ExtSkipTo`: Custom hidden link to skip to a section, used in the `InternalApp` template
     - `PageIdentifier`: Identify the page by a unique string
   - Other Partials
-    - `SlotHeaderMenu`: Helper to swap the `TopicMenu` or the `TopNav` or `CustomPartial` for the `GcdsHeader.Menu` and `ExtAppHeader.Menu`
+    - `SlotHeaderMenu`: Helper to swap the `GcdsTopicMenu` or the `GcdsTopNav` or `CustomPartial` for the `GcdsHeader.Menu` and `ExtAppHeader.Menu`
+    - `SlotNavLinks`: Helper to itterate over a `IEnumerable<ISlotNavLink>` to swap the `GcdsNavLink` and the `GcdsNavGroup` for the `GcdsSideNav.Links` and `GcdsTopNav.Links`.
     - `CustomPartial`: Enables providing a partail name, model, and view data, to load a fully custom partail.
 
 ## Developing / Contributing
