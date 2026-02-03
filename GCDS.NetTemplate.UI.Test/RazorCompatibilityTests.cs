@@ -7,6 +7,7 @@ namespace GCDS.NetTemplate.UI.Test
         [Theory]
         [InlineData("http://localhost:5001/")]
         [InlineData("http://localhost:5001/Internal")]
+        [InlineData("http://localhost:5001/InternalSideNav")]
         public async Task RazorPage_Should_Render_WithoutErrors(string url)
         {
             using var playwright = await Playwright.CreateAsync();

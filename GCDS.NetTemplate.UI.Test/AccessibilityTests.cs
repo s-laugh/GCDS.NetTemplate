@@ -5,15 +5,14 @@ namespace GCDS.NetTemplate.UI.Test
     public class AccessibilityTests
     {
         public static IEnumerable<object[]> ComponentUrls =>
-    [
-        ["http://localhost:5000/Home/Index"],
-        ["http://localhost:5000/Home/Home"],
-        ["http://localhost:5000/Home/Internal"],
-        ["http://localhost:5000/Home/AltInternal"],
-        ["http://localhost:5000/Home/InternalSideNav"],
-        ["http://localhost:5000/Home/AltInternalSideNav"],
-        // Add more as needed
-    ];
+        [
+            ["http://localhost:5000/Home/Index"],
+            ["http://localhost:5000/Home/Home"],
+            ["http://localhost:5000/Home/Internal"],
+            ["http://localhost:5000/Home/AltInternal"],
+            ["http://localhost:5000/Home/InternalSideNav"],
+            ["http://localhost:5000/Home/AltInternalSideNav"],
+        ];
 
         [Theory]
         [MemberData(nameof(ComponentUrls))]

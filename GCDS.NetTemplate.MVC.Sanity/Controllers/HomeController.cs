@@ -66,7 +66,11 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             ArgumentNullException.ThrowIfNull(template);
             template.Initialize("Alt Internal Page", new ExtSiteTitle { Text = "Home", Href = "#" });
 
-            template.Header!.Menu = new CustomPartial() { ViewName = "Banner", Model = new Banner { Text = "This is my custom menu" } };
+            template.Header!.Menu = new CustomPartial() 
+            { 
+                ViewName = "CustomNav", 
+                Model = new Banner { Text = "This is my custom menu" } 
+            };
 
             return View("Internal");
         }
@@ -166,7 +170,11 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             var template = ViewData.GetTemplate<InternalApp>();
             ArgumentNullException.ThrowIfNull(template);
             template.Initialize("Internal Left Nav Page", "My Application Title");
-            template.SideNav = new CustomPartial() { ViewName = "Banner", Model = new Banner { Text = "This is my custom menu" } };
+            template.SideNav = new CustomPartial()
+            {
+                ViewName = "CustomNav",
+                Model = new Banner { Text = "This is my custom menu" }
+            };
             ViewBag.SideNavWidth = "40%"; // Example of setting a custom width for the side nav; accepted as text, so px, %, etc. are all valid
 
             return View("InternalSideNav");
