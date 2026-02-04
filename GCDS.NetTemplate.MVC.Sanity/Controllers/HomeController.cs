@@ -138,7 +138,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         }
 
         [TemplateType(typeof(InternalApp))]
-        public IActionResult InternalSideNav()
+        public IActionResult InternalSideNav(bool variant = false)
         {
             var template = ViewData.GetTemplate<InternalApp>();
             ArgumentNullException.ThrowIfNull(template);
@@ -161,7 +161,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                 StyleOverride = "background-color: #e1e4e7;"
             };
 
-            return View();
+            return View(variant ? "InternalSideNavVariant" : "InternalSideNav");
         }
 
         [TemplateType(typeof(InternalApp))]
