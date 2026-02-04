@@ -21,7 +21,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             template.LanguageSelector = new ExtLanguageSelector("Custom Splash Title", "Titre d'claboussure personnalis", Url.Action("Home")!);
             template.PageTitle = "Custom Title / Titre personnalis";
             template.HeadElements.AddMeta("description", "This is a custom splash page for testing purposes.");
-            return View(); 
+            return View();
         }
 
         public IActionResult Home()
@@ -66,10 +66,10 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             ArgumentNullException.ThrowIfNull(template);
             template.Initialize("Alt Internal Page", new ExtSiteTitle { Text = "Home", Href = "#" });
 
-            template.Header!.Menu = new CustomPartial() 
-            { 
-                ViewName = "CustomNav", 
-                Model = new Banner { Text = "This is my custom menu" } 
+            template.Header!.Menu = new CustomPartial()
+            {
+                ViewName = "CustomNav",
+                Model = new Banner { Text = "This is my custom menu" }
             };
 
             return View("Internal");
@@ -85,7 +85,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             // OR
             template.Initialize("Internal Page", new ExtSiteTitle { Text = "Home", Href = "#" })
                 .HeadElements.AddMeta("name", "content");
-            
+
             // OR
             template.Header = new ExtAppHeader
             {
@@ -104,18 +104,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                 {
                     Label = "Top Nav",
                     Alignment = GcdsTopNav.AlignmentType.left,
-                    Links =
-               [
-                   new GcdsNavLink ("#", "Link 1"),
-                    new GcdsNavGroup { Label = "Group 1",
-                        Links =
-                        [
-                            new GcdsNavLink ("#", "Link 1.1"),
-                            new GcdsNavLink ("#", "Link 1.2")
-                        ]
-                    },
-                    new GcdsNavLink { Text = new HtmlString("Link <abbr title=\"two\">2</abbr>"), Href = "#" }
-               ],
+                    Links = LargeMenu // only one layer of groups supported in top nav
                     //StyleOverride = "background-color: #e1e4e7;"
                 },
                 Breadcrumbs = new GcdsBreadcrumbs
@@ -146,18 +135,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             template.SideNav = new GcdsSideNav
             {
                 Label = "Left Nav",
-                Links =
-                [
-                    new GcdsNavLink { Text = new HtmlString("Link 1"), Href = "#" },
-                    new GcdsNavGroup { Label = "Group 1",
-                        Links =
-                        [
-                            new GcdsNavLink("#", "Link 1.1"),
-                            new GcdsNavLink("#", "Link 1.2")
-                        ]
-                    },
-                    new GcdsNavLink ("#", "Link 2")
-                ],
+                Links = LargeMenu,
                 StyleOverride = "background-color: #e1e4e7;"
             };
 
@@ -185,5 +163,54 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        private static IEnumerable<ISlotNavLink> LargeMenu => [
+            new GcdsNavLink { Text = new HtmlString("Link 1"), Href = "#" },
+            new GcdsNavGroup { Label = "Group 1",
+                Links =
+                [
+                    new GcdsNavLink("#", "Link 2.1"),
+                    new GcdsNavLink("#", "Link 2.2"),
+                    new GcdsNavGroup { Label = "Group 2",
+                        Links =
+                        [
+                            new GcdsNavLink("#", "Link 1.3.1"),
+                            new GcdsNavLink("#", "Link 1.3.2"),
+                            new GcdsNavGroup { Label = "Group 3",
+                                Links =
+                                [
+                                    new GcdsNavLink("#", "Link 1.3.3.1"),
+                                    new GcdsNavLink("#", "Link 1.3.3.2")
+                                ]
+                            },
+                        ]
+                    },
+                ]
+            },
+            new GcdsNavLink("#", "Link 4"),
+            new GcdsNavLink("#", "Link 5"),
+            new GcdsNavLink("#", "Link 6"),
+            new GcdsNavLink("#", "Link 7"),
+            new GcdsNavLink("#", "Link 8"),
+            new GcdsNavGroup
+            {
+                Label = "Group 4",
+                Links =
+                [
+                    new GcdsNavLink("#", "Link 9.1"),
+                    new GcdsNavLink("#", "Link 9.2"),
+                    new GcdsNavLink("#", "Link 9.3"),
+                    new GcdsNavLink("#", "Link 9.4"),
+                    new GcdsNavLink("#", "Link 9.5"),
+                    new GcdsNavLink("#", "Link 9.6"),
+                    new GcdsNavLink("#", "Link 9.7"),
+                    new GcdsNavLink("#", "Link 9.8")
+                ]
+            },
+            new GcdsNavLink("#", "Link 10"),
+            new GcdsNavLink("#", "Link 11"),
+            new GcdsNavLink("#", "Link 12"),
+            new GcdsNavLink("#", "Link 13")
+        ];
     }
 }

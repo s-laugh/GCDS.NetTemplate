@@ -114,3 +114,10 @@ a#site-title:hover:not(:focus) {
     color: var(--gcds-nav-link-hover-text) !important;
 }
 
+/* Side nav scroll */
+.sidenav-scroll {
+    top: 0;
+    overflow-y: auto;
+    max-height: 100dvh;
+    scrollbar-gutter: stable;
+}

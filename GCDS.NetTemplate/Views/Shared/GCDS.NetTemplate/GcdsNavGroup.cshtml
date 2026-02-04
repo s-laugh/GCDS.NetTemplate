@@ -4,8 +4,7 @@
 				open-trigger="@Model.OpenTrigger"
 				close-trigger="@Model.CloseTrigger"
 				open="@Model.Open">
-	@foreach (var subItem in Model.Links)
-	{
-		@await Html.PartialAsync("GcdsNavLink.cshtml", subItem)
-	}
+
+	@await Html.PartialAsync("SlotNavLinks.cshtml", Model.Links)
+
 </gcds-nav-group>
