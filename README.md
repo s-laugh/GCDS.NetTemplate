@@ -249,7 +249,7 @@ _Note: Most GCDS components can be used natively within the view so are not buil
     - `ExtRandomBackground`: Will randomize a full screen background image base on a set of image paths, used in the `Splash` template
     - `ExtSiteTitle`: Title (link) for the `ExtAppHeaderTop`
     - `ExtSkipTo`: Custom hidden link to skip to a section, used in the `InternalApp` template
-    - `PageIdentifier`: Identify the page by a unique string
+    - `ExtPageIdentifier`: Identify the page by a unique string provided via ViewData
   - Other Partials
     - `SlotHeader`: Helper to swap the `GcdsHeader` or the `ExtAppHeader` for the common layout
     - `SlotHeaderMenu`: Helper to swap the `GcdsTopicMenu` or the `GcdsTopNav` or `CustomPartial` for the `GcdsHeader.Menu` and `ExtAppHeader.Menu`
