@@ -11,6 +11,7 @@ namespace GCDS.NetTemplate.UI.Test
             ["http://localhost:5000/Home/Internal"],
             ["http://localhost:5000/Home/AltInternal"],
             ["http://localhost:5000/Home/InternalSideNav"],
+            ["http://localhost:5000/Home/InternalSideNav?variant=true"],
             ["http://localhost:5000/Home/AltInternalSideNav"],
         ];
 

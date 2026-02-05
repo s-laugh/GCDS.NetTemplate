@@ -3,7 +3,8 @@
 @model GcdsSideNav
 
 <gcds-side-nav label="@Model.Label"
-			  style="@Model.StyleOverride">
+			  style="@Model.StyleOverride"
+              class="@(Model.Scroll ? "sidenav-scroll lg:position-sticky align-self-start border-box" : "")">
 
     @await Html.PartialAsync("SlotNavLinks.cshtml", Model.Links)
 

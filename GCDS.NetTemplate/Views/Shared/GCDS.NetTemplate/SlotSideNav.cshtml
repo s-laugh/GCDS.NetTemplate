@@ -1,0 +1,15 @@
+﻿@using GCDS.NetTemplate.Components
+
+@model ISlotSideNav
+
+@switch (Model)
+{
+	case GcdsSideNav sn:
+		@await Html.PartialAsync("GcdsSideNav.cshtml", sn)
+		break;
+	case CustomPartial cp:
+		@await Html.PartialAsync(cp.ViewName, cp.Model, cp.ViewData)
+		break;
+	default:
+		throw new ArgumentException(nameof(Model), "SideNav must be set to an expected type when using this template.");
+}

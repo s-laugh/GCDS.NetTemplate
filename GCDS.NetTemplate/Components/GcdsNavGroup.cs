@@ -34,6 +34,6 @@
         /// <summary>
         /// links that will be shown under the header
         /// </summary>
-        public required IEnumerable<GcdsNavLink> Links { get; set; }
+        public required IEnumerable<ISlotNavLink> Links { get; set; }
     }
 }

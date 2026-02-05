@@ -7,7 +7,7 @@
     public class GcdsSideNav : CommonProps, ISlotSideNav
     {
         /// <summary>
-        /// Accessability information
+        /// Accessibility information
         /// </summary>
         public required string Label { get; set; }
 
@@ -20,5 +20,11 @@
         /// Enables the user to provide limited custom styling for the TopNav
         /// </summary>
         public string? StyleOverride { get; set; }
+
+        /// <summary>
+        /// Allows toggling the scroll behavior of the SideNav.
+        /// Defaults to true, meaning the SideNav will scroll if the content exceeds the height of the viewport.
+        /// </summary>
+        public bool Scroll { get; set; } = true;
     }
 }
