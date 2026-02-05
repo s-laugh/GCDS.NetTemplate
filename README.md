@@ -10,18 +10,16 @@ A quick install template solution to develop and deploy .NET application using [
     builder.AddRazorTemplateServices(); // for Razor projects
     ```
 
-3. Ensure your view points one of the templates provided Layouts (matching the targeted template, ex. `GCDS.NetTemplate/_Layout.{XXX}`, [_see bellow for changing the template_](#picking-your-template))
-   Provided Layouts/Templates:
-    - **Basic** template will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS
-    - **InternalApp** is a custom template to build an internal application [_see bellow for template requirements_](#using-internalapp-template)
-    - **Splash** is a custom template to build an generic splash page [_see bellow for template requirements_](#using-splash-template)
+3. Ensure your view points one of the provided Layouts:
+    - `GCDS.NetTemplate/_Layout` default layout for most pages
+    - `GCDS.NetTemplate/_Layout.SideNav` customized layout when using the `SideNav` property
+    - `GCDS.NetTemplate/_Layout.Splash` custom layout for use specifically with the `Splash` template, [_see bellow for more info_](#using-splash-template)
 
 # Picking your template
 
 By default, the **Basic** template will be loaded, and it will resemble the [Basic](https://design-system.alpha.canada.ca/en/page-templates/basic/) template from GCDS.
 
-_Note: Even if a template is loaded, you don't have to use it. It only gets used if your `GCDS.NetTemplate/_Layout.{XXX}` matches._
-**Note: Be sure to use the corresponding `GCDS.NetTemplate/_Layout.{XXX}` for the chosen template.**
+_Note: Even if a template is loaded, you don't have to use it. It only gets used if you are using one of the provided layouts._
 
 Option 1. Set a default template type globally in the `Program.cs`.
 
@@ -76,8 +74,6 @@ template.Header = new ExtAppHeader
 }
 ```
 
-_Reminder: Be sure to use the `GCDS.NetTemplate/_Layout.InternalApp` when using this template._
-
 ## Using Splash Template
 
 Remember to Initialize the template!
@@ -94,14 +90,16 @@ However if you need it to stick to one language, ensure to force the culture whe
 HttpContext.SetTemplateCulture(CommonConstants.ENGLISH_CULTURE);
 ```
 
-## Side (Left) Menu Variant
+_Reminder: Be sure to use the `GCDS.NetTemplate/_Layout.Splash` when using this template
 
-Available on the Internal template.
+## Side (Left) Nav Variant
+
+Available on the Basic and Internal template.
 
 **Steps to use**
 1. Target the left menu layout variant
     ```cshtml
-    Layout = "GCDS.NetTemplate/_Layout.{TemplateType}.SideNav";
+    Layout = "GCDS.NetTemplate/_Layout.SideNav";
     ```
 
 2. Set the `SideNav` property of your template has with either `GcdsSideNav` or `CustomPartial`
@@ -127,19 +125,14 @@ Available on the Internal template.
     template.SideNav = new CustomPartial() { ViewName = "Banner", Model = new Banner { Text = "This is my custom menu" } };
     ```
 
-3. _(Optional)_ Adjust the width of the side nav with `ViewData["SideNavWidth"]`
-    ```csharp
-    ViewBag.SideNavWidth = "40%"; // accepted as text, so px, %, etc. are all valid
-    ```
-
-4. _(Optional)_ Add `PreContent` section in your view, to come before the left menu, and wrap everything in the `main` tag
+3. _(Optional)_ Add `PreContent` section in your view, to come before the left menu, and wrap everything in the `main` tag
    ```html
    @section PreContent {
      <h1>Page H1 can go here</h1>
    }
    ```
 
-5. _(Optional)_ Add `PostContent` section in your view, to come after the left menu and main body
+4. _(Optional)_ Add `PostContent` section in your view, to come after the left menu and main body
    ```html
    @section PostContent {
      <p>Other pre-footer content can go here</p>
@@ -173,10 +166,13 @@ template.HeadElements.AddCustom("tag", new Dictionary<string, string> { { "tagAt
 
 _Note: `Head` and `Script` sections are also available on all templates._
 
-## Dynamic ViewData (Breadcrumbs, PageTitle)
+## Dynamic ViewData 
 
-There are currently 2 dynamic ViewData attributes `Breadcrumbs` and `PageTitle`.
-They are configured inside anywhere you can access the ViewData or ViewBag.
+While everything can be adjusted server side in code, sometimes the view needs to also adjust template settings and values. 
+
+### Breadcrumbs & PageTitle
+
+Adjust the breadcrumbs, and the browser's Page title
 ```cshtml
 ViewBag.PageTitle = "Home Page"; // should use a localizer here
 ViewBag.Breadcrumbs = new List<GcdsLink> {
@@ -189,6 +185,22 @@ How they are used can also be modified with the following attributes: (the defau
 public enum ViewDataAction { Replace, Prepend, Append }
 template.PageTitleAction = TemplateBase.ViewDataAction.Append;
 template.Header.Breadcrumbs.ItemsAction = TemplateBase.ViewDataAction.Prepend;
+```
+
+### SideNavWidth
+
+Will default to `320px` the property will accept text so any %, px, em, ext. will work.
+```cshtml
+ViewBag.SideNavWidth = "20%";
+```
+[_Must be used on the SideNav layout_](#side-left-nav-variant)
+
+### PageIdentifier
+
+Will render on all templates (except Splash)  
+This will render a identifier text bellow the DateModified
+```cshtml
+ViewBag.PageIdentifier = "CND-1";
 ```
 
 ## Override Settings
@@ -239,6 +251,7 @@ _Note: Most GCDS components can be used natively within the view so are not buil
     - `ExtSkipTo`: Custom hidden link to skip to a section, used in the `InternalApp` template
     - `PageIdentifier`: Identify the page by a unique string
   - Other Partials
+    - `SlotHeader`: Helper to swap the `GcdsHeader` or the `ExtAppHeader` for the common layout
     - `SlotHeaderMenu`: Helper to swap the `GcdsTopicMenu` or the `GcdsTopNav` or `CustomPartial` for the `GcdsHeader.Menu` and `ExtAppHeader.Menu`
     - `SlotNavLinks`: Helper to iterate over a `IEnumerable<ISlotNavLink>` to swap the `GcdsNavLink` and the `GcdsNavGroup` for the `GcdsSideNav.Links` and `GcdsTopNav.Links`.
     - `SlotSideNav` : Helper to swap the `GcdsSideNav` or the `CustomPartial` for the Side Menu template variants.

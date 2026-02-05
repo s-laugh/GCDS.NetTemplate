@@ -8,17 +8,7 @@
 	Layout = "_Layout.Base.cshtml"; // Use the base layout for this template
 }
 
-@switch (template.Header)
-{
-	case ExtAppHeader extAppHeader:
-		@await Html.PartialAsync("ExtAppHeader.cshtml", extAppHeader)
-        break;
-    case GcdsHeader gcdsHeader:
-		@await Html.PartialAsync("GcdsHeader.cshtml", gcdsHeader)
-        break;
-	default:
-        throw new InvalidOperationException("Unsupported header type.");
-}
+@await Html.PartialAsync("SlotHeader.cshtml", template.Header)
 
 <gcds-container size="xl" centered main-container>
 	@RenderBody()
