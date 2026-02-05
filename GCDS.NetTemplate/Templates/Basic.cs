@@ -5,7 +5,7 @@ using System.Reflection;
 namespace GCDS.NetTemplate.Templates
 {
     public class Basic(TemplateSettings settings, HttpContext context) 
-        : TemplateBase(settings, context)
+        : TemplateBase(settings, context), ITemplateCommon
     {
         /// <summary>
         /// Loading all the configurations for the header component
@@ -16,6 +16,8 @@ namespace GCDS.NetTemplate.Templates
             Search = new GcdsSearch(),
             Breadcrumb = new GcdsBreadcrumbs()
         };
+        // satisfy interface, needed for layout
+        ISlotHeader? ITemplateCommon.Header => Header;
 
         /// <summary>
         /// Loading all the configurations for the footer component
@@ -34,6 +36,11 @@ namespace GCDS.NetTemplate.Templates
             // get the date changed of the project that started (impemented this package)
             Text = File.GetLastWriteTime(Assembly.GetEntryAssembly()?.Location ?? string.Empty).ToString("MMMM dd, yyyy")
         };
+
+        /// <summary>
+        /// Preload side navigation properties
+        /// </summary>
+        public ISlotSideNav? SideNav { get; set; }
 
         public override void SetLanguageToggleHref(string href)
             => Header.LangHref = href ?? throw new ArgumentNullException(nameof(href));

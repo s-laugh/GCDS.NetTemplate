@@ -59,6 +59,21 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             return View();
         }
 
+        public IActionResult SideNav()
+        {
+            var template = ViewData.GetTemplate<Basic>();
+            ArgumentNullException.ThrowIfNull(template);
+            template.Initialize("Side Nav Page");
+            template.SideNav = new GcdsSideNav
+            {
+                Label = "Left Nav",
+                Links = LargeMenu,
+                StyleOverride = "background-color: #e1e4e7;"
+            };
+
+            return View();
+        }
+
         [TemplateType(typeof(InternalApp))]
         public IActionResult AltInternal()
         {
@@ -139,7 +154,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                 StyleOverride = "background-color: #e1e4e7;"
             };
 
-            return View(variant ? "InternalSideNavVariant" : "InternalSideNav");
+            return View(variant ? "SideNavVariant" : "SideNav");
         }
 
         [TemplateType(typeof(InternalApp))]
@@ -155,7 +170,7 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             };
             ViewBag.SideNavWidth = "40%"; // Example of setting a custom width for the side nav; accepted as text, so px, %, etc. are all valid
 
-            return View("InternalSideNav");
+            return View("SideNav");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

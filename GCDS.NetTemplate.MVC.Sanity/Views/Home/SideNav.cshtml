@@ -1,6 +1,6 @@
 ﻿@using GCDS.NetTemplate.Components
 @{
-    Layout = "GCDS.NetTemplate/_Layout.InternalApp.SideNav";
+    Layout = "GCDS.NetTemplate/_Layout.SideNav";
 }
 
 <h1>Hello!</h1>
@@ -10,3 +10,5 @@
 <hr />
 <h2>Even more</h2>
 <p>I still<br />need a lot more<br />text to evaluate<br />if the responsiveness<br /> is acceptable.</p>
+
+@await Html.PartialAsync("Links")

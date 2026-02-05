@@ -30,11 +30,10 @@
     {
         @await Html.PartialAsync("ExtHtmlElement.cshtml", headElement)
     }
-	@await RenderSectionAsync("LayoutHead", required: false)
     @await RenderSectionAsync("PageHead", required: false)
 </head>
 <body>
-    @await RenderSectionAsync("LayoutBody", required: true)
+    @RenderBody()
     @await RenderSectionAsync("PageScripts", required: false)
 </body>
 </html>

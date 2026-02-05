@@ -1,0 +1,32 @@
+﻿@using GCDS.NetTemplate.Components
+@using GCDS.NetTemplate.Templates
+@using GCDS.NetTemplate.Core
+
+@{
+	ITemplateCommon? template = ViewData.GetTemplateCommon();
+	ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
+	Layout = "_Layout.Base.cshtml"; // Use the base layout for this template
+}
+
+@switch (template.Header)
+{
+	case ExtAppHeader extAppHeader:
+		@await Html.PartialAsync("ExtAppHeader.cshtml", extAppHeader)
+        break;
+    case GcdsHeader gcdsHeader:
+		@await Html.PartialAsync("GcdsHeader.cshtml", gcdsHeader)
+        break;
+	default:
+        throw new InvalidOperationException("Unsupported header type.");
+}
+
+<gcds-container size="xl" centered main-container>
+	@RenderBody()
+
+	<aside>
+		@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
+        @await Html.PartialAsync("PageIdentifier.cshtml", new CommonProps { Lang = template.Lang })
+	</aside>
+</gcds-container>
+
+@await Html.PartialAsync("GcdsFooter.cshtml", template.Footer)

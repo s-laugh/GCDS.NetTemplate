@@ -8,6 +8,7 @@ namespace GCDS.NetTemplate.UI.Test
         [
             ["http://localhost:5000/Home/Index"],
             ["http://localhost:5000/Home/Home"],
+            ["http://localhost:5000/Home/SideNav"],
             ["http://localhost:5000/Home/Internal"],
             ["http://localhost:5000/Home/AltInternal"],
             ["http://localhost:5000/Home/InternalSideNav"],

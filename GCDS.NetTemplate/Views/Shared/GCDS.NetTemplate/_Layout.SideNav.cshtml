@@ -1,0 +1,35 @@
+﻿@using GCDS.NetTemplate.Components
+@using GCDS.NetTemplate.Templates
+@using GCDS.NetTemplate.Core
+
+@{
+    ITemplateCommon? template = ViewData.GetTemplateCommon();
+    ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
+    Layout = "_Layout.Common.cshtml"; // Use the base layout for this template
+    ViewBag.SideNavWidth ??= "320px"; // Default side navigation width
+}
+
+@if (IsSectionDefined("PreContent"))
+{
+    <main id="@CommonConstants.SKIP_TO_CONTENT_ID" role="main">
+        @await RenderSectionAsync("PreContent", required: false)
+        <gcds-grid columns="minmax(0, 1fr)" columns-desktop="@ViewBag.SideNavWidth minmax(0, 1fr)">
+            @await Html.PartialAsync("SlotSideNav.cshtml", template.SideNav)
+            <div id="main-body">
+                @RenderBody()
+            </div>
+        </gcds-grid>
+        @await RenderSectionAsync("PostContent", required: false)
+    </main>
+}
+else
+{
+    <gcds-grid columns="minmax(0, 1fr)" columns-desktop="@ViewBag.SideNavWidth minmax(0, 1fr)">
+        @await Html.PartialAsync("SlotSideNav.cshtml", template.SideNav)
+
+        <main id="@CommonConstants.SKIP_TO_CONTENT_ID" role="main">
+            @RenderBody()
+        </main>
+    </gcds-grid>
+    @await RenderSectionAsync("PostContent", required: false)
+}

@@ -3,6 +3,15 @@ using GCDS.NetTemplate.Core;
 
 namespace GCDS.NetTemplate.Templates
 {
+    public interface ITemplateCommon
+    {
+        public GcdsDateModified DateModified { get; }
+        public GcdsFooter Footer { get; }
+        public ISlotSideNav? SideNav { get; }
+        public ISlotHeader? Header { get; }
+        string Lang { get; }
+    }
+
     public interface ITemplateBase
     {
         TemplateSettings Settings { get; }
