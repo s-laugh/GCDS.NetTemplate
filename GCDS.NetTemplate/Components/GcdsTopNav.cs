@@ -8,9 +8,8 @@
     {
         public enum AlignmentType
         {
-            right,
-            center,
-            left
+            end,
+            start
         }
 
         /// <summary>
@@ -21,7 +20,7 @@
         /// <summary>
         /// Changes the orientation of the Links
         /// </summary>
-        public AlignmentType Alignment { get; set; } = AlignmentType.right;
+        public AlignmentType Alignment { get; set; } = AlignmentType.start;
 
         /// <summary>
         /// Customize the content for the home link.
