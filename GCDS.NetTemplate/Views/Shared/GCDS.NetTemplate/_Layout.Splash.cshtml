@@ -10,38 +10,36 @@
     IgnoreBody();
 }
 
-<main>
-    <gcds-container size="sm" margin="1000" centered main-container>
-        <div id="splash-window-top">
-            <h1>@template.PageTitle</h1>
-            @await Html.PartialAsync("GcdsSignature.cshtml", template.TopSignature)
+<gcds-container size="sm" margin="1000" alignment="center" tag="main">
+    <div id="splash-window-top">
+        <h1>@template.PageTitle</h1>
+        @await Html.PartialAsync("GcdsSignature.cshtml", template.TopSignature)
 
-            @{
-                ArgumentNullException.ThrowIfNull(template.LanguageSelector,
-                "LanguageSelector must be set when using this template.");
-            }
-            @await Html.PartialAsync("ExtLanguageSelector.cshtml", template.LanguageSelector)
-        </div>
-        <div id="splash-window-bttm">
-            <gcds-grid columns="3fr 2fr">
-                <ul id="bttm-links">
-                    @{
-                        var enTerms = new HtmlString($@"<li><a href='{template.TermsEn.Href}' lang='en'>{template.TermsEn.Text}</a></li>");
-                        var frTerms = new HtmlString($@"<li><a href='{template.TermsFr.Href}' lang='fr'>{template.TermsFr.Text}</a></li>");
-                    }
+        @{
+            ArgumentNullException.ThrowIfNull(template.LanguageSelector,
+            "LanguageSelector must be set when using this template.");
+        }
+        @await Html.PartialAsync("ExtLanguageSelector.cshtml", template.LanguageSelector)
+    </div>
+    <div id="splash-window-bttm">
+        <gcds-grid columns="3fr 2fr">
+            <ul id="bttm-links">
+                @{
+                    var enTerms = new HtmlString($@"<li><a href='{template.TermsEn.Href}' lang='en'>{template.TermsEn.Text}</a></li>");
+                    var frTerms = new HtmlString($@"<li><a href='{template.TermsFr.Href}' lang='fr'>{template.TermsFr.Text}</a></li>");
+                }
 
-                    @if (template.Lang == CommonConstants.ENGLISH_CULTURE_TWO_LETTER)
-                    {
-                        @enTerms
-                        @frTerms
-                    }
-                    else
-                    {
-                        @frTerms
-                        @enTerms
-                    }
-                </ul>
-                @await Html.PartialAsync("GcdsSignature.cshtml", template.BottomSignature)
-        </div>
-    </gcds-container>
-</main>
+                @if (template.Lang == CommonConstants.ENGLISH_CULTURE_TWO_LETTER)
+                {
+                    @enTerms
+                    @frTerms
+                }
+                else
+                {
+                    @frTerms
+                    @enTerms
+                }
+            </ul>
+            @await Html.PartialAsync("GcdsSignature.cshtml", template.BottomSignature)
+    </div>
+</gcds-container>

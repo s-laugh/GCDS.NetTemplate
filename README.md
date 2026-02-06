@@ -210,8 +210,8 @@ Add configuration values to your `appsettings.json` to override from the default
 "TemplateSettings": {
     "GcdsRootPath": "https://cdn.design-system.alpha.canada.ca/",
     "GcdsComponentsVersion": "latest",
-    "GcdsComponentsStylePath": "@cdssnc/gcds-components@{0}/dist/gcds/gcds.css",
-    "GcdsComponentsModulePath": "@cdssnc/gcds-components@{0}/dist/gcds/gcds.esm.js",
+    "GcdsComponentsStylePath": "@gcds-core/components@{0}/dist/gcds/gcds.css",
+    "GcdsComponentsModulePath": "@gcds-core/components@{0}/dist/gcds/gcds.esm.js",
     "GcdsCssShortcutsPath": "@gcds-core/css-shortcuts@latest/dist/gcds-css-shortcuts.min.css"
     "SplashLoadsDefaultBackgroundImage": true
 }

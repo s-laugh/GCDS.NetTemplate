@@ -6,12 +6,6 @@
     /// </summary>
     public class GcdsHeader : CommonProps, ISlotHeader
     {
-        public enum SignatureVariantType
-        {
-            colour,
-            white
-        }
-
         /// <summary>
         /// Language toogle link
         /// </summary>
@@ -26,11 +20,6 @@
         /// Remove the link to the Canada.ca homepage from the signature
         /// </summary>
         public bool SignatureHasLink { get; set; } = true;
-
-        /// <summary>
-        /// Switch the logo between color or all white
-        /// </summary>
-        public SignatureVariantType SignatureVariant { get; set; } = SignatureVariantType.colour;
 
         /// <summary>
         /// Add a custom partial that points to a banner to display above the header

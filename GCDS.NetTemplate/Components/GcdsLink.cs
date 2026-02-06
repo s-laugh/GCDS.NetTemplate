@@ -24,7 +24,7 @@ namespace GCDS.NetTemplate.Components
             regular,
             small
         }
-        public enum VariantType
+        public enum LinkRoleType
         {
             @default,
             light,
@@ -37,6 +37,6 @@ namespace GCDS.NetTemplate.Components
         public SizeType Size { get; set; } = SizeType.inherit;
         public string Target { get; set; } = "_self";
         public string? Type { get; set; }
-        public VariantType Variant { get; set; } = VariantType.@default;
+        public LinkRoleType LinkRole { get; set; } = LinkRoleType.@default;
     }
 }

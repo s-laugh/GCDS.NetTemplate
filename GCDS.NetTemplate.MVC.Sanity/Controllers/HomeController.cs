@@ -35,7 +35,6 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
             template.Header.Menu = new GcdsTopNav
             {
                 Label = "Top Nav",
-                Alignment = GcdsTopNav.AlignmentType.left,
                 Links =
                [
                    new GcdsNavLink { Text = new HtmlString("Link 1"), Href = "#" },
@@ -118,7 +117,6 @@ namespace GCDS.NetTemplate.MVC.Sanity.Controllers
                 Menu = new GcdsTopNav
                 {
                     Label = "Top Nav",
-                    Alignment = GcdsTopNav.AlignmentType.left,
                     Links = LargeMenu // only one layer of groups supported in top nav
                     //StyleOverride = "background-color: #e1e4e7;"
                 },

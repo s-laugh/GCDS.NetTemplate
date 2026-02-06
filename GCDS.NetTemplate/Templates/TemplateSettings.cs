@@ -5,8 +5,8 @@
         // Set up consts here for easy editing to set as default values
         private const string _gcdsRootPathDefault = "https://cdn.design-system.alpha.canada.ca/";
         private const string _gcdsComponentsVersionDefault = "latest";
-        private const string _gcdsComponentsStylePathDefault = "@cdssnc/gcds-components@{0}/dist/gcds/gcds.css";
-        private const string _gcdsComponentsModulePathDefault = "@cdssnc/gcds-components@{0}/dist/gcds/gcds.esm.js";
+        private const string _gcdsComponentsStylePathDefault = "@gcds-core/components@{0}/dist/gcds/gcds.css";
+        private const string _gcdsComponentsModulePathDefault = "@gcds-core/components@{0}/dist/gcds/gcds.esm.js";
         private const string _gcdsCssShortcutsPathDefault = "@gcds-core/css-shortcuts@latest/dist/gcds-css-shortcuts.min.css";
         private const bool _splashLoadsDefaultBackgroundImage = true;
 
