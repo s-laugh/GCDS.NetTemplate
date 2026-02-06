@@ -5,12 +5,14 @@ using System.Reflection;
 namespace GCDS.NetTemplate.Templates
 {
     public class InternalApp(TemplateSettings settings, HttpContext context) 
-        : TemplateBase(settings, context)
+        : TemplateBase(settings, context), ITemplateCommon
     {
         /// <summary>
         /// Loading all the configurations for the header component
         /// </summary>
         public ExtAppHeader? Header { get; set; }
+        // satisfy interface, needed for layout
+        ISlotHeader? ITemplateCommon.Header => Header; 
 
         /// <summary>
         /// Loading all the configurations for the footer component

@@ -10,6 +10,11 @@ namespace GCDS.NetTemplate.Templates
             string key = CommonConstants.TEMPLATE_DATA) 
             => viewData[key] as TemplateBase;
 
+        public static ITemplateCommon? GetTemplateCommon(
+            this ViewDataDictionary viewData,
+            string key = CommonConstants.TEMPLATE_DATA)
+            => viewData[key] as ITemplateCommon;
+
         public static T? GetTemplate<T>(
             this ViewDataDictionary viewData, 
             string key = CommonConstants.TEMPLATE_DATA) 

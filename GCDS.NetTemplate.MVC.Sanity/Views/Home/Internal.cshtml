@@ -1,6 +1,5 @@
 ﻿@using GCDS.NetTemplate.Components
 @{
-    Layout = "GCDS.NetTemplate/_Layout.InternalApp";
     ViewData["PageIdentifier"] = "CESG4010F";
 
     ViewBag.PageTitle = "Home Page"; // could use a localizer here
@@ -11,3 +10,5 @@
 
 <h1>Hello!</h1>
 <p>This is a internal site design for an application.</p>
+
+@await Html.PartialAsync("Links")

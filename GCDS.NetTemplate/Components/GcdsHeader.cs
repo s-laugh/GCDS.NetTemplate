@@ -4,7 +4,7 @@
     /// Class holder for the header properties as defined in the GCDS template
     /// https://design-system.alpha.canada.ca/en/components/header/
     /// </summary>
-    public class GcdsHeader : CommonProps
+    public class GcdsHeader : CommonProps, ISlotHeader
     {
         public enum SignatureVariantType
         {

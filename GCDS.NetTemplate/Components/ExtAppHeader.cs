@@ -2,7 +2,7 @@
 
 namespace GCDS.NetTemplate.Components
 {
-    public class ExtAppHeader
+    public class ExtAppHeader : ISlotHeader
     {
         /// <summary>
         /// Provides information for the skip to content link

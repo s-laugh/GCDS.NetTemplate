@@ -2,10 +2,10 @@
 
 @model CommonProps
 
-@if (ViewData["PageIdentifier"] != null)
+@if (ViewBag.PageIdentifier != null)
 {
     <dl style="margin-top:-1rem; font:var(--gcds-date-modified-font);">
         <dt class="mb-0 d-inline">@(Model.Lang == "fr" ? "Identifiant de page" : "Page identifier")</dt>
-        <dd class="mb-0 d-inline">@ViewData["PageIdentifier"]</dd>
+        <dd class="mb-0 d-inline">@ViewBag.PageIdentifier</dd>
     </dl>
 }

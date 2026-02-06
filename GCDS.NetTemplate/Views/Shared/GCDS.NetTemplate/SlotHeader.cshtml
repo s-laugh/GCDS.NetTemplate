@@ -1,0 +1,15 @@
+﻿@using GCDS.NetTemplate.Components
+
+@model ISlotHeader
+
+@switch (Model)
+{
+    case ExtAppHeader extAppHeader:
+        @await Html.PartialAsync("ExtAppHeader.cshtml", extAppHeader)
+        break;
+    case GcdsHeader gcdsHeader:
+        @await Html.PartialAsync("GcdsHeader.cshtml", gcdsHeader)
+        break;
+    default:
+        throw new InvalidOperationException("Unsupported header type.");
+}

@@ -1,0 +1,22 @@
+﻿@using GCDS.NetTemplate.Components
+@using GCDS.NetTemplate.Templates
+@using GCDS.NetTemplate.Core
+
+@{
+	ITemplateCommon? template = ViewData.GetTemplateCommon();
+	ArgumentNullException.ThrowIfNull(template, CommonConstants.ERRMSG_LOAD_TEMPLATE);
+	Layout = "_Layout.Base.cshtml"; // Use the base layout for this template
+}
+
+@await Html.PartialAsync("SlotHeader.cshtml", template.Header)
+
+<gcds-container size="xl" centered main-container>
+	@RenderBody()
+
+	<aside>
+		@await Html.PartialAsync("GcdsDateModified.cshtml", template.DateModified)
+        @await Html.PartialAsync("ExtPageIdentifier.cshtml", new CommonProps { Lang = template.Lang })
+	</aside>
+</gcds-container>
+
+@await Html.PartialAsync("GcdsFooter.cshtml", template.Footer)
