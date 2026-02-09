@@ -20,9 +20,8 @@
 
 	@if (Model.Breadcrumbs != null)
 	{
-		<gcds-container size="xl"
-						centered
-						main-container>
+		<gcds-container layout="page"
+						alignment="centered">
 			@await Html.PartialAsync("GcdsBreadcrumbs.cshtml", Model.Breadcrumbs)
 		</gcds-container>
 	}
