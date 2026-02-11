@@ -1,30 +1,30 @@
+using Deque.AxeCore.Playwright;
 using Microsoft.Playwright;
 
-namespace GCDS.NetTemplate.UI.Test
+namespace GCDS.NetTemplate.UI.Test;
+
+[Collection("pw")]
+public class AccessibilityTests(PlaywrightFixture fx)
 {
-    public class AccessibilityTests
+    private readonly IPage Page = fx.Page;
+
+    [Theory]
+    [InlineData("/Home/Index")]
+    [InlineData("/Home/Home")]
+    [InlineData("/Home/SideNav")]
+    [InlineData("/Home/Internal")]
+    [InlineData("/Home/AltInternal")]
+    [InlineData("/Home/InternalSideNav")]
+    [InlineData("/Home/InternalSideNav?variant=true")]
+    [InlineData("/Home/AltInternalSideNav")]
+    public async Task Component_Should_Pass_Accessibility_Check(string path)
     {
-        public static IEnumerable<object[]> ComponentUrls =>
-        [
-            ["http://localhost:5000/Home/Index"],
-            ["http://localhost:5000/Home/Home"],
-            ["http://localhost:5000/Home/SideNav"],
-            ["http://localhost:5000/Home/Internal"],
-            ["http://localhost:5000/Home/AltInternal"],
-            ["http://localhost:5000/Home/InternalSideNav"],
-            ["http://localhost:5000/Home/InternalSideNav?variant=true"],
-            ["http://localhost:5000/Home/AltInternalSideNav"],
-        ];
+        await Page.GotoAsync(path, new() { WaitUntil = WaitUntilState.NetworkIdle });
 
-        [Theory]
-        [MemberData(nameof(ComponentUrls))]
-        public async Task Component_Should_Pass_Accessibility_Check(string url)
-        {
-            using var playwright = await Playwright.CreateAsync();
-            var browser = await playwright.Chromium.LaunchAsync(new() { Headless = true });
-            var page = await browser.NewPageAsync();
+        var result = await Page.RunAxe();
 
-            await AccessibilityChecker.CheckAccessibilityAsync(page, url);
-        }
+        Assert.True(result.Violations.Length == 0,
+            $"Accessibility violations found at {path}:\n{result}");
+
     }
 }
