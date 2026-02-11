@@ -15,7 +15,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Deque.AxeCore.Playwright" Version="4.11.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.24" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
     <PackageReference Include="Microsoft.Playwright.Xunit" Version="1.58.0" />
     <PackageReference Include="xunit" Version="2.9.3" />
@@ -23,10 +22,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\GCDS.NetTemplate.MVC.Sanity\GCDS.NetTemplate.MVC.Sanity.csproj" />
   </ItemGroup>
 
   <ItemGroup>
