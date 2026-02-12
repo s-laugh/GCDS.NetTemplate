@@ -11,11 +11,16 @@
 
     public class CommonProps : ICommon
     {
+        private string? lang;
         /// <summary>
         /// A language indicator to toogle the 
         /// Always set by the CurrentUICulture by default
         /// </summary>
-        public string Lang { get; set; } = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+        public string Lang
+        {
+            get => lang ?? Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;            
+            set { lang = value; }
+        }
 
         /// <summary>
         /// Used to indicate what "slot" the component is in for GCDS
