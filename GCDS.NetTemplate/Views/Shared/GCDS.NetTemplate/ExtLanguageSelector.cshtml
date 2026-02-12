@@ -8,9 +8,9 @@
 	IHtmlContent RenderLanguageSelectorBlock(string lang, string title, string href, string label)
 	{
 		return new HtmlString($@"
-			<div>
-				<h2 lang='{lang}'>{title}</h2>
-				<gcds-button type='link' href='{href}' lang='{lang}'>{label}</gcds-button>
+			<div lang='{lang}'>
+				<h2>{title}</h2>
+				<gcds-button type='link' href='{href}'>{label}</gcds-button>
 			</div>
 		");
 	}
@@ -21,8 +21,8 @@
 	var frBlock = RenderLanguageSelectorBlock("fr", Model.FrenchTitle, Model.FrenchHref, "Français");
 }
 
-<gcds-grid id="gnt-language-selector" columns="1fr 1fr">
-	@if (Model.Lang == CommonConstants.ENGLISH_CULTURE_TWO_LETTER)
+<gcds-grid id="gnt-language-selector" columns-tablet="1fr 1fr">
+	@if (Model.Lang.Contains(CommonConstants.ENGLISH_CULTURE_TWO_LETTER))
 	{
 		@enBlock
 		@frBlock
